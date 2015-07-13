@@ -5,7 +5,7 @@
 <Project class_id="0" tracking_level="0" version="5">
 	<NatronVersion>Natron v2.0.0 from git branch workshop commit 283c8394d0ce5bb60a6acf84970862873cb0abd4  for   MacOSX 64bit</NatronVersion>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
-		<NodesCount>4</NodesCount>
+		<NodesCount>5</NodesCount>
 		<item class_id="2" tracking_level="0" version="11">
 			<Plugin_label>Viewer1</Plugin_label>
 			<Plugin_script_name>Viewer1</Plugin_script_name>
@@ -57,7 +57,7 @@
 					<second></second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>0</KnobsAge>
+			<KnobsAge>2</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<MultiInstanceParent></MultiInstanceParent>
@@ -175,7 +175,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>4.86000000000000000e+02</Value>
+					<Value>3.50000000000000000e+00</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -183,7 +183,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>4.44000000000000000e+02</Value>
+					<Value>2.87000000000000028e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -198,7 +198,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>4.97000000000000000e+02</Value>
+					<Value>2.79000000000000021e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -206,7 +206,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>4.11000000000000000e+02</Value>
+					<Value>2.74000000000000021e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -603,7 +603,7 @@
 					<second></second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>3</KnobsAge>
+			<KnobsAge>9</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<MultiInstanceParent></MultiInstanceParent>
@@ -615,8 +615,688 @@
 			</UserComponents>
 		</item>
 		<item>
-			<Plugin_label>Transform1</Plugin_label>
-			<Plugin_script_name>Transform1</Plugin_script_name>
+			<Plugin_label>Retime1</Plugin_label>
+			<Plugin_script_name>Retime1</Plugin_script_name>
+			<Plugin_id>net.sf.openfx.Retime</Plugin_id>
+			<Plugin_major_version>1</Plugin_major_version>
+			<Plugin_minor_version>0</Plugin_minor_version>
+			<KnobsCount>12</KnobsCount>
+			<item>
+				<Name>reverseInput</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>speed</Name>
+				<Type>Double</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1.00000000000000006e-01</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>warp</Name>
+				<Type>Parametric</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ParametricCurves class_id="9" tracking_level="0" version="0">
+					<count>1</count>
+					<item_version>0</item_version>
+					<item class_id="10" tracking_level="0" version="0">
+						<KeyFrameSet class_id="11" tracking_level="0" version="0">
+							<count>2</count>
+							<item_version>0</item_version>
+							<item class_id="12" tracking_level="0" version="0">
+								<Time>0.00000000000000000e+00</Time>
+								<Value>0.00000000000000000e+00</Value>
+								<InterpolationMethod>4</InterpolationMethod>
+								<LeftDerivative>1.00000000000000000e+00</LeftDerivative>
+								<RightDerivative>1.00000000000000000e+00</RightDerivative>
+							</item>
+							<item>
+								<Time>1.00000000000000000e+00</Time>
+								<Value>1.00000000000000000e+00</Value>
+								<InterpolationMethod>4</InterpolationMethod>
+								<LeftDerivative>1.00000000000000000e+00</LeftDerivative>
+								<RightDerivative>1.00000000000000000e+00</RightDerivative>
+							</item>
+						</KeyFrameSet>
+					</item>
+				</ParametricCurves>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>filter</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>None</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>channels</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>RGBA</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>Output_layer_name</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>RGBA</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>userTextArea</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>&lt;font size=&quot;6&quot; color=&quot;#000000&quot; face=&quot;Droid Sans&quot;&gt;&lt;/font&gt;</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>forceCaching</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>disableNode</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>highDefUpstream</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>onParamChanged</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>onInputChanged</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<Inputs_map>
+				<count>1</count>
+				<item_version>0</item_version>
+				<item>
+					<first>Source</first>
+					<second>Transform2</second>
+				</item>
+			</Inputs_map>
+			<KnobsAge>8</KnobsAge>
+			<MasterNode></MasterNode>
+			<HasRotoContext>0</HasRotoContext>
+			<MultiInstanceParent></MultiInstanceParent>
+			<UserPagesCount>0</UserPagesCount>
+			<Children>0</Children>
+			<UserComponents>
+				<count>0</count>
+				<item_version>0</item_version>
+			</UserComponents>
+		</item>
+		<item>
+			<Plugin_label>Write1</Plugin_label>
+			<Plugin_script_name>Write1</Plugin_script_name>
+			<Plugin_id>fr.inria.openfx.WriteOIIO</Plugin_id>
+			<Plugin_major_version>1</Plugin_major_version>
+			<Plugin_minor_version>0</Plugin_minor_version>
+			<KnobsCount>24</KnobsCount>
+			<item>
+				<Name>filename</Name>
+				<Type>OutputFile</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>/Users/alexandre/development/Natron-Tests/TestRetimeTransform/reference#.jpg</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>formatType</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>Project format</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputFormat</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>3</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>HD                  1920x1080</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>ocioConfigFile</Name>
+				<Type>InputFile</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>[OCIO]/config.ocio</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>ocioInputSpace</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>Linear</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>ocioOutputSpace</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>sRGB</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>inputPremult</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>Opaque</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>frameRange</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>2</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>Manual</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>firstFrame</Name>
+				<Type>Int</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>lastFrame</Name>
+				<Type>Int</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>5</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>bitDepth</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>auto</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>quality</Name>
+				<Type>Int</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>10</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>orientation</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>normal</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>compression</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>default</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>userTextArea</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>&lt;font size=&quot;6&quot; color=&quot;#000000&quot; face=&quot;Droid Sans&quot;&gt;&lt;/font&gt;</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>forceCaching</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>disableNode</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>highDefUpstream</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>onParamChanged</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>onInputChanged</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>beforeFrameRender</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>beforeRender</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>afterFrameRender</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>afterRender</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value></Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<Inputs_map>
+				<count>1</count>
+				<item_version>0</item_version>
+				<item>
+					<first>Source</first>
+					<second>Retime1</second>
+				</item>
+			</Inputs_map>
+			<KnobsAge>6</KnobsAge>
+			<MasterNode></MasterNode>
+			<HasRotoContext>0</HasRotoContext>
+			<MultiInstanceParent></MultiInstanceParent>
+			<UserPagesCount>0</UserPagesCount>
+			<Children>0</Children>
+			<UserComponents>
+				<count>0</count>
+				<item_version>0</item_version>
+			</UserComponents>
+		</item>
+		<item>
+			<Plugin_label>Transform2</Plugin_label>
+			<Plugin_script_name>Transform2</Plugin_script_name>
 			<Plugin_id>net.sf.openfx.TransformPlugin</Plugin_id>
 			<Plugin_major_version>1</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
@@ -629,41 +1309,68 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>1</HasAnimation>
-					<Curve class_id="9" tracking_level="0" version="0">
-						<KeyFrameSet class_id="10" tracking_level="0" version="0">
+					<Curve>
+						<KeyFrameSet>
 							<count>3</count>
 							<item_version>0</item_version>
-							<item class_id="11" tracking_level="0" version="0">
+							<item>
 								<Time>1.00000000000000000e+00</Time>
 								<Value>0.00000000000000000e+00</Value>
 								<InterpolationMethod>2</InterpolationMethod>
 								<LeftDerivative>0.00000000000000000e+00</LeftDerivative>
-								<RightDerivative>2.00000000000000000e+02</RightDerivative>
+								<RightDerivative>1.00000000000000000e+01</RightDerivative>
 							</item>
 							<item>
 								<Time>2.00000000000000000e+00</Time>
-								<Value>2.00000000000000000e+02</Value>
+								<Value>1.00000000000000000e+01</Value>
 								<InterpolationMethod>2</InterpolationMethod>
-								<LeftDerivative>1.50000000000000000e+02</LeftDerivative>
-								<RightDerivative>1.50000000000000000e+02</RightDerivative>
+								<LeftDerivative>1.00000000000000018e+01</LeftDerivative>
+								<RightDerivative>1.00000000000000018e+01</RightDerivative>
 							</item>
 							<item>
 								<Time>3.00000000000000000e+00</Time>
-								<Value>3.00000000000000000e+02</Value>
+								<Value>2.00000000000000000e+01</Value>
 								<InterpolationMethod>2</InterpolationMethod>
-								<LeftDerivative>7.50000000000000000e+01</LeftDerivative>
+								<LeftDerivative>1.50000000000000000e+01</LeftDerivative>
 								<RightDerivative>0.00000000000000000e+00</RightDerivative>
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>0.00000000000000000e+00</Value>
+					<Value>2.00000000000000000e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
 				</item>
 				<item>
 					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
+					<HasAnimation>1</HasAnimation>
+					<Curve>
+						<KeyFrameSet>
+							<count>3</count>
+							<item_version>0</item_version>
+							<item>
+								<Time>1.00000000000000000e+00</Time>
+								<Value>0.00000000000000000e+00</Value>
+								<InterpolationMethod>2</InterpolationMethod>
+								<LeftDerivative>0.00000000000000000e+00</LeftDerivative>
+								<RightDerivative>0.00000000000000000e+00</RightDerivative>
+							</item>
+							<item>
+								<Time>2.00000000000000000e+00</Time>
+								<Value>0.00000000000000000e+00</Value>
+								<InterpolationMethod>2</InterpolationMethod>
+								<LeftDerivative>0.00000000000000000e+00</LeftDerivative>
+								<RightDerivative>0.00000000000000000e+00</RightDerivative>
+							</item>
+							<item>
+								<Time>3.00000000000000000e+00</Time>
+								<Value>0.00000000000000000e+00</Value>
+								<InterpolationMethod>2</InterpolationMethod>
+								<LeftDerivative>0.00000000000000000e+00</LeftDerivative>
+								<RightDerivative>0.00000000000000000e+00</RightDerivative>
+							</item>
+						</KeyFrameSet>
+					</Curve>
 					<Value>0.00000000000000000e+00</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -778,7 +1485,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>7.34500000000000000e+02</Value>
+					<Value>1.74500000000000028e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -786,7 +1493,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>6.49500000000000000e+02</Value>
+					<Value>4.24000000000000057e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -1091,254 +1798,7 @@
 					<second>Rectangle1</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>17</KnobsAge>
-			<MasterNode></MasterNode>
-			<HasRotoContext>0</HasRotoContext>
-			<MultiInstanceParent></MultiInstanceParent>
-			<UserPagesCount>0</UserPagesCount>
-			<Children>0</Children>
-			<UserComponents>
-				<count>0</count>
-				<item_version>0</item_version>
-			</UserComponents>
-		</item>
-		<item>
-			<Plugin_label>Retime1</Plugin_label>
-			<Plugin_script_name>Retime1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.Retime</Plugin_id>
-			<Plugin_major_version>1</Plugin_major_version>
-			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>12</KnobsCount>
-			<item>
-				<Name>reverseInput</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>speed</Name>
-				<Type>Double</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1.00000000000000006e-01</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>warp</Name>
-				<Type>Parametric</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<ParametricCurves class_id="12" tracking_level="0" version="0">
-					<count>1</count>
-					<item_version>0</item_version>
-					<item>
-						<KeyFrameSet>
-							<count>2</count>
-							<item_version>0</item_version>
-							<item>
-								<Time>0.00000000000000000e+00</Time>
-								<Value>0.00000000000000000e+00</Value>
-								<InterpolationMethod>4</InterpolationMethod>
-								<LeftDerivative>1.00000000000000000e+00</LeftDerivative>
-								<RightDerivative>1.00000000000000000e+00</RightDerivative>
-							</item>
-							<item>
-								<Time>1.00000000000000000e+00</Time>
-								<Value>1.00000000000000000e+00</Value>
-								<InterpolationMethod>4</InterpolationMethod>
-								<LeftDerivative>1.00000000000000000e+00</LeftDerivative>
-								<RightDerivative>1.00000000000000000e+00</RightDerivative>
-							</item>
-						</KeyFrameSet>
-					</item>
-				</ParametricCurves>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>filter</Name>
-				<Type>Choice</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<ChoiceLabel>None</ChoiceLabel>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>channels</Name>
-				<Type>Choice</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<ChoiceLabel>RGBA</ChoiceLabel>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>Output_layer_name</Name>
-				<Type>String</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>RGBA</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<StringsAnimation>
-					<count>0</count>
-					<item_version>0</item_version>
-				</StringsAnimation>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>userTextArea</Name>
-				<Type>String</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>&lt;font size=&quot;6&quot; color=&quot;#000000&quot; face=&quot;Droid Sans&quot;&gt;&lt;/font&gt;</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<StringsAnimation>
-					<count>0</count>
-					<item_version>0</item_version>
-				</StringsAnimation>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>forceCaching</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>disableNode</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>highDefUpstream</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>onParamChanged</Name>
-				<Type>String</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value></Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<StringsAnimation>
-					<count>0</count>
-					<item_version>0</item_version>
-				</StringsAnimation>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>onInputChanged</Name>
-				<Type>String</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value></Value>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<StringsAnimation>
-					<count>0</count>
-					<item_version>0</item_version>
-				</StringsAnimation>
-				<UserKnob>0</UserKnob>
-			</item>
-			<Inputs_map>
-				<count>1</count>
-				<item_version>0</item_version>
-				<item>
-					<first>Source</first>
-					<second>Transform1</second>
-				</item>
-			</Inputs_map>
-			<KnobsAge>6</KnobsAge>
+			<KnobsAge>7</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<MultiInstanceParent></MultiInstanceParent>
@@ -1359,7 +1819,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron/App/build/Debug/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Documents/NukeDocs&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Users/alexandre/development/Natron/App/build/Debug/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/alexandre/development/Natron-Tests/TestRetimeTransform&lt;/Value&gt;</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -1374,12 +1834,12 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>3</Value>
+			<Value>16</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
 		</item>
-		<ChoiceLabel>HD  1920 x 1080  1</ChoiceLabel>
+		<ChoiceLabel>  100 x 100  1</ChoiceLabel>
 		<UserKnob>0</UserKnob>
 	</item>
 	<item>
@@ -1574,7 +2034,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>devernay@ignatz.local</Value>
+			<Value>alexandre@Alexandres-MacBook-Pro.local</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -1612,7 +2072,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>sam. juil. 11 19:34:54 2015</Value>
+			<Value>Mon Jul 13 12:08:18 2015</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -1738,17 +2198,27 @@
 		<UserKnob>0</UserKnob>
 	</item>
 	<AdditionalFormats class_id="13" tracking_level="0" version="0">
-		<count>0</count>
+		<count>1</count>
 		<item_version>3</item_version>
+		<item class_id="14" tracking_level="0" version="3">
+			<RectI class_id="15" tracking_level="0" version="0">
+				<Left>0</Left>
+				<Bottom>0</Bottom>
+				<Right>100</Right>
+				<Top>100</Top>
+			</RectI>
+			<Pixel_aspect_ratio>1.00000000000000000e+00</Pixel_aspect_ratio>
+			<Name></Name>
+		</item>
 	</AdditionalFormats>
-	<Timeline_current_time>1</Timeline_current_time>
+	<Timeline_current_time>6</Timeline_current_time>
 	<CreationDate>1436635530604</CreationDate>
 </Project>
-<ProjectGui class_id="14" tracking_level="0" version="11">
-	<NodesGui class_id="15" tracking_level="0" version="0">
-		<count>4</count>
+<ProjectGui class_id="16" tracking_level="0" version="11">
+	<NodesGui class_id="17" tracking_level="0" version="0">
+		<count>5</count>
 		<item_version>5</item_version>
-		<item class_id="16" tracking_level="0" version="5">
+		<item class_id="18" tracking_level="0" version="5">
 			<Name>Viewer1</Name>
 			<X_position>6.75000000000000000e+02</X_position>
 			<Y_position>3.71875000000000000e+02</Y_position>
@@ -1771,20 +2241,7 @@
 			<b>2.00000003e-01</b>
 			<Selected>0</Selected>
 			<Width>1.04000000000000000e+02</Width>
-			<Height>3.40000000000000000e+01</Height>
-			<HasOverlayColor>0</HasOverlayColor>
-		</item>
-		<item>
-			<Name>Transform1</Name>
-			<X_position>6.75000000000000000e+02</X_position>
-			<Y_position>2.02750000000000000e+02</Y_position>
-			<Preview_enabled>0</Preview_enabled>
-			<r>6.99992359e-01</r>
-			<g>3.00007641e-01</g>
-			<b>1.00007631e-01</b>
-			<Selected>0</Selected>
-			<Width>1.04000000000000000e+02</Width>
-			<Height>3.40000000000000000e+01</Height>
+			<Height>3.10000000000000000e+01</Height>
 			<HasOverlayColor>0</HasOverlayColor>
 		</item>
 		<item>
@@ -1797,24 +2254,50 @@
 			<b>3.49996179e-01</b>
 			<Selected>0</Selected>
 			<Width>1.04000000000000000e+02</Width>
-			<Height>3.40000000000000000e+01</Height>
+			<Height>3.10000000000000000e+01</Height>
+			<HasOverlayColor>0</HasOverlayColor>
+		</item>
+		<item>
+			<Name>Write1</Name>
+			<X_position>8.36000000000000000e+02</X_position>
+			<Y_position>2.66750000000000000e+02</Y_position>
+			<Preview_enabled>0</Preview_enabled>
+			<r>7.49996185e-01</r>
+			<g>7.49996185e-01</g>
+			<b>0.00000000e+00</b>
+			<Selected>0</Selected>
+			<Width>1.04000000000000000e+02</Width>
+			<Height>3.10000000000000000e+01</Height>
+			<HasOverlayColor>0</HasOverlayColor>
+		</item>
+		<item>
+			<Name>Transform2</Name>
+			<X_position>6.75000000000000000e+02</X_position>
+			<Y_position>1.98750000000000000e+02</Y_position>
+			<Preview_enabled>0</Preview_enabled>
+			<r>6.99992359e-01</r>
+			<g>3.00007641e-01</g>
+			<b>1.00007631e-01</b>
+			<Selected>0</Selected>
+			<Width>1.04000000000000000e+02</Width>
+			<Height>3.10000000000000000e+01</Height>
 			<HasOverlayColor>0</HasOverlayColor>
 		</item>
 	</NodesGui>
-	<Gui_Layout class_id="17" tracking_level="0" version="2">
+	<Gui_Layout class_id="19" tracking_level="0" version="2">
 		<NbWindows>1</NbWindows>
-		<Window class_id="18" tracking_level="0" version="1">
+		<Window class_id="20" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
-			<Child class_id="19" tracking_level="1" version="1" object_id="_0">
-				<Sizes>1062 572</Sizes>
+			<Child class_id="21" tracking_level="1" version="1" object_id="_0">
+				<Sizes>906 488</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>496 496</Sizes>
+					<Sizes>424 424</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
-					<Child class_id="20" tracking_level="1" version="5" object_id="_2">
-						<Tabs class_id="21" tracking_level="0" version="0">
+					<Child class_id="22" tracking_level="1" version="5" object_id="_2">
+						<Tabs class_id="23" tracking_level="0" version="0">
 							<count>1</count>
 							<item_version>0</item_version>
 							<item>Viewer1</item>
@@ -1849,23 +2332,23 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>124</x>
-			<y>77</y>
-			<w>1680</w>
-			<h>995</h>
+			<x>27</x>
+			<y>35</y>
+			<w>1440</w>
+			<h>851</h>
 		</Window>
 	</Gui_Layout>
-	<ViewersData class_id="22" tracking_level="0" version="0">
+	<ViewersData class_id="24" tracking_level="0" version="0">
 		<count>1</count>
 		<item_version>0</item_version>
-		<item class_id="23" tracking_level="0" version="0">
+		<item class_id="25" tracking_level="0" version="0">
 			<first>Viewer1</first>
-			<second class_id="24" tracking_level="0" version="10">
-				<zoomLeft>-2.54737984557816344e+03</zoomLeft>
-				<zoomBottom>-5.97274674894214286e+02</zoomBottom>
-				<zoomFactor>1.64442531664096975e-01</zoomFactor>
+			<second class_id="26" tracking_level="0" version="10">
+				<zoomLeft>-1.12739800766320428e+02</zoomLeft>
+				<zoomBottom>1.91492896769897953e+01</zoomBottom>
+				<zoomFactor>4.19988727974194109e+00</zoomFactor>
 				<UserRoIEnabled>0</UserRoIEnabled>
-				<UserRoI class_id="25" tracking_level="0" version="0">
+				<UserRoI class_id="27" tracking_level="0" version="0">
 					<Left>0.00000000000000000e+00</Left>
 					<Bottom>0.00000000000000000e+00</Bottom>
 					<Right>1.92000000000000000e+03</Right>
@@ -1900,12 +2383,13 @@
 		<item_version>0</item_version>
 	</Histograms>
 	<OpenedPanels>
-		<count>4</count>
+		<count>5</count>
 		<item_version>0</item_version>
-		<item>Retime1</item>
-		<item>Transform1</item>
+		<item>Write1</item>
+		<item>Transform2</item>
 		<item>Rectangle1</item>
 		<item>Natron_Project_Settings_Panel</item>
+		<item>Retime1</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
 	<NumPyPanels>0</NumPyPanels>

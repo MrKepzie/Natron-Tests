@@ -1,5 +1,8 @@
 *.lock
 *.autosave
+*output*.*
+*comp*.*
+*ofxTestLog.txt*
 *.h.cpp
 *.com
 *.DS_Store
