@@ -44,6 +44,8 @@ A correct configuration file could be as such:
 
 You can submit new tests with a [pull-request](https://github.com/MrKepzie/Natron-Tests/pulls) containing the new test sub-directory. It will be accepted if it is respecting the points above.
 
+Finally in run-tests.sh add the directory name of your test to the TEST_DIRS variable.
+
 
 Comparison
 -----------
