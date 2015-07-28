@@ -12,7 +12,7 @@
 #The warning "Attempt to read an OpenColorIO configuration but the configuration directory..." will be printed
 #when the OpenColorIO-Configs could not be found.
 
-TEST_DIRS="TestFrameBlend TestRetimeTransform TestTimeBlur"
+TEST_DIRS="TestFrameBlend TestRetimeTransform TestTimeBlur TestTilePyPlug"
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
@@ -65,7 +65,7 @@ for t in $TEST_DIRS; do
 	touch $TMP_SCRIPT
     echo "import sys" > $TMP_SCRIPT
 	echo "import NatronEngine" > $TMP_SCRIPT
-	
+
 #Create the write node
 	echo "writer = app.createNode(\"$WRITER_PLUGINID\")" >> $TMP_SCRIPT
     echo "if not writer.setScriptName(\"$WRITER_NODE_NAME\"):" >> $TMP_SCRIPT
@@ -89,7 +89,8 @@ for t in $TEST_DIRS; do
 	
 
 #Start rendering, silent stdout
-	FAIL=$($RENDERER -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ > /dev/null)
+#Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
+	FAIL=$(env=NATRON_PLUGIN_PATH=$CWD $RENDERER -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ > /dev/null)
     if [ "$FAIL" = "1" ]; then
         rm ofxTestLog.txt &> /dev/null
         rm $TMP_SCRIPT
