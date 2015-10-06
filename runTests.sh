@@ -12,7 +12,7 @@
 #The warning "Attempt to read an OpenColorIO configuration but the configuration directory..." will be printed
 #when the OpenColorIO-Configs could not be found.
 
-TEST_DIRS="TestFrameBlend TestRetimeTransform TestTimeBlur TestTilePyPlug"
+TEST_DIRS="TestFrameBlend TestRetimeTransform TestTimeBlur TestTilePyPlug TestArc TestImplode TestPolar TestSwirl TestWave TestTexture TestCharcoal TestEdges TestOilpaint TestReflection TestRoll TestTile TestModulate"
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
