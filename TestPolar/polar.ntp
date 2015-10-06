@@ -358,7 +358,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>/home/olear/Projects/Natron-Tests/TestPolar/reference1.jpg</Value>
+					<Value>[Project]/reference1.jpg</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
