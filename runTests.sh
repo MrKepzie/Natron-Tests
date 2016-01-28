@@ -12,7 +12,17 @@
 #The warning "Attempt to read an OpenColorIO configuration but the configuration directory..." will be printed
 #when the OpenColorIO-Configs could not be found.
 
-TEST_DIRS="TestFrameBlend TestRetimeTransform TestTimeBlur TestTilePyPlug TestArc TestImplode TestPolar TestSwirl TestWave TestTexture TestCharcoal TestEdges TestOilpaint TestReflection TestRoll TestTile TestModulate TestPSD TestSVG TestXCF TestText"
+if [ $COMPARE"" != "" ]; then
+  COMPARE_BIN="$COMPARE"
+else
+  COMPARE_BIN=compare
+fi
+
+TEST_IMAGES="TestImageBMP TestImageCR2 TestImageDPX TestImageEXR TestImageGIF TestImageHDR TestImageJP2 TestImageJPG TestImageKRA TestImageMVG TestImageORA TestImagePBM TestImagePCX TestImagePFM TestImagePGM TestImagePNG TestImagePNM TestImagePPM TestImagePSB TestImagePSD TestImageRGB TestImageRGBA TestImageSVG TestImageTGA TestImageTIF TestImageXCF TestImageXPM"
+
+TEST_DIRS="$TEST_IMAGES"
+
+#TEST_DIRS="TestFrameBlend TestRetimeTransform TestTimeBlur TestTilePyPlug TestArc TestImplode TestPolar TestSwirl TestWave TestTexture TestCharcoal TestEdges TestOilpaint TestReflection TestRoll TestTile TestModulate TestPSD TestSVG TestXCF TestText"
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
@@ -101,7 +111,7 @@ for t in $TEST_DIRS; do
 
 #compare with ImageMagick
 	for i in $(seq $FIRST_FRAME $LAST_FRAME); do
-		compare -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
+		echo $COMPARE_BIN -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
         PIXELS_COUNT="$(cat res)"
         rm res
 
