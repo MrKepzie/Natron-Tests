@@ -18,18 +18,15 @@ else
   COMPARE_BIN=compare
 fi
 
-TEST_IMAGES="TestImageBMP TestImageCR2 TestImageDPX TestImageEXR TestImageGIF TestImageHDR TestImageJP2 TestImageJPG TestImageKRA TestImageMVG TestImageORA TestImagePBM TestImagePCX TestImagePFM TestImagePGM TestImagePNG TestImagePNM TestImagePPM TestImagePSB TestImagePSD TestImageRGB TestImageRGBA TestImageSVG TestImageTGA TestImageTIF TestImageXCF TestImageXPM"
+TEST_IMAGES="TestImageBMP TestImageCR2 TestImageDPX TestImageEXR TestImageGIF TestImageHDR TestImageJP2 TestImageJPG TestImageKRA TestImageMVG TestImageORA TestImagePBM TestImagePCX TestImagePFM TestImagePGM TestImagePNG TestImagePNM TestImagePPM TestImagePSB TestImagePSD TestImageRGB TestImageRGBA TestImageSVG TestImageTGA TestImageTIF TestImageXCF TestImageXPM TestMultiPlaneEXR TestMultiPlaneORA TestMultiPlanePSD TestMultiPlaneXCF"
 
-TEST_DIRS="$TEST_IMAGES"
-
-#TEST_DIRS="TestFrameBlend TestRetimeTransform TestTimeBlur TestTilePyPlug TestArc TestImplode TestPolar TestSwirl TestWave TestTexture TestCharcoal TestEdges TestOilpaint TestReflection TestRoll TestTile TestModulate TestPSD TestSVG TestXCF TestText"
+TEST_DIRS="$TEST_IMAGES TestFrameBlend TestRetimeTransform TestTimeBlur TestArc TestImplode TestPolar TestSwirl TestWave TestTexture TestCharcoal TestEdges TestOilpaint TestReflection TestRoll TestModulate"
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
 	echo "Or $0 clean to remove any output images generated."
 	exit 1
 fi
-
 
 RENDERER="$1"
 if [ "$1" = "clean" ]; then
@@ -48,7 +45,6 @@ TMP_SCRIPT="tmpScript.py"
 WRITER_PLUGINID="fr.inria.openfx.WriteOIIO"
 WRITER_NODE_NAME="__script_write_node__"
 DEFAULT_QUALITY="10"
-
 
 for t in $TEST_DIRS; do
 	cd $t
@@ -114,7 +110,7 @@ for t in $TEST_DIRS; do
 
 #compare with ImageMagick
 	for i in $(seq $FIRST_FRAME $LAST_FRAME); do
-		echo $COMPARE_BIN -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
+		$COMPARE_BIN -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
         PIXELS_COUNT="$(cat res)"
         rm res
 
@@ -122,7 +118,7 @@ for t in $TEST_DIRS; do
 			echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
             FAIL="1"
 		fi
-#rm output$i.$IMAGES_FILE_EXT > /dev/null
+rm output$i.$IMAGES_FILE_EXT > /dev/null
         rm comp$i.$IMAGES_FILE_EXT > /dev/null
 	done
     if [ "$FAIL" != "1" ]; then
