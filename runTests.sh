@@ -78,6 +78,9 @@ for t in $TEST_DIRS; do
 
 #Create the write node
 	echo "writer = app.createNode(\"$WRITER_PLUGINID\")" >> $TMP_SCRIPT
+    echo "if not writer:" >> $TMP_SCRIPT
+    echo "    raise ValueError(\"Could not create a writer with the following plug-in ID: $WRITER_PLUGINID\")" >> $TMP_SCRIPT
+    echo "    sys.exit(1)" >> $TMP_SCRIPT
     echo "if not writer.setScriptName(\"$WRITER_NODE_NAME\"):" >> $TMP_SCRIPT
     echo "    raise NameError(\"Could not set writer script-name to $WRITER_NODE_NAME, aborting\")" >> $TMP_SCRIPT
     echo "    sys.exit(1)" >> $TMP_SCRIPT
