@@ -20,7 +20,20 @@ fi
 
 TEST_IMAGES="TestImageBMP TestImageCR2 TestImageDPX TestImageEXR TestImageGIF TestImageHDR TestImageJP2 TestImageJPG TestImageKRA TestImageMVG TestImageORA TestImagePBM TestImagePCX TestImagePFM TestImagePGM TestImagePNG TestImagePNM TestImagePPM TestImagePSB TestImagePSD TestImageRGB TestImageRGBA TestImageSVG TestImageTGA TestImageTIF TestImageXCF TestImageXPM TestMultiPlaneEXR TestMultiPlaneORA TestMultiPlanePSD TestMultiPlaneXCF"
 
-TEST_DIRS="$TEST_IMAGES TestFrameBlend TestRetimeTransform TestTimeBlur TestArc TestImplode TestPolar TestSwirl TestWave TestTexture TestCharcoal TestEdges TestOilpaint TestReflection TestRoll TestModulate"
+TEST_MISC="
+TestClamp
+TestColorCorrect
+TestShuffle
+TestColorLookup   
+TestConstant
+TestInvert
+TestEqualize      
+TestCharcoal
+TestCheckerBoard
+TestGrade
+TestSaturation"
+
+TEST_DIRS="$TEST_IMAGES $TEST_MISC TestFrameBlend TestRetimeTransform TestTimeBlur TestArc TestImplode TestPolar TestSwirl TestWave TestTexture TestCharcoal TestEdges TestOilpaint TestReflection TestRoll TestModulate"
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
