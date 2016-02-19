@@ -3,7 +3,7 @@
 <boost_serialization signature="serialization::archive" version="10">
 <Background_project>0</Background_project>
 <Project class_id="0" tracking_level="0" version="5">
-	<NatronVersion>Natron v2.0.0 from git branch workshop commit 051224ae0cf518279207bebbbc2986ea21494be7  for   Linux 64bit</NatronVersion>
+	<NatronVersion>Natron v2.0.0 from git branch workshop commit 29016b2e33d653ad51034723e48cb45e5161fc54  for   Linux 64bit</NatronVersion>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
 		<NodesCount>5</NodesCount>
 		<item class_id="2" tracking_level="0" version="14">
@@ -674,7 +674,7 @@
 		<item>
 			<Plugin_label>RGBToHSL1</Plugin_label>
 			<Plugin_script_name>RGBToHSL1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.RGBToHSLPlugin</Plugin_id>
+			<Plugin_id>net.sf.openfx.RGBToHSL</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
@@ -780,7 +780,7 @@
 		<item>
 			<Plugin_label>HSLToRGB1</Plugin_label>
 			<Plugin_script_name>HSLToRGB1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.HSLToRGBPlugin</Plugin_id>
+			<Plugin_id>net.sf.openfx.HSLToRGB</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
@@ -894,7 +894,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/home/olear/Natron2/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/home/olear/Work/Natron-Tests/TestRGB_HSL&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/home/olear/Natron2/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;.&lt;/Value&gt;</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -927,7 +927,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>Mon Feb 15 15:18:10 2016</Value>
+			<Value>Fri Feb 19 13:22:38 2016</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -1025,11 +1025,11 @@
 		<Window class_id="14" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="15" tracking_level="1" version="1" object_id="_0">
-				<Sizes>944 508</Sizes>
+				<Sizes>896 482</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>573 572</Sizes>
+					<Sizes>384 383</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="16" tracking_level="1" version="5" object_id="_2">
@@ -1069,10 +1069,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>1713</x>
-			<y>0</y>
-			<w>1488</w>
-			<h>1173</h>
+			<x>266</x>
+			<y>121</y>
+			<w>1414</w>
+			<h>798</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="18" tracking_level="0" version="0">

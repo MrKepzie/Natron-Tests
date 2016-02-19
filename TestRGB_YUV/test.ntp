@@ -3,7 +3,7 @@
 <boost_serialization signature="serialization::archive" version="10">
 <Background_project>0</Background_project>
 <Project class_id="0" tracking_level="0" version="5">
-	<NatronVersion>Natron v2.0.0 from git branch workshop commit 051224ae0cf518279207bebbbc2986ea21494be7  for   Linux 64bit</NatronVersion>
+	<NatronVersion>Natron v2.0.0 from git branch workshop commit 29016b2e33d653ad51034723e48cb45e5161fc54  for   Linux 64bit</NatronVersion>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
 		<NodesCount>5</NodesCount>
 		<item class_id="2" tracking_level="0" version="14">
@@ -20,7 +20,7 @@
 				<item_version>0</item_version>
 				<item class_id="4" tracking_level="0" version="0">
 					<first>1</first>
-					<second>YUVoRGB1</second>
+					<second>YUV601ToRGB1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>0</KnobsAge>
@@ -651,7 +651,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>Source</first>
-					<second>YUVoRGB1</second>
+					<second>YUV601ToRGB1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>13</KnobsAge>
@@ -672,9 +672,9 @@
 			<CacheID>WriteOIIO1</CacheID>
 		</item>
 		<item>
-			<Plugin_label>RGBToYUV1</Plugin_label>
-			<Plugin_script_name>RGBToYUV1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.RGBToYUVPlugin</Plugin_id>
+			<Plugin_label>RGBToYUV6011</Plugin_label>
+			<Plugin_script_name>RGBToYUV6011</Plugin_script_name>
+			<Plugin_id>net.sf.openfx.RGBToYUV601</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
@@ -775,12 +775,12 @@
 				<count>0</count>
 				<item_version>0</item_version>
 			</UserComponents>
-			<CacheID>RGBToYUV1</CacheID>
+			<CacheID>RGBToYUV6011</CacheID>
 		</item>
 		<item>
-			<Plugin_label>YUVoRGB1</Plugin_label>
-			<Plugin_script_name>YUVoRGB1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.YUVToRGBPlugin</Plugin_id>
+			<Plugin_label>YUV601ToRGB1</Plugin_label>
+			<Plugin_script_name>YUV601ToRGB1</Plugin_script_name>
+			<Plugin_id>net.sf.openfx.YUV601ToRGB</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
@@ -864,7 +864,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>Source</first>
-					<second>RGBToYUV1</second>
+					<second>RGBToYUV6011</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>1</KnobsAge>
@@ -881,7 +881,7 @@
 				<count>0</count>
 				<item_version>0</item_version>
 			</UserComponents>
-			<CacheID>YUVoRGB1</CacheID>
+			<CacheID>YUV601ToRGB1</CacheID>
 		</item>
 	</NodesCollection>
 	<ProjectKnobsCount>3</ProjectKnobsCount>
@@ -894,7 +894,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/home/olear/Natron2/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/home/olear/Work/Natron-Tests/TestRGB_YUV&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/home/olear/Natron2/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;.&lt;/Value&gt;</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -927,7 +927,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>Mon Feb 15 15:26:18 2016</Value>
+			<Value>Fri Feb 19 13:19:05 2016</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -992,9 +992,9 @@
 			<Children>0</Children>
 		</item>
 		<item>
-			<Name>RGBToYUV1</Name>
+			<Name>RGBToYUV6011</Name>
 			<X_position>599.5</X_position>
-			<Y_position>258.625</Y_position>
+			<Y_position>267.625</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>0.48000306</r>
 			<g>0.65999848</g>
@@ -1006,9 +1006,9 @@
 			<Children>0</Children>
 		</item>
 		<item>
-			<Name>YUVoRGB1</Name>
+			<Name>YUV601ToRGB1</Name>
 			<X_position>599.5</X_position>
-			<Y_position>330.625</Y_position>
+			<Y_position>339.625</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>0.48000306</r>
 			<g>0.65999848</g>
@@ -1025,11 +1025,11 @@
 		<Window class_id="14" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="15" tracking_level="1" version="1" object_id="_0">
-				<Sizes>944 508</Sizes>
+				<Sizes>896 482</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>573 572</Sizes>
+					<Sizes>384 383</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="16" tracking_level="1" version="5" object_id="_2">
@@ -1069,10 +1069,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>1713</x>
-			<y>0</y>
-			<w>1488</w>
-			<h>1173</h>
+			<x>266</x>
+			<y>121</y>
+			<w>1414</w>
+			<h>798</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="18" tracking_level="0" version="0">
@@ -1124,8 +1124,8 @@
 	<OpenedPanels>
 		<count>5</count>
 		<item_version>0</item_version>
-		<item>YUVoRGB1</item>
-		<item>RGBToYUV1</item>
+		<item>YUV601ToRGB1</item>
+		<item>RGBToYUV6011</item>
 		<item>ReadOIIO1</item>
 		<item>WriteOIIO1</item>
 		<item>Natron_Project_Settings_Panel</item>

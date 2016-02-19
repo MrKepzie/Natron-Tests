@@ -3,7 +3,7 @@
 <boost_serialization signature="serialization::archive" version="10">
 <Background_project>0</Background_project>
 <Project class_id="0" tracking_level="0" version="5">
-	<NatronVersion>Natron v2.0.0 from git branch workshop commit 051224ae0cf518279207bebbbc2986ea21494be7  for   Linux 64bit</NatronVersion>
+	<NatronVersion>Natron v2.0.0 from git branch workshop commit 29016b2e33d653ad51034723e48cb45e5161fc54  for   Linux 64bit</NatronVersion>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
 		<NodesCount>5</NodesCount>
 		<item class_id="2" tracking_level="0" version="14">
@@ -20,7 +20,7 @@
 				<item_version>0</item_version>
 				<item class_id="4" tracking_level="0" version="0">
 					<first>1</first>
-					<second>YCbCrToRGB1</second>
+					<second>YCbCr601ToRGB1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>0</KnobsAge>
@@ -651,7 +651,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>Source</first>
-					<second>YCbCrToRGB1</second>
+					<second>YCbCr601ToRGB1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>13</KnobsAge>
@@ -672,9 +672,9 @@
 			<CacheID>WriteOIIO1</CacheID>
 		</item>
 		<item>
-			<Plugin_label>RGBToYCbCr1</Plugin_label>
-			<Plugin_script_name>RGBToYCbCr1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.RGBToYCbCrPlugin</Plugin_id>
+			<Plugin_label>RGBToYCbCr6011</Plugin_label>
+			<Plugin_script_name>RGBToYCbCr6011</Plugin_script_name>
+			<Plugin_id>net.sf.openfx.RGBToYCbCr601</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
@@ -775,12 +775,12 @@
 				<count>0</count>
 				<item_version>0</item_version>
 			</UserComponents>
-			<CacheID>RGBToYCbCr1</CacheID>
+			<CacheID>RGBToYCbCr6011</CacheID>
 		</item>
 		<item>
-			<Plugin_label>YCbCrToRGB1</Plugin_label>
-			<Plugin_script_name>YCbCrToRGB1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.YCbCrToRGBPlugin</Plugin_id>
+			<Plugin_label>YCbCr601ToRGB1</Plugin_label>
+			<Plugin_script_name>YCbCr601ToRGB1</Plugin_script_name>
+			<Plugin_id>net.sf.openfx.YCbCr601ToRGB</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
@@ -864,7 +864,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>Source</first>
-					<second>RGBToYCbCr1</second>
+					<second>RGBToYCbCr6011</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>1</KnobsAge>
@@ -881,7 +881,7 @@
 				<count>0</count>
 				<item_version>0</item_version>
 			</UserComponents>
-			<CacheID>YCbCrToRGB1</CacheID>
+			<CacheID>YCbCr601ToRGB1</CacheID>
 		</item>
 	</NodesCollection>
 	<ProjectKnobsCount>3</ProjectKnobsCount>
@@ -894,7 +894,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/home/olear/Natron2/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/home/olear/Work/Natron-Tests/TestRGB_YCbCr&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/home/olear/Natron2/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;.&lt;/Value&gt;</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -927,7 +927,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>Mon Feb 15 15:24:42 2016</Value>
+			<Value>Fri Feb 19 13:19:57 2016</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -965,7 +965,7 @@
 		</item>
 		<item>
 			<Name>ReadOIIO1</Name>
-			<X_position>575.5</X_position>
+			<X_position>576.5</X_position>
 			<Y_position>150.625</Y_position>
 			<Preview_enabled>1</Preview_enabled>
 			<r>0.69999236</r>
@@ -992,8 +992,8 @@
 			<Children>0</Children>
 		</item>
 		<item>
-			<Name>RGBToYCbCr1</Name>
-			<X_position>599.5</X_position>
+			<Name>RGBToYCbCr6011</Name>
+			<X_position>600.5</X_position>
 			<Y_position>258.625</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>0.48000306</r>
@@ -1006,8 +1006,8 @@
 			<Children>0</Children>
 		</item>
 		<item>
-			<Name>YCbCrToRGB1</Name>
-			<X_position>599.5</X_position>
+			<Name>YCbCr601ToRGB1</Name>
+			<X_position>600.5</X_position>
 			<Y_position>330.625</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>0.48000306</r>
@@ -1025,11 +1025,11 @@
 		<Window class_id="14" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="15" tracking_level="1" version="1" object_id="_0">
-				<Sizes>944 508</Sizes>
+				<Sizes>896 482</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>573 572</Sizes>
+					<Sizes>384 383</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="16" tracking_level="1" version="5" object_id="_2">
@@ -1069,10 +1069,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>1713</x>
-			<y>0</y>
-			<w>1488</w>
-			<h>1173</h>
+			<x>266</x>
+			<y>121</y>
+			<w>1414</w>
+			<h>798</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="18" tracking_level="0" version="0">
@@ -1124,8 +1124,8 @@
 	<OpenedPanels>
 		<count>5</count>
 		<item_version>0</item_version>
-		<item>YCbCrToRGB1</item>
-		<item>RGBToYCbCr1</item>
+		<item>YCbCr601ToRGB1</item>
+		<item>RGBToYCbCr6011</item>
 		<item>ReadOIIO1</item>
 		<item>WriteOIIO1</item>
 		<item>Natron_Project_Settings_Panel</item>
