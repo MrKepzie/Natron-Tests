@@ -123,7 +123,6 @@ TestMultiPlaneORA
 TestReadMOV_mp4v
 TestText
 TestColorMatrix
-TestImageMVG
 TestMergeExclusion
 TestMultiPlanePSD
 TestReadMOV_png
@@ -133,7 +132,6 @@ TestImageORA
 TestMergeFreeze
 TestMultiPlaneXCF
 TestReadMOV_rle
-TestTile
 TestConstant
 TestImagePBM
 TestMergeFrom
@@ -199,7 +197,6 @@ TestErode
 TestImageSVG
 TestMergeMax
 TestReadAVI_flv1
-TestReformat
 TestErodeSmooth
 TestImageTGA
 TestMergeMin
