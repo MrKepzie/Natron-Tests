@@ -24,7 +24,6 @@ TestImageTIF
 TestMergeMinus
 TestReadAVI_m1v
 TestRGB_HSI
-TestFrameBlend
 TestImageXCF
 TestMergeMultiply
 TestReadAVI_m2v1
@@ -121,7 +120,6 @@ TestImageKRA
 TestMergeDivide
 TestMultiPlaneORA
 TestReadMOV_mp4v
-TestText
 TestColorMatrix
 TestMergeExclusion
 TestMultiPlanePSD
