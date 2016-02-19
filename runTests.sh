@@ -39,10 +39,8 @@ TestMergeOver
 TestReadAVI_png
 TestRGB_LAB
 TestGodRays
-TestInvert
 TestMergeOverlay
 TestReadAVI_svq1
-TestRGB_XYZ
 TestAdd
 TestGrade
 TestLaplacian
@@ -72,13 +70,11 @@ TestImageBMP
 TestMergeAverage
 TestMergeScreen
 TestReadMOV_apco
-TestSaturation
 TestBloom
 TestImageCR2
 TestMergeColor
 TestMergeSoftLight
 TestReadMOV_apcs
-TestSeExpr
 TestBlur
 TestImageDPX
 TestMergeColorBurn
@@ -89,7 +85,6 @@ TestCharcoal
 TestImageEXR
 TestMergeColorDodge
 TestMergeUnder
-TestReadMOV_avdn
 TestSharpenShock
 TestCheckerBoard
 TestImageGIF
@@ -109,7 +104,6 @@ TestMergeDifference
 TestModulate
 TestReadMOV_m1v
 TestSwirl
-TestColorCorrect
 TestImageJPG
 TestMergeDisjointOver
 TestMultiPlaneEXR
