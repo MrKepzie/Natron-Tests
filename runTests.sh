@@ -191,6 +191,7 @@ TestImageTGA
 TestMergeMin
 TestReadAVI_jpg
 TestRetimeTransform
+TestReformat
 "
 
 if [ $# != 1 ]; then
