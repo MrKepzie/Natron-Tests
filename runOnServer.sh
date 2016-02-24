@@ -11,4 +11,6 @@ if [ ! -L /opt/Natron-CY2015/Plugins/PyPlugs ]; then
   ln -sf /opt/Natron-CY2015/PyPlugs /opt/Natron-CY2015/Plugins/PyPlugs
 fi
 
+date
 COMPARE=`pwd`/compare.bin ./runTests.sh /opt/Natron-CY2015/bin/NatronRenderer
+date
