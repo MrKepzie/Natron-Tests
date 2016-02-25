@@ -193,6 +193,19 @@ TestReadAVI_jpg
 TestRetimeTransform
 TestReformat
 "
+ROOTDIR=`pwd`
+
+if [ ! -d "$ROOTDIR/BayMax" ]; then
+  wget http://downloads.natron.fr/Examples/BayMax.tar.gz || exit 1
+  tar xvf "$ROOTDIR/BayMax.tar.gz" -C "$ROOTDIR/" || exit 1
+fi
+
+if [ -d "$ROOTDIR/BayMax" ]; then
+TEST_DIRS="
+$TEST_DIRS
+BayMax
+"
+fi
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
@@ -271,7 +284,7 @@ for t in $TEST_DIRS; do
 
 #Start rendering, silent stdout
 #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-	FAIL=$(env=NATRON_PLUGIN_PATH=$CWD $RENDERER -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ > /dev/null)
+	FAIL=$(env=NATRON_PLUGIN_PATH=$CWD "$RENDERER" -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ > /dev/null)
     if [ "$FAIL" = "1" ]; then
         rm ofxTestLog.txt &> /dev/null
         rm $TMP_SCRIPT
