@@ -20,6 +20,7 @@ fi
 
 CUSTOM_DIRS="
 TestCMD
+TestPY
 "
 
 TEST_DIRS="
