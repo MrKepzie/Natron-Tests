@@ -18,6 +18,10 @@ else
   COMPARE_BIN=compare
 fi
 
+CUSTOM_DIRS="
+TestCMD
+"
+
 TEST_DIRS="
 TestFill
 TestImageTIF
@@ -316,3 +320,10 @@ rm output$i.$IMAGES_FILE_EXT > /dev/null
 
 	cd ..
 done
+
+for x in $CUSTOM_DIRS; do
+  cd $x
+    sh script.sh "$RENDERER"
+  cd ..
+done
+
