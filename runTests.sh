@@ -18,9 +18,16 @@ else
   COMPARE_BIN=compare
 fi
 
+if [ "$FFMPEG" != "" ]; then
+  FFMPEG_BIN="$FFMPEG"
+else
+  FFMPEG_BIN=ffmpeg
+fi
+
 CUSTOM_DIRS="
 TestCMD
 TestPY
+TestFFmpeg
 "
 
 TEST_DIRS="
@@ -324,7 +331,7 @@ done
 
 for x in $CUSTOM_DIRS; do
   cd $x
-    sh script.sh "$RENDERER"
+    sh script.sh "$RENDERER" "$FFMPEG"
   cd ..
 done
 

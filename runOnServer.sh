@@ -12,5 +12,5 @@ if [ ! -L /opt/Natron-CY2015/Plugins/PyPlugs ]; then
 fi
 
 date
-COMPARE=`pwd`/compare.bin ./runTests.sh /opt/Natron-CY2015/bin/NatronRenderer
+FFMPEG="/opt/Natron-CY2015/ffmpeg-gpl/bin/ffmpeg" COMPARE=`pwd`/compare.bin ./runTests.sh /opt/Natron-CY2015/bin/NatronRenderer
 date
