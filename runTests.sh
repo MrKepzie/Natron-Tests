@@ -331,7 +331,7 @@ done
 
 for x in $CUSTOM_DIRS; do
   cd $x
-    sh script.sh "$RENDERER" "$FFMPEG"
+    sh script.sh "$RENDERER" "$FFMPEG" "$COMPARE_BIN"
   cd ..
 done
 

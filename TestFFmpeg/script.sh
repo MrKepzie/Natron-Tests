@@ -1,6 +1,7 @@
 #!/bin/sh
 NATRON_BIN="$1"
 FFMPEG_BIN="$2"
+COMPARE_BIN="$3"
 CWD=`pwd`
 NAME=TestFFMpeg
 IMAGES_FILE_EXT=jpg
@@ -8,13 +9,9 @@ FIRST_FRAME=1
 LAST_FRAME=9
 FORMATS="$CWD/formats"
 
-if [ "$NATRON_BIN" = "" ] && [ "$FFMPEG_BIN" = "" ]; then
-  echo "Can't find NatronRenderer and/or ffmpeg"
+if [ "$NATRON_BIN" = "" ] && [ "$FFMPEG_BIN" = "" ] && [ "$COMPARE_BIN" = "" ]; then
+  echo "Can't find required apps"
   exit 1
-fi
-
-if [ "$COMPARE_BIN" = "" ]; then
-  COMPARE_BIN=compare
 fi
 
 echo "===================$NAME========================"
