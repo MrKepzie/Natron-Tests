@@ -17,10 +17,14 @@ fi
 echo "===================$NAME========================"
 for x in $FORMATS/*; do
   cd $x
+  FORMAT=`cat format`
   rm -f output* res comp*
-  "$NATRON_BIN" test.ntp #> /dev/null 2>&1
-  if [ -f "output.mov" ]; then
-    "$FFMPEG_BIN" -i output.mov output%1d.$IMAGES_FILE_EXT > /dev/null 2>&1
+  "$NATRON_BIN" test.ntp > /dev/null 2>&1
+  if [ -f "output.$FORMAT" ]; then
+    "$FFMPEG_BIN" -i output.$FORMAT output%1d.$IMAGES_FILE_EXT > /dev/null 2>&1
+  fi
+  if [ -f "last" ]; then
+    LAST_FRAME=`cat last`
   fi
   for i in $(seq $FIRST_FRAME $LAST_FRAME); do
     "$COMPARE_BIN" -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
