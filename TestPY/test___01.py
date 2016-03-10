@@ -22,6 +22,9 @@ writer.firstFrame.set(1)
 writer.lastFrame.set(1)
 writer.quality.set(10)
 
+if blur.canConnectInput(0,reader):
+        print("can connect", file=f1)
+
 blur.connectInput(0,reader)
 blur.size.setValueAtTime(0,1)
 blur.size.setValueAtTime(10,2)
@@ -45,4 +48,37 @@ print(blur.size.getValueAtTime(2), file=f1)
 print(blur.size.getValueAtTime(3), file=f1)
 print(blur.size.getValueAtTime(4), file=f1)
 print(blur.size.getValueAtTime(5), file=f1)
+
+availLay = str(blur.getAvailableLayers())
+if availLay:
+        print ("getAvailableLayers", file=f1)
+
+if blur.addUserPlane("MyLayer",["R", "G", "B", "A"]):
+        print("added user plane", file=f1)
+
+print(str(blur.getBitDepth()), file=f1)
+
+getCol=str(blur.getColor())
+if getCol:
+        print("getColor", file=f1)
+
+print(str(blur.getCurrentTime()), file=f1)
+print(str(blur.getFrameRate()), file=f1)
+
+getIn = blur.getInput(0)
+print(str(getIn.getLabel()), file=f1)
+print(str(blur.getInputLabel(0)), file=f1)
+print(str(blur.getMaxInputCount()), file=f1)
+
+sizeParam = blur.getParam("size")
+print(str(sizeParam.getCanAnimate()), file=f1)
+print(str(sizeParam.getEvaluateOnChange()), file=f1)
+print(str(sizeParam.getHelp()), file=f1)
+print(str(sizeParam.getIsAnimationEnabled()), file=f1)
+print(str(sizeParam.getIsEnabled(0.0)), file=f1)
+print(str(sizeParam.getIsPersistant()), file=f1)
+print(str(sizeParam.getIsVisible()), file=f1)
+print(str(sizeParam.getNumDimensions()), file=f1)
+print(str(sizeParam.getScriptName()), file=f1)
+print(str(sizeParam.getTypeName()), file=f1)
 
