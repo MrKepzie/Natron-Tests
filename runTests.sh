@@ -208,8 +208,8 @@ TestReformat
 ROOTDIR=`pwd`
 
 if [ ! -d "$ROOTDIR/BayMax" ]; then
-  wget http://downloads.natron.fr/Examples/BayMax.tar.gz || exit 1
-  tar xvf "$ROOTDIR/BayMax.tar.gz" -C "$ROOTDIR/" || exit 1
+  wget http://downloads.natron.fr/Examples/BayMax.tar.gz 
+  tar xvf "$ROOTDIR/BayMax.tar.gz" -C "$ROOTDIR/"
 fi
 
 if [ -d "$ROOTDIR/BayMax" ]; then
@@ -218,6 +218,8 @@ $TEST_DIRS
 BayMax
 "
 fi
+
+TEST_DIRS=""
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
