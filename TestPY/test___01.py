@@ -7,8 +7,8 @@ reader = app.createNode("fr.inria.openfx.ReadOIIO")
 writer = app.createNode("fr.inria.openfx.WriteOIIO")
 blur = app.createNode("net.sf.cimg.CImgBlur")
 
-reader = app.ReadOIIO1
-writer = app.WriteOIIO1
+reader = app.Read1
+writer = app.Write1
 blur = app.BlurCImg1
 print(blur.getScriptName(), file=f1)
 

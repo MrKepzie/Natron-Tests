@@ -23,7 +23,7 @@ NatronEngine.Natron.ImageBitDepthEnum.eImageBitDepthFloat
 getColor
 1
 24.0
-ReadOIIO1
+Read1
 Source
 2
 True

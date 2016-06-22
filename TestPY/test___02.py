@@ -7,8 +7,8 @@ f2 = open('test___02-output-tmp.txt','w+')
 reader = app.createNode("fr.inria.openfx.ReadOIIO")
 writer = app.createNode("fr.inria.openfx.WriteOIIO")
 
-reader = app.ReadOIIO1
-writer = app.WriteOIIO1
+reader = app.Read1
+writer = app.Write1
 reader.filename.set("input1.png")
 writer.filename.set("output#.jpg")
 

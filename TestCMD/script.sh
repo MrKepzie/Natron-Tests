@@ -15,8 +15,8 @@ fi
 rm -f "$CWD"/{output*,comp*,res*}
 
 echo "===================$NAME========================"
-"$NATRON_BIN" -i ReadOIIO1 "$CWD"/input1.png -w WriteOIIO1 "$CWD"/output1.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp > /dev/null 2>&1
-"$NATRON_BIN" -i ReadOIIO2 "$CWD"/input2.png -w WriteOIIO2 "$CWD"/output2.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp > /dev/null 2>&1 
+"$NATRON_BIN" -i Read1 "$CWD"/input1.png -w Write1 "$CWD"/output1.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp > /dev/null 2>&1
+"$NATRON_BIN" -i Read2 "$CWD"/input2.png -w Write2 "$CWD"/output2.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp > /dev/null 2>&1 
 
 for i in $(seq 1 2); do
   "$COMPARE_BIN" -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res$i
