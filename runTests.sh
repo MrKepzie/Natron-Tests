@@ -31,6 +31,8 @@ TestFFmpeg
 "
 
 TEST_DIRS="
+Spaceship
+BayMax
 TestFill
 TestImageTIF
 TestMergeMinus
@@ -207,19 +209,15 @@ TestReformat
 "
 ROOTDIR=`pwd`
 
-if [ ! -d "$ROOTDIR/BayMax" ]; then
-  wget http://downloads.natron.fr/Examples/BayMax.tar.gz 
-  tar xvf "$ROOTDIR/BayMax.tar.gz" -C "$ROOTDIR/"
-fi
 
-if [ -d "$ROOTDIR/BayMax" ]; then
-TEST_DIRS="
-$TEST_DIRS
-BayMax
-"
+if [ ! -d "$ROOTDIR/Spaceship/Sources" ]; then
+  wget http://downloads.natron.fr/Third_Party_Sources/SpaceshipSources.tar.gz
+  tar xvf "$ROOTDIR/SpaceshipSources.tar.gz" -C "$ROOTDIR/Spaceship/"
 fi
-
-TEST_DIRS=""
+if [ ! -d "$ROOTDIR/BayMax/Robot" ]; then
+  wget http://downloads.natron.fr/Third_Party_Sources/Robot.tar.gz 
+  tar xvf "$ROOTDIR/Robot.tar.gz" -C "$ROOTDIR/BayMax/"
+fi
 
 if [ $# != 1 ]; then
 	echo "Usage: $0 <absolute path to NatronRenderer binary>"
@@ -298,7 +296,7 @@ for t in $TEST_DIRS; do
 
 #Start rendering, silent stdout
 #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-	FAIL=$(env=NATRON_PLUGIN_PATH=$CWD "$RENDERER" -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ > /dev/null)
+	env NATRON_PLUGIN_PATH=$CWD "$RENDERER" -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ #|| FAIL=1
     if [ "$FAIL" = "1" ]; then
         rm ofxTestLog.txt &> /dev/null
         rm $TMP_SCRIPT
@@ -309,7 +307,7 @@ for t in $TEST_DIRS; do
 
 #compare with ImageMagick
 	for i in $(seq $FIRST_FRAME $LAST_FRAME); do
-		$COMPARE_BIN -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
+		$COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
         PIXELS_COUNT="$(cat res)"
         rm res
 
@@ -333,7 +331,7 @@ done
 
 for x in $CUSTOM_DIRS; do
   cd $x
-    sh script.sh "$RENDERER" "$FFMPEG" "$COMPARE_BIN"
+    sh script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
   cd ..
 done
 

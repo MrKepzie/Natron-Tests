@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------
+Baymax model created by "DoodleNotes" and available on blendswap.com
+License : CC-BY-NC
+http://www.blendswap.com/blends/view/76636
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+Attic image by "Jt Miller"
+License : CC-BY
+https://www.flickr.com/photos/jtmillphoto/7513341126
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+Animation, rendering and compositing by "François Grassard" (AKA 'Coyhot')
+The Natron 2.0 project and OpenEXR files are licenced under : CC-BY-NC
+--------------------------------------------------------------------------

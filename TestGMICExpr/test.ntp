@@ -705,7 +705,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>j(sin(y/100/k+t/10)*20*k,sin(x/100/k+t/10)*20*k)</Value>
+					<Value>j(sin(y/100/K+t/10)*20*K,sin(x/100/K+t/10)*20*K)</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>

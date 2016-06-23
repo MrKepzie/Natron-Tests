@@ -14,7 +14,7 @@ echo "===================$NAME========================"
 for i in "$CWD"/test___*.py; do
   SCRIPT=`echo $i | sed 's/___/ /g;s/.py//g' | awk '{print $2}'`
   if [ "$SCRIPT" != "" ]; then
-    "$NATRON_BIN" "$CWD"/test___$SCRIPT.py > /dev/null 2>&1
+    "$NATRON_BIN" "$CWD"/test___$SCRIPT.py #> /dev/null 2>&1
     DIFF1=`diff $CWD/test___$SCRIPT-reference.txt $CWD/test___$SCRIPT-output.txt`
     if [ ! -f "$CWD/test___$SCRIPT-output.txt" ]; then
       DIFF1="fail"

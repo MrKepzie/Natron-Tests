@@ -1,4 +1,6 @@
-BayMax*
+BayMax/Robot
+Spaceship/Sources
+res
 *.lock
 *.autosave
 *output*.*

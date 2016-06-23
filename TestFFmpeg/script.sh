@@ -19,9 +19,9 @@ for x in $FORMATS/*; do
   cd $x
   FORMAT=`cat format`
   rm -f output* res comp*
-  "$NATRON_BIN" test.ntp > /dev/null 2>&1
+  "$NATRON_BIN" test.ntp #> /dev/null 2>&1
   if [ -f "output.$FORMAT" ]; then
-    "$FFMPEG_BIN" -i output.$FORMAT output%1d.$IMAGES_FILE_EXT > /dev/null 2>&1
+    "$FFMPEG_BIN" -i output.$FORMAT output%1d.$IMAGES_FILE_EXT #> /dev/null 2>&1
   fi
   if [ -f "last" ]; then
     LAST_FRAME=`cat last`
