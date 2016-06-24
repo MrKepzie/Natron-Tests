@@ -6,7 +6,7 @@ KILLSCRIPT="/tmp/killbot$$.sh"
 cat << 'EOF' > "$KILLSCRIPT"
 #!/bin/sh
 PARENT=$1
-sleep 30m
+sleep 45m
 if [ "$PARENT" = "" ]; then
   exit 1
 fi
