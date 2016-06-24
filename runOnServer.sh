@@ -32,9 +32,9 @@ fi
 "$KILLSCRIPT" $PID &
 KILLBOT=$!
 
-date
+#date
 FFMPEG="/opt/Natron-CY2015/ffmpeg-gpl/bin/ffmpeg" COMPARE=`pwd`/compare.bin ./runTests.sh /opt/Natron-CY2015/bin/NatronRenderer
-date
+#date
 
 kill -9 $KILLBOT
 rm -f $KILLSCRIPT || true
