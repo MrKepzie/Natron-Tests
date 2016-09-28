@@ -1,3 +1,9 @@
+*.lock
+*.autosave
+tmpScript.py*
+__MACOSX
+*.gz
+*.txt
 BayMax/Robot
 Spaceship/Sources
 res

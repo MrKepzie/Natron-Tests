@@ -674,7 +674,7 @@
 		<item>
 			<Plugin_label>RGBToLab1</Plugin_label>
 			<Plugin_script_name>RGBToLab1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.RGBToLabPlugin</Plugin_id>
+			<Plugin_id>net.sf.openfx.RGB709ToLab</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
@@ -780,7 +780,7 @@
 		<item>
 			<Plugin_label>LabToRGB1</Plugin_label>
 			<Plugin_script_name>LabToRGB1</Plugin_script_name>
-			<Plugin_id>net.sf.openfx.LabToRGBPlugin</Plugin_id>
+			<Plugin_id>net.sf.openfx.LabToRGB709</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>

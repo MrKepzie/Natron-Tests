@@ -79,7 +79,6 @@ TestMergeAtop
 TestMergeSaturation
 TestReadMOV_apcn
 TestRollingGuidance
-TestBilateralGuided
 TestImageBMP
 TestMergeAverage
 TestMergeScreen
@@ -206,7 +205,20 @@ TestMergeMin
 TestReadAVI_jpg
 TestRetimeTransform
 TestReformat
+TestReformat1
+TestReformat2
+TestReformat3
+TestReformat4
+TestReformat5
+TestReformat6
+TestReformat7
+TestReformat8
+TestReformat9
+TestReformat10
+TestGlow
 "
+# TestBilateralGuided
+
 ROOTDIR=`pwd`
 
 
@@ -237,6 +249,9 @@ if [ "$1" = "clean" ]; then
 	done
 	exit 0
 fi
+
+RESULTS="$ROOTDIR"/result.txt
+echo > $RESULTS
 
 TMP_SCRIPT="tmpScript.py"
 WRITER_PLUGINID="fr.inria.openfx.WriteOIIO"
@@ -292,11 +307,12 @@ for t in $TEST_DIRS; do
 	
 #Set compression to none
 	echo "writer.quality.set($QUALITY)" >> $TMP_SCRIPT
-	
+
+cat $TMP_SCRIPT	
 
 #Start rendering, silent stdout
 #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-	env NATRON_PLUGIN_PATH=$CWD "$RENDERER" -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ #|| FAIL=1
+	env NATRON_PLUGIN_PATH=$CWD "$RENDERER" -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
     if [ "$FAIL" = "1" ]; then
         rm ofxTestLog.txt &> /dev/null
         rm $TMP_SCRIPT
@@ -315,11 +331,15 @@ for t in $TEST_DIRS; do
 			echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
             FAIL="1"
 		fi
-rm output$i.$IMAGES_FILE_EXT > /dev/null
+        rm output$i.$IMAGES_FILE_EXT > /dev/null
         rm comp$i.$IMAGES_FILE_EXT > /dev/null
 	done
     if [ "$FAIL" != "1" ]; then
         echo "Test $t passed."
+        echo "$t : PASS" >> $RESULTS
+    else
+        echo "Test $t failed."
+        echo "$t : FAIL" >> $RESULTS
     fi
     FAIL="0"
 	
