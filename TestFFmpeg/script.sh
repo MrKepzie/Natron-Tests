@@ -26,15 +26,24 @@ for x in $FORMATS/*; do
   if [ -f "last" ]; then
     LAST_FRAME=`cat last`
   fi
+  TEST_FAIL=0
+  TEST_PASS=0
   for i in $(seq $FIRST_FRAME $LAST_FRAME); do
     "$COMPARE_BIN" -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
     PIXELS_COUNT="$(cat res)"
     if [ "$PIXELS_COUNT" != "0" ]; then
       echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $x"
+      TEST_FAIL=$((TEST_FAIL+1))
     else
       echo "Frame $i passed for $x"
+      TEST_PASS=$((TEST_PASS+1))
     fi
   done
-  rm -f output* res comp*
+  if [ "$TEST_FAIL" = 0 ] && [ "$TEST_PASS" = "$LAST_FRAME" ]; then
+    echo "$NAME : PASS" >> $RESULT
+  else
+    echo "$NAME : FAIL" >> $RESULT
+  fi
+#  rm -f output* res comp*
   cd ..
 done

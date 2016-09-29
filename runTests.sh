@@ -250,7 +250,7 @@ if [ "$1" = "clean" ]; then
 	exit 0
 fi
 
-RESULTS="$ROOTDIR"/result.txt
+export RESULTS="$ROOTDIR"/result.txt
 echo > $RESULTS
 
 TMP_SCRIPT="tmpScript.py"

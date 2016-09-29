@@ -21,8 +21,10 @@ for i in "$CWD"/test___*.py; do
     fi
     if [ "$DIFF1" != "" ]; then
       echo "WARNING: test $SCRIPT failed in TestPY"
+      echo "TestPY_$SCRIPT : FAIL" >> $RESULTS
     else
       echo "TestPY passed test $SCRIPT"
+      echo "TestPY_$SCRIPT : PASS" >> $RESULTS
     fi
 fi
 done
