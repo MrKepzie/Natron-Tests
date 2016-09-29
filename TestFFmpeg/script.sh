@@ -40,9 +40,9 @@ for x in $FORMATS/*; do
     fi
   done
   if [ "$TEST_FAIL" = 0 ] && [ "$TEST_PASS" = "$LAST_FRAME" ]; then
-    echo "$NAME : PASS" >> $RESULT
+    echo "$x : PASS" >> $RESULTS
   else
-    echo "$NAME : FAIL" >> $RESULT
+    echo "$x : FAIL" >> $RESULTS
   fi
 #  rm -f output* res comp*
   cd ..
