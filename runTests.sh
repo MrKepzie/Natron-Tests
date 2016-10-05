@@ -221,7 +221,6 @@ TestGlow
 
 ROOTDIR=`pwd`
 
-
 if [ ! -d "$ROOTDIR/Spaceship/Sources" ]; then
   wget http://downloads.natron.fr/Third_Party_Sources/SpaceshipSources.tar.gz
   tar xvf "$ROOTDIR/SpaceshipSources.tar.gz" -C "$ROOTDIR/Spaceship/"
@@ -250,8 +249,14 @@ if [ "$1" = "clean" ]; then
 	exit 0
 fi
 
+export FAILED_DIR="$ROOTDIR"/failed
 export RESULTS="$ROOTDIR"/result.txt
 echo > $RESULTS
+
+if [ -d "$FAILED_DIR" ]; then
+  rm -rf "$FAILED_DIR"
+fi
+mkdir -p "$FAILED_DIR"
 
 TMP_SCRIPT="tmpScript.py"
 WRITER_PLUGINID="fr.inria.openfx.WriteOIIO"
@@ -260,6 +265,11 @@ DEFAULT_QUALITY="10"
 
 for t in $TEST_DIRS; do
 	cd $t
+
+	rm res > /dev/null
+        rm output$i.$IMAGES_FILE_EXT > /dev/null
+        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+
 
     echo "===================$t========================"
 	CONFFILE=$(find conf)
@@ -325,14 +335,19 @@ cat $TMP_SCRIPT
 	for i in $(seq $FIRST_FRAME $LAST_FRAME); do
 		$COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
         PIXELS_COUNT="$(cat res)"
-        rm res
+#        rm res
 
 		if [ "$PIXELS_COUNT" != "0" ]; then
 			echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
             FAIL="1"
 		fi
-        rm output$i.$IMAGES_FILE_EXT > /dev/null
-        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+#        rm output$i.$IMAGES_FILE_EXT > /dev/null
+#        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+    if [ "$FAIL" = "1" ]; then
+        cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
+        cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
+        cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
+    fi
 	done
     if [ "$FAIL" != "1" ]; then
         echo "Test $t passed."
