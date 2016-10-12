@@ -216,6 +216,7 @@ TestReformat8
 TestReformat9
 TestReformat10
 TestGlow
+TestPIK
 "
 # TestBilateralGuided
 
