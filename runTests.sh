@@ -333,7 +333,14 @@ cat $TMP_SCRIPT
     rm ofxTestLog.txt &> /dev/null
 
 #compare with ImageMagick
-	for i in $(seq $FIRST_FRAME $LAST_FRAME); do
+
+SEQ="seq $FIRST_FRAME $LAST_FRAME"
+if [ `uname` = "Darwin" ]; then
+	SEQ="jot - $FIRST_FRAME $LAST_FRAME"
+fi
+
+
+	for i in $($SEQ); do
 		$COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
         PIXELS_COUNT="$(cat res)"
 #        rm res
