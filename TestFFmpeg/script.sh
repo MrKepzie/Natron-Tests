@@ -28,7 +28,11 @@ for x in $FORMATS/*; do
   fi
   TEST_FAIL=0
   TEST_PASS=0
-  for i in $(seq $FIRST_FRAME $LAST_FRAME); do
+  SEQ="seq $FIRST_FRAME $LAST_FRAME"
+  if [ `uname` = "Darwin" ]; then
+    SEQ="jot - $FIRST_FRAME $LAST_FRAME"
+  fi
+  for i in $($SEQ); do
     "$COMPARE_BIN" -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
     PIXELS_COUNT="$(cat res)"
     if [ "$PIXELS_COUNT" != "0" ]; then
