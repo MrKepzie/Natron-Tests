@@ -26,7 +26,7 @@ if [ ! -L /usr/OFX/Plugins ]; then
   ln -sf /opt/Natron-CY2015/OFX/Plugins /usr/OFX/Plugins
 fi
 if [ ! -L /opt/Natron-CY2015/Plugins/PyPlugs ]; then
-  ln -sf /opt/Natron-CY2015/PyPlugs /opt/Natron-CY2015/OFX/Plugins/PyPlugs
+  ln -sf /opt/Natron-CY2015/PyPlugs /opt/Natron-CY2015/Plugins/PyPlugs
 fi
 
 "$KILLSCRIPT" $PID &
