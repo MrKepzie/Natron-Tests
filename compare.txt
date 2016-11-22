@@ -1,0 +1,1 @@
+Binaries was built using https://github.com/olear/staticMagick
