@@ -217,6 +217,7 @@ TestReformat9
 TestReformat10
 TestGlow
 TestPIK
+TestShadertoy
 "
 # TestBilateralGuided
 
