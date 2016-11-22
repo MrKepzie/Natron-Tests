@@ -23,17 +23,17 @@ export PATH=/opt/Natron-CY2015/bin:$PATH
 mkdir -p ~/.cache/INRIA/Natron/{ViewerCache,DiskCache} /usr/OFX
 
 if [ ! -L /usr/OFX/Plugins ]; then
-  ln -sf /opt/Natron-CY2015/Plugins /usr/OFX/Plugins
+  ln -sf /opt/Natron-CY2015/OFX/Plugins /usr/OFX/Plugins
 fi
-if [ ! -L /opt/Natron-CY2015/Plugins/PyPlugs ]; then
-  ln -sf /opt/Natron-CY2015/PyPlugs /opt/Natron-CY2015/Plugins/PyPlugs
+if [ ! -L /opt/OFX/Natron-CY2015/Plugins/PyPlugs ]; then
+  ln -sf /opt/Natron-CY2015/PyPlugs /opt/Natron-CY2015/OFX/Plugins/PyPlugs
 fi
 
 "$KILLSCRIPT" $PID &
 KILLBOT=$!
 
 #date
-FFMPEG="/opt/Natron-CY2015/ffmpeg-gpl/bin/ffmpeg" COMPARE=`pwd`/compare.bin ./runTests.sh /opt/Natron-CY2015/bin/NatronRenderer
+FFMPEG="/opt/Natron-CY2015/ffmpeg-gpl/bin/ffmpeg" COMPARE=`pwd`/compare.bin ./runTests.sh /home/olear/Work/build-Project-VFX-Debug/Renderer/NatronRenderer
 #date
 echo "DONE"
 
