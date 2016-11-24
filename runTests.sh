@@ -221,6 +221,12 @@ TestShadertoy
 "
 # TestBilateralGuided
 
+if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
+	echo "Usage: $0 <absolute path to NatronRenderer binary>"
+	echo "Or $0 clean to remove any output images generated."
+	exit 1
+fi
+
 ROOTDIR=`pwd`
 
 if [ ! -d "$ROOTDIR/Spaceship/Sources" ]; then
@@ -230,12 +236,6 @@ fi
 if [ ! -d "$ROOTDIR/BayMax/Robot" ]; then
   wget http://downloads.natron.fr/Third_Party_Sources/Robot.tar.gz 
   tar xvf "$ROOTDIR/Robot.tar.gz" -C "$ROOTDIR/BayMax/"
-fi
-
-if [ $# != 1 ]; then
-	echo "Usage: $0 <absolute path to NatronRenderer binary>"
-	echo "Or $0 clean to remove any output images generated."
-	exit 1
 fi
 
 RENDERER="$1"
