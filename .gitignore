@@ -225,3 +225,7 @@ pch
 *.pyc
 
 Renderer/NatronRenderer
+
+wget-log
+failed/
+tmpScript.py
