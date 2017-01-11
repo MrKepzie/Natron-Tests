@@ -24,6 +24,11 @@ else
   FFMPEG_BIN=ffmpeg
 fi
 
+OPTS=("--no-settings")
+if [ -n "${OFX_PLUGIN_PATH:-}" ]; then
+    OPTS=(${OPTS[@]+"${OPTS[@]}"} "--setting" "useStdOFXPluginsLocation=False")
+fi
+
 CUSTOM_DIRS="
 TestCMD
 TestPY
@@ -324,7 +329,7 @@ cat $TMP_SCRIPT
 
 #Start rendering, silent stdout
 #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-	env NATRON_PLUGIN_PATH=$CWD "$RENDERER" --no-settings -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+	env NATRON_PLUGIN_PATH=$CWD "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
     if [ "$FAIL" = "1" ]; then
         rm ofxTestLog.txt &> /dev/null
         rm $TMP_SCRIPT
