@@ -12,6 +12,10 @@
 #The warning "Attempt to read an OpenColorIO configuration but the configuration directory..." will be printed
 #when the OpenColorIO-Configs could not be found.
 
+echo "*** Natron tests"
+echo "Environment:"
+env
+
 if [ $COMPARE"" != "" ]; then
   COMPARE_BIN="$COMPARE"
 else
