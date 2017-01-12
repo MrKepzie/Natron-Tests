@@ -392,7 +392,7 @@ for x in $CUSTOM_DIRS; do
 done
 
 # Local Variables:
-# indent-tabs-mod: nil
+# indent-tabs-mode: nil
 # sh-basic-offset: 4
 # sh-indentation: 4
 # End:
