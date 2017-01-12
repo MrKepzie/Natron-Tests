@@ -17,19 +17,20 @@ echo "Environment:"
 env
 
 if [ $COMPARE"" != "" ]; then
-  COMPARE_BIN="$COMPARE"
+    COMPARE_BIN="$COMPARE"
 else
-  COMPARE_BIN=compare
+    COMPARE_BIN=compare
 fi
 
 if [ "$FFMPEG" != "" ]; then
-  FFMPEG_BIN="$FFMPEG"
+    FFMPEG_BIN="$FFMPEG"
 else
-  FFMPEG_BIN=ffmpeg
+    FFMPEG_BIN=ffmpeg
 fi
 
 OPTS=("--no-settings")
 if [ -n "${OFX_PLUGIN_PATH:-}" ]; then
+    echo "OFX_PLUGIN_PATH=${OFX_PLUGIN_PATH:-}, setting useStdOFXPluginsLocation=False"
     OPTS=(${OPTS[@]+"${OPTS[@]}"} "--setting" "useStdOFXPluginsLocation=False")
 fi
 
@@ -231,33 +232,33 @@ TestShadertoy
 # TestBilateralGuided
 
 if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
-	echo "Usage: $0 <absolute path to NatronRenderer binary>"
-	echo "Or $0 clean to remove any output images generated."
-	exit 1
+    echo "Usage: $0 <absolute path to NatronRenderer binary>"
+    echo "Or $0 clean to remove any output images generated."
+    exit 1
 fi
 
 ROOTDIR=`pwd`
 
 if [ ! -d "$ROOTDIR/Spaceship/Sources" ]; then
-  wget http://downloads.natron.fr/Third_Party_Sources/SpaceshipSources.tar.gz
-  tar xvf "$ROOTDIR/SpaceshipSources.tar.gz" -C "$ROOTDIR/Spaceship/"
+    wget http://downloads.natron.fr/Third_Party_Sources/SpaceshipSources.tar.gz
+    tar xvf "$ROOTDIR/SpaceshipSources.tar.gz" -C "$ROOTDIR/Spaceship/"
 fi
 if [ ! -d "$ROOTDIR/BayMax/Robot" ]; then
-  wget http://downloads.natron.fr/Third_Party_Sources/Robot.tar.gz 
-  tar xvf "$ROOTDIR/Robot.tar.gz" -C "$ROOTDIR/BayMax/"
+    wget http://downloads.natron.fr/Third_Party_Sources/Robot.tar.gz 
+    tar xvf "$ROOTDIR/Robot.tar.gz" -C "$ROOTDIR/BayMax/"
 fi
 
 RENDERER="$1"
 if [ "$1" = "clean" ]; then
-	for t in $TEST_DIRS; do
-		cd $t
-		rm *output*.* &> /dev/null
-		rm *comp*.*  &> /dev/null
-		rm *.autosave  &> /dev/null
-		rm *.lock  &> /dev/null
-		cd ..
-	done
-	exit 0
+    for t in $TEST_DIRS; do
+        cd $t
+        rm *output*.* &> /dev/null
+        rm *comp*.*  &> /dev/null
+        rm *.autosave  &> /dev/null
+        rm *.lock  &> /dev/null
+        cd ..
+    done
+    exit 0
 fi
 
 export FAILED_DIR="$ROOTDIR"/failed
@@ -265,7 +266,7 @@ export RESULTS="$ROOTDIR"/result.txt
 echo > $RESULTS
 
 if [ -d "$FAILED_DIR" ]; then
-  rm -rf "$FAILED_DIR"
+    rm -rf "$FAILED_DIR"
 fi
 mkdir -p "$FAILED_DIR"
 
@@ -275,38 +276,38 @@ WRITER_NODE_NAME="__script_write_node__"
 DEFAULT_QUALITY="10"
 
 for t in $TEST_DIRS; do
-	cd $t
+    cd $t
 
-	rm res > /dev/null
-        rm output$i.$IMAGES_FILE_EXT > /dev/null
-        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+    rm res > /dev/null
+    rm output$i.$IMAGES_FILE_EXT > /dev/null
+    rm comp$i.$IMAGES_FILE_EXT > /dev/null
 
 
     echo "===================$t========================"
-	CONFFILE=$(find conf)
-	if [[ -z $CONFFILE ]]; then
-		echo "$t does not contain a configuration file, please see the README."
-		exit 1	
-	fi
-	
-	CWD=${PWD}
-	CONF="$(cat conf)"
-	NATRONPROJ=$(echo $CONF | awk '{print $1;}')
-	NATRONPROJ=$CWD/$NATRONPROJ
-	FIRST_FRAME=$(echo $CONF | awk '{print $2;}')
-	LAST_FRAME=$(echo $CONF | awk '{print $3;}')
-	OUTPUTNODE=$(echo $CONF | awk '{print $4;}')
+    CONFFILE=$(find conf)
+    if [[ -z $CONFFILE ]]; then
+        echo "$t does not contain a configuration file, please see the README."
+        exit 1  
+    fi
+    
+    CWD=${PWD}
+    CONF="$(cat conf)"
+    NATRONPROJ=$(echo $CONF | awk '{print $1;}')
+    NATRONPROJ=$CWD/$NATRONPROJ
+    FIRST_FRAME=$(echo $CONF | awk '{print $2;}')
+    LAST_FRAME=$(echo $CONF | awk '{print $3;}')
+    OUTPUTNODE=$(echo $CONF | awk '{print $4;}')
     IMAGES_FILE_EXT=$(echo $CONF | awk '{print $5;}')
     QUALITY=$(echo $CONF | awk '{print $6;}')
     if [[ -z $QUALITY ]]; then
         QUALITY=$DEFAULT_QUALITY
     fi
-	touch $TMP_SCRIPT
+    touch $TMP_SCRIPT
     echo "import sys" > $TMP_SCRIPT
-	echo "import NatronEngine" > $TMP_SCRIPT
+    echo "import NatronEngine" > $TMP_SCRIPT
 
-#Create the write node
-	echo "writer = app.createNode(\"$WRITER_PLUGINID\")" >> $TMP_SCRIPT
+    #Create the write node
+    echo "writer = app.createNode(\"$WRITER_PLUGINID\")" >> $TMP_SCRIPT
     echo "if not writer:" >> $TMP_SCRIPT
     echo "    raise ValueError(\"Could not create a writer with the following plug-in ID: $WRITER_PLUGINID\")" >> $TMP_SCRIPT
     echo "    sys.exit(1)" >> $TMP_SCRIPT
@@ -315,25 +316,27 @@ for t in $TEST_DIRS; do
     echo "    sys.exit(1)" >> $TMP_SCRIPT
     echo "#We must do this to copy the parameters attributes of the node to \"writer\"" >> $TMP_SCRIPT
     echo "writer = app.$WRITER_NODE_NAME" >> $TMP_SCRIPT
-	echo "inputNode = app.$OUTPUTNODE" >> $TMP_SCRIPT
-	echo "writer.connectInput(0, inputNode)" >> $TMP_SCRIPT
-	
-#Set the output filename
-	echo "writer.filename.set(\"[Project]/output#.$IMAGES_FILE_EXT\")" >> $TMP_SCRIPT
+    echo "inputNode = app.$OUTPUTNODE" >> $TMP_SCRIPT
+    echo "writer.connectInput(0, inputNode)" >> $TMP_SCRIPT
+    
+    #Set the output filename
+    echo "writer.filename.set(\"[Project]/output#.$IMAGES_FILE_EXT\")" >> $TMP_SCRIPT
 
-#Set manual frame range
-	echo "writer.frameRange.set(2)" >> $TMP_SCRIPT
-	echo "writer.firstFrame.set($FIRST_FRAME)" >> $TMP_SCRIPT
-	echo "writer.lastFrame.set($LAST_FRAME)" >> $TMP_SCRIPT
-	
-#Set compression to none
-	echo "writer.quality.set($QUALITY)" >> $TMP_SCRIPT
+    #Set manual frame range
+    echo "writer.frameRange.set(2)" >> $TMP_SCRIPT
+    echo "writer.firstFrame.set($FIRST_FRAME)" >> $TMP_SCRIPT
+    echo "writer.lastFrame.set($LAST_FRAME)" >> $TMP_SCRIPT
+    
+    #Set compression to none
+    echo "writer.quality.set($QUALITY)" >> $TMP_SCRIPT
 
-cat $TMP_SCRIPT	
+    cat $TMP_SCRIPT     
 
-#Start rendering, silent stdout
-#Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-	env NATRON_PLUGIN_PATH=$CWD "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+    #Start rendering, silent stdout
+    #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
+    set -x
+    env NATRON_PLUGIN_PATH=$CWD "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+    set +x
     if [ "$FAIL" = "1" ]; then
         rm ofxTestLog.txt &> /dev/null
         rm $TMP_SCRIPT
@@ -342,31 +345,31 @@ cat $TMP_SCRIPT
 
     rm ofxTestLog.txt &> /dev/null
 
-#compare with ImageMagick
+    #compare with ImageMagick
 
-SEQ="seq $FIRST_FRAME $LAST_FRAME"
-if [ `uname` = "Darwin" ]; then
-	SEQ="jot - $FIRST_FRAME $LAST_FRAME"
-fi
-
-
-	for i in $($SEQ); do
-		$COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
-        PIXELS_COUNT="$(cat res)"
-#        rm res
-
-		if [ "$PIXELS_COUNT" != "0" ]; then
-			echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
-            FAIL="1"
-		fi
-#        rm output$i.$IMAGES_FILE_EXT > /dev/null
-#        rm comp$i.$IMAGES_FILE_EXT > /dev/null
-    if [ "$FAIL" = "1" ]; then
-        cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
-        cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
-        cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
+    SEQ="seq $FIRST_FRAME $LAST_FRAME"
+    if [ `uname` = "Darwin" ]; then
+        SEQ="jot - $FIRST_FRAME $LAST_FRAME"
     fi
-	done
+
+
+    for i in $($SEQ); do
+        $COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
+        PIXELS_COUNT="$(cat res)"
+        #        rm res
+
+        if [ "$PIXELS_COUNT" != "0" ]; then
+            echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
+            FAIL="1"
+        fi
+        #        rm output$i.$IMAGES_FILE_EXT > /dev/null
+        #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+        if [ "$FAIL" = "1" ]; then
+            cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
+            cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
+            cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
+        fi
+    done
     if [ "$FAIL" != "1" ]; then
         echo "Test $t passed."
         echo "$t : PASS" >> $RESULTS
@@ -375,16 +378,21 @@ fi
         echo "$t : FAIL" >> $RESULTS
     fi
     FAIL="0"
-	
+    
     rm $TMP_SCRIPT || exit 1
     rm -rf __pycache__ &> /dev/null
 
-	cd ..
+    cd ..
 done
 
 for x in $CUSTOM_DIRS; do
-  cd $x
+    cd $x
     sh script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
-  cd ..
+    cd ..
 done
 
+# Local Variables:
+# indent-tabs-mod: nil
+# sh-basic-offset: 4
+# sh-indentation: 4
+# End:
