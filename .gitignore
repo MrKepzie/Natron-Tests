@@ -229,3 +229,6 @@ Renderer/NatronRenderer
 wget-log
 failed/
 tmpScript.py
+TestCMD/res1
+
+TestCMD/res2

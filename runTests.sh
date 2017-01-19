@@ -228,6 +228,8 @@ TestReformat10
 TestGlow
 TestPIK
 TestShadertoy
+TestIDistort
+TestSTMap
 "
 # TestBilateralGuided
 
