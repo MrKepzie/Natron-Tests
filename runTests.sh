@@ -37,7 +37,8 @@ fi
 CUSTOM_DIRS="
 TestCMD
 TestPY
-TestFFmpeg
+TestWriteFFmpeg
+TestWritePNG
 "
 
 TEST_DIRS="
