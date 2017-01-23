@@ -37,7 +37,8 @@ fi
 CUSTOM_DIRS="
 TestCMD
 TestPY
-TestFFmpeg
+TestWriteFFmpeg
+TestWritePNG
 "
 
 TEST_DIRS="
@@ -228,6 +229,8 @@ TestReformat10
 TestGlow
 TestPIK
 TestShadertoy
+TestIDistort
+TestSTMap
 "
 # TestBilateralGuided
 

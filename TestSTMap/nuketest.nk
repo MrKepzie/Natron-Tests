@@ -1,0 +1,98 @@
+#! /Applications/Nuke10.5v1/Nuke10.5v1.app/Contents/MacOS/libnuke-10.5.1.dylib -nx
+version 10.5 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="71" y="23" w="2556" h="1577" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1893" stretch="1"/>
+            <splitter orientation="2">
+                <split size="911"/>
+                <dock id="" activePageId="Viewer.1" focus="true">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="640"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /Users/devernay/Development/Natron-Tests/TestSTMap/nuketest.nk
+ format "512 512 0 0 512 512 1 square_512"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Constant1
+ xpos -243
+ ypos -279
+}
+Ramp {
+ output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+ p0 {0 0}
+ p1 {0 512}
+ name Ramp1
+ xpos -235
+ ypos -184
+}
+Ramp {
+ output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+ p0 {0 0}
+ p1 {512 0}
+ name Ramp2
+ xpos -235
+ ypos -160
+}
+Radial {
+ output {rgba.red rgba.green -rgba.blue -rgba.alpha}
+ opacity 0.165
+ area {0 0 512 512}
+ name Radial1
+ xpos -235
+ ypos -136
+}
+CheckerBoard2 {
+ inputs 0
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ boxsize 16
+ name CheckerBoard1
+ xpos 12
+ ypos -252
+}
+STMap {
+ inputs 2
+ uv rgb
+ name STMap1
+ xpos -123
+ ypos -60
+}
+Viewer {
+ frame 1
+ frame_range 1-100
+ name Viewer1
+ xpos -88
+ ypos 33
+}

@@ -17,11 +17,12 @@ for i in "$CWD"/test___*.py; do
     "$NATRON_BIN" "$CWD"/test___$SCRIPT.py #> /dev/null 2>&1
     DIFF1=`diff $CWD/test___$SCRIPT-reference.txt $CWD/test___$SCRIPT-output.txt`
     if [ ! -f "$CWD/test___$SCRIPT-output.txt" ]; then
-      DIFF1="fail"
+      DIFF1="Failed (no output)"
     fi
     if [ "$DIFF1" != "" ]; then
       echo "WARNING: test $SCRIPT failed in TestPY"
       echo "TestPY_$SCRIPT : FAIL" >> $RESULTS
+      echo "$DIFF1"
     else
       echo "TestPY passed test $SCRIPT"
       echo "TestPY_$SCRIPT : PASS" >> $RESULTS
