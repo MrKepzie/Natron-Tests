@@ -19,17 +19,13 @@ echo "===================$NAME========================"
 for i in a8 a16 g8 g16 ga8 ga16 rgb8 rgb16 rgba8 rgba16; do
     "$COMPARE_BIN" -metric AE reference${i}.${IMAGES_FILE_EXT} output${i}.${IMAGES_FILE_EXT} comp$i.${IMAGES_FILE_EXT} &> res
     PIXELS_COUNT="$(cat res)"
+    x=$NAME/$i
     if [ "$PIXELS_COUNT" != "0" ]; then
 	echo "WARNING: $PIXELS_COUNT pixel(s) different for $i"
-	TEST_FAIL=$((TEST_FAIL+1))
+	echo "$x : FAIL" >> $RESULTS
     else
 	echo "$i passed"
-	TEST_PASS=$((TEST_PASS+1))
+	echo "$x : PASS" >> $RESULTS
     fi
 done
-if [ "$TEST_FAIL" = 0 ] && [ "$TEST_PASS" = "$LAST_FRAME" ]; then
-    echo "$x : PASS" >> $RESULTS
-else
-    echo "$x : FAIL" >> $RESULTS
-fi
 #  rm -f output* res comp*
