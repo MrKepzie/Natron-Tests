@@ -259,6 +259,7 @@ if [ "$1" = "clean" ]; then
         rm *comp*.*  &> /dev/null
         rm *.autosave  &> /dev/null
         rm *.lock  &> /dev/null
+        rm tmpScript.py  &> /dev/null
         cd ..
     done
     exit 0
@@ -338,7 +339,12 @@ for t in $TEST_DIRS; do
     #Start rendering, silent stdout
     #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
     set -x
-    env NATRON_PLUGIN_PATH=$CWD "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+   if [ `uname` = "Msys" ]; then
+        plugin_path="${CWD};${NATRON_PLUGIN_PATH:-}"
+    else
+        plugin_path="${CWD}:${NATRON_PLUGIN_PATH:-}"
+    fi
+    env NATRON_PLUGIN_PATH="${plugin_path}" "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
     set +x
     if [ "$FAIL" = "1" ]; then
         rm ofxTestLog.txt &> /dev/null
