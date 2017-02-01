@@ -690,7 +690,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>10</Value>
+					<Value>85</Value>
 					<Default>100</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>

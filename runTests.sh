@@ -54,9 +54,11 @@ TestCharcoal
 TestCheckerBoard
 TestClamp
 TestClipTest
+TestColorCorrect
 TestColorLookup
 TestColorMatrix
 TestColorSuppress
+TestConstant
 TestCopyRectangle
 TestCornerPin
 TestCrop
@@ -70,6 +72,7 @@ TestEqualize
 TestErode
 TestErodeSmooth
 TestFill
+TestFrameBlend
 TestGMICExpr
 TestGamma
 TestGlow
@@ -106,6 +109,7 @@ TestImageTIF
 TestImageXCF
 TestImageXPM
 TestImplode
+TestInvert
 TestLaplacian
 TestLensDistortion
 TestMedian
@@ -169,6 +173,7 @@ TestRGB_HSI
 TestRGB_HSL
 TestRGB_HSV
 TestRGB_LAB
+TestRGB_XYZ
 TestRGB_YCbCr
 TestRGB_YUV
 TestReadAVI_avc1
@@ -179,7 +184,6 @@ TestReadAVI_m2v1
 TestReadAVI_mp4v
 TestReadAVI_png
 TestReadAVI_svq1
-TestReadAVI_v210
 TestReadMOV_ap4h
 TestReadMOV_apch
 TestReadMOV_apcn
@@ -194,7 +198,6 @@ TestReadMOV_mp4v
 TestReadMOV_png
 TestReadMOV_rle
 TestReadMOV_svq1
-TestReadMOV_v210
 TestReadMP4_avc1
 TestReadMP4_jpg
 TestReadMP4_m1v
@@ -219,6 +222,8 @@ TestRetimeTransform
 TestRoll
 TestRollingGuidance
 TestSTMap
+TestSaturation
+TestSeExpr
 TestShadertoy
 TestSharpenInvDiff
 TestSharpenShock
@@ -226,7 +231,10 @@ TestShuffle
 TestSmooth
 TestSwirl
 TestSwitch
+TestText
 TestTexture
+TestTile
+TestTimeBlur
 TestTimeDissolve
 TestVectorToColor
 TestWave
