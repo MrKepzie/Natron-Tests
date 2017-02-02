@@ -48,6 +48,7 @@ TestAdd
 TestAngleBlur
 TestArc
 TestBilateral
+TestBilateralGuided
 TestBloom
 TestBlur
 TestCharcoal
@@ -240,7 +241,6 @@ TestVectorToColor
 TestWave
 TestZMask
 "
-# TestBilateralGuided
 
 if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
     echo "Usage: $0 <absolute path to NatronRenderer binary>"
