@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <!DOCTYPE boost_serialization>
-<boost_serialization signature="serialization::archive" version="13">
+<boost_serialization signature="serialization::archive" version="14">
 <Background_project>0</Background_project>
 <Project class_id="0" tracking_level="0" version="6">
 	<VersionMajor>2</VersionMajor>
 	<VersionMinor>2</VersionMinor>
 	<VersionRev>3</VersionRev>
-	<GitBranch>tags/2.2.3</GitBranch>
-	<GitCommit>2f2c6042f9ed08a0be9c3da8ffe2650df05fc386</GitCommit>
+	<GitBranch>master</GitBranch>
+	<GitCommit>d9dcaf1cf836b8f4cd15b2ed13e01b82c834dbe2</GitCommit>
 	<OS>MacOSX</OS>
 	<Bits>64</Bits>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
@@ -51,7 +51,7 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>15</KnobsCount>
+			<KnobsCount>18</KnobsCount>
 			<item class_id="6" tracking_level="0" version="13">
 				<Name>decodingPluginID</Name>
 				<Type>String</Type>
@@ -301,6 +301,62 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
+				<Name>outputLayerChoice</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>Color.RGB</Value>
+					<Default></Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>edgePixels</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>Auto</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>offsetNegativeDispWindow</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>1</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
 				<Name>ocioInputSpace</Name>
 				<Type>String</Type>
 				<Dimension>1</Dimension>
@@ -371,7 +427,7 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>21</KnobsCount>
+			<KnobsCount>22</KnobsCount>
 			<item>
 				<Name>encodingPluginChoice</Name>
 				<Type>Choice</Type>
@@ -541,6 +597,23 @@
 					<count>0</count>
 					<item_version>0</item_version>
 				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>ocioOutputSpaceSet</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
@@ -777,7 +850,7 @@
 			<PagesCount>3</PagesCount>
 			<name>Controls</name>
 			<name>Node</name>
-			<name>Python</name>
+			<name>Info</name>
 			<Children>0</Children>
 			<UserComponents>
 				<count>0</count>
@@ -886,7 +959,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Applications/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestRGB_XYZ&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-2.1/App/build/Debug/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestRGBXYZ&lt;/Value&gt;</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -921,7 +994,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mer. févr. 1 12:49:56 2017</Value>
+			<Value>jeu. févr. 2 09:59:23 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -1006,11 +1079,11 @@
 		<Window class_id="14" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="15" tracking_level="1" version="1" object_id="_0">
-				<Sizes>1368 736</Sizes>
+				<Sizes>942 508</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>541 540</Sizes>
+					<Sizes>488 487</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="16" tracking_level="1" version="5" object_id="_2">
@@ -1026,11 +1099,12 @@
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child object_id="_3">
 						<Tabs>
-							<count>3</count>
+							<count>4</count>
 							<item_version>0</item_version>
 							<item>nodeGraph</item>
 							<item>curveEditor</item>
 							<item>dopeSheetEditor</item>
+							<item>progress</item>
 						</Tabs>
 						<Index>0</Index>
 						<Name>pane3</Name>
@@ -1050,10 +1124,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>735</x>
-			<y>219</y>
-			<w>2140</w>
-			<h>1084</h>
+			<x>201</x>
+			<y>200</y>
+			<w>1486</w>
+			<h>978</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="18" tracking_level="0" version="0">
@@ -1110,9 +1184,9 @@
 	<OpenedPanels>
 		<count>4</count>
 		<item_version>0</item_version>
+		<item>WriteOIIO1</item>
 		<item>XYZToRGB1</item>
 		<item>ReadOIIO1</item>
-		<item>WriteOIIO1</item>
 		<item>Natron_Project_Settings_Panel</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
