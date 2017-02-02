@@ -354,39 +354,35 @@ for t in $TEST_DIRS; do
     fi
     env NATRON_PLUGIN_PATH="${plugin_path}" "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
     set +x
-    if [ "$FAIL" = "1" ]; then
-        rm ofxTestLog.txt &> /dev/null
-        rm $TMP_SCRIPT
-        exit 1
-    fi
-
     rm ofxTestLog.txt &> /dev/null
+    if [ "$FAIL" != "1" ]; then
 
-    #compare with ImageMagick
+        #compare with ImageMagick
 
-    SEQ="seq $FIRST_FRAME $LAST_FRAME"
-    if [ `uname` = "Darwin" ]; then
-        SEQ="jot - $FIRST_FRAME $LAST_FRAME"
+        SEQ="seq $FIRST_FRAME $LAST_FRAME"
+        if [ `uname` = "Darwin" ]; then
+            SEQ="jot - $FIRST_FRAME $LAST_FRAME"
+        fi
+
+
+        for i in $($SEQ); do
+            $COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
+            PIXELS_COUNT="$(cat res)"
+            #        rm res
+
+            if [ "$PIXELS_COUNT" != "0" ]; then
+                echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
+                FAIL="1"
+            fi
+            #        rm output$i.$IMAGES_FILE_EXT > /dev/null
+            #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+            if [ "$FAIL" = "1" ]; then
+                cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
+                cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
+                cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
+            fi
+        done
     fi
-
-
-    for i in $($SEQ); do
-        $COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
-        PIXELS_COUNT="$(cat res)"
-        #        rm res
-
-        if [ "$PIXELS_COUNT" != "0" ]; then
-            echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
-            FAIL="1"
-        fi
-        #        rm output$i.$IMAGES_FILE_EXT > /dev/null
-        #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
-        if [ "$FAIL" = "1" ]; then
-            cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
-            cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
-            cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
-        fi
-    done
     if [ "$FAIL" != "1" ]; then
         echo "Test $t passed."
         echo "$t : PASS" >> $RESULTS
