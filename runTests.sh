@@ -346,14 +346,16 @@ for t in $TEST_DIRS; do
 
     #Start rendering, silent stdout
     #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-    set -x
-   if [ `uname` = "Msys" ]; then
+    if [ `uname` = "Msys" ]; then
         plugin_path="${CWD};${NATRON_PLUGIN_PATH:-}"
     else
         plugin_path="${CWD}:${NATRON_PLUGIN_PATH:-}"
     fi
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
+    set -x
     env NATRON_PLUGIN_PATH="${plugin_path}" "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
     set +x
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
     rm ofxTestLog.txt &> /dev/null
     if [ "$FAIL" != "1" ]; then
 
