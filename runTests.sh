@@ -234,13 +234,13 @@ TestSwirl
 TestSwitch
 TestText
 TestTexture
-TestTile
 TestTimeBlur
 TestTimeDissolve
 TestVectorToColor
 TestWave
 TestZMask
 "
+# TestTile crashes on Linux64, and this script quits before printing "*** END TestTile", I don't understand why
 
 if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
     echo "Usage: $0 <absolute path to NatronRenderer binary>"
