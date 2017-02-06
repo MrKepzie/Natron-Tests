@@ -234,13 +234,13 @@ TestSwirl
 TestSwitch
 TestText
 TestTexture
+TestTile
 TestTimeBlur
 TestTimeDissolve
 TestVectorToColor
 TestWave
 TestZMask
 "
-# TestTile crashes on Linux64, and this script quits before printing "*** END TestTile", I don't understand why
 
 if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
     echo "Usage: $0 <absolute path to NatronRenderer binary>"
@@ -286,6 +286,8 @@ TMP_SCRIPT="tmpScript.py"
 WRITER_PLUGINID="fr.inria.openfx.WriteOIIO"
 WRITER_NODE_NAME="__script_write_node__"
 DEFAULT_QUALITY="85"
+
+uname=$(uname)
 
 for t in $TEST_DIRS; do
     cd $t
@@ -346,23 +348,28 @@ for t in $TEST_DIRS; do
 
     #Start rendering, silent stdout
     #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-    if [ `uname` = "Msys" ]; then
+    if [ "$uname" = "Msys" ]; then
         plugin_path="${CWD};${NATRON_PLUGIN_PATH:-}"
     else
         plugin_path="${CWD}:${NATRON_PLUGIN_PATH:-}"
     fi
-    echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
-    set -x
-    env NATRON_PLUGIN_PATH="${plugin_path}" "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
-    set +x
-    echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
+    if [ "$t" = "TestTile" ] && [ "$uname" = "Linux" ]; then
+        echo "TestTile crashes on Linux64, and this script quits before printing *** END TestTile, I do not understand why"
+        FAIL=1
+    else
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
+        set -x
+        env NATRON_PLUGIN_PATH="${plugin_path}" "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+        set +x
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
+    fi
     rm ofxTestLog.txt &> /dev/null
     if [ "$FAIL" != "1" ]; then
 
         #compare with ImageMagick
 
         SEQ="seq $FIRST_FRAME $LAST_FRAME"
-        if [ `uname` = "Darwin" ]; then
+        if [ "$uname" = "Darwin" ]; then
             SEQ="jot - $FIRST_FRAME $LAST_FRAME"
         fi
 
