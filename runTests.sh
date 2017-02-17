@@ -16,7 +16,7 @@ echo "*** Natron tests"
 echo "Environment:"
 env
 
-if [ "$PKGOS" = "OSX" ]; then
+if [ "$(uname -s)" = "Darwin" ]; then
     # timeout is available in GNU coreutils:
     # sudo port install coreutils
     # or
