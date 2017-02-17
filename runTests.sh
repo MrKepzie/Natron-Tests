@@ -16,6 +16,16 @@ echo "*** Natron tests"
 echo "Environment:"
 env
 
+if [ "$PKGOS" = "OSX" ]; then
+    # timeout is available in GNU coreutils:
+    # sudo port install coreutils
+    # or
+    # brew install coreutils
+    TIMEOUT="gtimeout"
+else
+    TIMEOUT="timeout"
+fi
+
 if [ $COMPARE"" != "" ]; then
     COMPARE_BIN="$COMPARE"
 else
@@ -359,7 +369,7 @@ for t in $TEST_DIRS; do
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
         set -x
-        env NATRON_PLUGIN_PATH="${plugin_path}" "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
         set +x
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
     fi
@@ -412,7 +422,9 @@ done
 for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-    sh script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
+    set -x
+    $TIMEOUT 3600 script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
+    set +x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done

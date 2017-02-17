@@ -9,6 +9,16 @@ FIRST_FRAME=1
 LAST_FRAME=9
 FORMATS="$CWD/formats"
 
+if [ "$PKGOS" = "OSX" ]; then
+    # timeout is available in GNU coreutils:
+    # sudo port install coreutils
+    # or
+    # brew install coreutils
+    TIMEOUT="gtimeout"
+else
+    TIMEOUT="timeout"
+fi
+
 if [ "$NATRON_BIN" = "" ] && [ "$FFMPEG_BIN" = "" ] && [ "$COMPARE_BIN" = "" ]; then
   echo "Can't find required apps"
   exit 1
@@ -20,9 +30,11 @@ for x in $FORMATS/*; do
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
   FORMAT=`cat format`
   rm -f output* res comp*
-  "$NATRON_BIN" test.ntp #> /dev/null 2>&1
+  $TIMEOUT 1800 "$NATRON_BIN" test.ntp #> /dev/null 2>&1
   if [ -f "output.$FORMAT" ]; then
-    "$FFMPEG_BIN" -i output.$FORMAT output%1d.$IMAGES_FILE_EXT #> /dev/null 2>&1
+    set -x
+    $TIMEOUT 1800 "$FFMPEG_BIN" -i "output.$FORMAT" "output%1d.$IMAGES_FILE_EXT" #> /dev/null 2>&1
+    set +x
   fi
   if [ -f "last" ]; then
     LAST_FRAME=`cat last`
