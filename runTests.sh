@@ -297,7 +297,7 @@ for t in $TEST_DIRS; do
     rm comp$i.$IMAGES_FILE_EXT > /dev/null
 
 
-    echo "===================$t========================"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
     CONFFILE=$(find conf)
     if [[ -z $CONFFILE ]]; then
         echo "$t does not contain a configuration file, please see the README."
@@ -394,9 +394,11 @@ for t in $TEST_DIRS; do
     fi
     if [ "$FAIL" != "1" ]; then
         echo "Test $t passed."
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $t"
         echo "$t : PASS" >> $RESULTS
     else
         echo "Test $t failed."
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $t"
         echo "$t : FAIL" >> $RESULTS
     fi
     FAIL="0"
@@ -409,7 +411,9 @@ done
 
 for x in $CUSTOM_DIRS; do
     cd $x
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
     sh script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done
 

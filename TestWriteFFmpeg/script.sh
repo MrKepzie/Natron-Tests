@@ -17,6 +17,7 @@ fi
 echo "===================$NAME========================"
 for x in $FORMATS/*; do
   cd $x
+  echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
   FORMAT=`cat format`
   rm -f output* res comp*
   "$NATRON_BIN" test.ntp #> /dev/null 2>&1
@@ -32,6 +33,7 @@ for x in $FORMATS/*; do
   if [ `uname` = "Darwin" ]; then
     SEQ="jot - $FIRST_FRAME $LAST_FRAME"
   fi
+  echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
   for i in $($SEQ); do
     "$COMPARE_BIN" -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
     PIXELS_COUNT="$(cat res)"
@@ -44,8 +46,10 @@ for x in $FORMATS/*; do
     fi
   done
   if [ "$TEST_FAIL" = 0 ] && [ "$TEST_PASS" = "$LAST_FRAME" ]; then
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
     echo "$x : PASS" >> $RESULTS
   else
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x"
     echo "$x : FAIL" >> $RESULTS
   fi
 #  rm -f output* res comp*
