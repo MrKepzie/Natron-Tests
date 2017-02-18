@@ -33,7 +33,7 @@ for x in $FORMATS/*; do
   $TIMEOUT 1800 "$NATRON_BIN" test.ntp #> /dev/null 2>&1
   if [ -f "output.$FORMAT" ]; then
     set -x
-    $TIMEOUT 1800 "$FFMPEG_BIN" -i "output.$FORMAT" "output%1d.$IMAGES_FILE_EXT" #> /dev/null 2>&1
+    $TIMEOUT 1800 "$FFMPEG_BIN" -y -i "output.$FORMAT" "output%1d.$IMAGES_FILE_EXT" </dev/null >/dev/null 2>&1
     set +x
   fi
   if [ -f "last" ]; then
