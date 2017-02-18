@@ -423,7 +423,7 @@ for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
     set -x
-    $TIMEOUT 3600 script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
+    $TIMEOUT 3600 bash script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
     set +x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
