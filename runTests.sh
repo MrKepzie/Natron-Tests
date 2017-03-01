@@ -16,6 +16,16 @@ echo "*** Natron tests"
 echo "Environment:"
 env
 
+if [ "$(uname -s)" = "Darwin" ]; then
+    # timeout is available in GNU coreutils:
+    # sudo port install coreutils
+    # or
+    # brew install coreutils
+    TIMEOUT="gtimeout"
+else
+    TIMEOUT="timeout"
+fi
+
 if [ $COMPARE"" != "" ]; then
     COMPARE_BIN="$COMPARE"
 else
@@ -42,181 +52,175 @@ TestWritePNG
 "
 
 TEST_DIRS="
-Spaceship
 BayMax
-TestFill
-TestImageTIF
-TestMergeMinus
-TestReadAVI_m1v
-TestRGB_HSI
-TestImageXCF
-TestMergeMultiply
-TestReadAVI_m2v1
-TestRGB_HSL
-TestGamma
-TestImageXPM
-TestMergeOut
-TestReadAVI_mp4v
-TestRGB_HSV
-TestGMICExpr
-TestImplode
-TestMergeOver
-TestReadAVI_png
-TestRGB_LAB
-TestGodRays
-TestMergeOverlay
-TestReadAVI_svq1
+Spaceship
 TestAdd
-TestGrade
-TestLaplacian
-TestMergePinlight
-TestReadAVI_v210
-TestRGB_YCbCr
 TestAngleBlur
-TestGuided
-TestLensDistortion
-TestMergePlus
-TestReadMOV_ap4h
-TestRGB_YUV
 TestArc
-TestHistEQ
-TestMedian
-TestMergeReflect
-TestReadMOV_apch
-TestRoll
 TestBilateral
-TestHSVTool
-TestMergeAtop
-TestMergeSaturation
-TestReadMOV_apcn
-TestRollingGuidance
-TestImageBMP
-TestMergeAverage
-TestMergeScreen
-TestReadMOV_apco
+TestBilateralGuided
 TestBloom
-TestImageCR2
-TestMergeColor
-TestMergeSoftLight
-TestReadMOV_apcs
 TestBlur
-TestImageDPX
-TestMergeColorBurn
-TestMergeStencil
-TestReadMOV_avc1
-TestSharpenInvDiff
 TestCharcoal
-TestImageEXR
-TestMergeColorDodge
-TestMergeUnder
-TestSharpenShock
 TestCheckerBoard
-TestImageGIF
-TestMergeConjointOver
-TestMergeXOR
-TestReadMOV_flv1
-TestShuffle
 TestClamp
-TestImageHDR
-TestMergeCopy
-TestMirror
-TestReadMOV_jpg
-TestSmooth
 TestClipTest
-TestImageJP2
-TestMergeDifference
-TestModulate
-TestReadMOV_m1v
-TestSwirl
-TestImageJPG
-TestMergeDisjointOver
-TestMultiPlaneEXR
-TestReadMOV_m2v1
-TestSwitch
+TestColorCorrect
 TestColorLookup
-TestImageKRA
-TestMergeDivide
-TestMultiPlaneORA
-TestReadMOV_mp4v
 TestColorMatrix
-TestMergeExclusion
-TestMultiPlanePSD
-TestReadMOV_png
-TestTexture
 TestColorSuppress
-TestImageORA
-TestMergeFreeze
-TestMultiPlaneXCF
-TestReadMOV_rle
-TestImagePBM
-TestMergeFrom
-TestMultiply
-TestReadMOV_svq1
+TestConstant
 TestCopyRectangle
-TestImagePCX
-TestMergeGeometric
-TestOCIOCDLTransform
-TestReadMOV_v210
 TestCornerPin
-TestImagePFM
-TestMergeGrainExtract
-TestOCIOColorSpace
-TestReadMP4_avc1
-TestTimeDissolve
 TestCrop
-TestImagePGM
-TestMergeGrainMerge
-TestOCIODisplay
-TestReadMP4_jpg
 TestDenoise
-TestImagePNG
-TestMergeHardLight
-TestOCIOFileTransform
-TestReadMP4_m1v
-TestVectorToColor
 TestDilate
-TestImagePNM
-TestMergeHue
-TestOCIOLogConvert
-TestReadMP4_m2v1
 TestDirBlur
-TestImagePPM
-TestMergeHypot
-TestOCIOLookTransform
-TestReadMP4_mp4v
-TestWave
 TestDissolve
-TestImagePSB
-TestMergeIn
-TestOilpaint
-TestReadMP4_png
-TestZMask
 TestDropShadow
-TestImagePSD
-TestMergeLuminosity
-TestPolar
-TestReadMPEG1
 TestEdges
-TestImageRGB
-TestMergeMask
-TestPosition
-TestReadMXF
 TestEqualize
-TestImageRGBA
-TestMergeMatte
-TestReadAVI_avc1
-TestReflection
 TestErode
-TestImageSVG
-TestMergeMax
-TestReadAVI_flv1
 TestErodeSmooth
+TestFill
+TestFrameBlend
+TestGMICExpr
+TestGamma
+TestGlow
+TestGodRays
+TestGrade
+TestGuided
+TestHSVTool
+TestHistEQ
+TestIDistort
+TestImageBMP
+TestImageCR2
+TestImageDPX
+TestImageEXR
+TestImageGIF
+TestImageHDR
+TestImageJP2
+TestImageJPG
+TestImageKRA
+TestImageORA
+TestImagePBM
+TestImagePCX
+TestImagePFM
+TestImagePGM
+TestImagePNG
+TestImagePNM
+TestImagePPM
+TestImagePSB
+TestImagePSD
+TestImageRGB
+TestImageRGBA
+TestImageSVG
 TestImageTGA
+TestImageTIF
+TestImageXCF
+TestImageXPM
+TestImplode
+TestInvert
+TestLaplacian
+TestLensDistortion
+TestMedian
+TestMergeAtop
+TestMergeAverage
+TestMergeColor
+TestMergeColorBurn
+TestMergeColorDodge
+TestMergeConjointOver
+TestMergeCopy
+TestMergeDifference
+TestMergeDisjointOver
+TestMergeDivide
+TestMergeExclusion
+TestMergeFreeze
+TestMergeFrom
+TestMergeGeometric
+TestMergeGrainExtract
+TestMergeGrainMerge
+TestMergeHardLight
+TestMergeHue
+TestMergeHypot
+TestMergeIn
+TestMergeLuminosity
+TestMergeMask
+TestMergeMatte
+TestMergeMax
 TestMergeMin
+TestMergeMinus
+TestMergeMultiply
+TestMergeOut
+TestMergeOver
+TestMergeOverlay
+TestMergePinlight
+TestMergePlus
+TestMergeReflect
+TestMergeSaturation
+TestMergeScreen
+TestMergeSoftLight
+TestMergeStencil
+TestMergeUnder
+TestMergeXOR
+TestMirror
+TestModulate
+TestMultiPlaneEXR
+TestMultiPlaneORA
+TestMultiPlanePSD
+TestMultiPlaneXCF
+TestMultiply
+TestOCIOCDLTransform
+TestOCIOColorSpace
+TestOCIODisplay
+TestOCIOFileTransform
+TestOCIOLogConvert
+TestOCIOLookTransform
+TestOilpaint
+TestPIK
+TestPolar
+TestPosition
+TestRGBHSI
+TestRGBHSL
+TestRGBHSV
+TestRGBLAB
+TestRGBX_Y_Z
+TestRGBYCbCr
+TestRGBYUV
+TestReadAVI_avc1
+TestReadAVI_flv1
 TestReadAVI_jpg
-TestRetimeTransform
+TestReadAVI_m1v
+TestReadAVI_m2v1
+TestReadAVI_mp4v
+TestReadAVI_png
+TestReadAVI_svq1
+TestReadMOV_ap4h
+TestReadMOV_apch
+TestReadMOV_apcn
+TestReadMOV_apco
+TestReadMOV_apcs
+TestReadMOV_avc1
+TestReadMOV_flv1
+TestReadMOV_jpg
+TestReadMOV_m1v
+TestReadMOV_m2v1
+TestReadMOV_mp4v
+TestReadMOV_png
+TestReadMOV_rle
+TestReadMOV_svq1
+TestReadMP4_avc1
+TestReadMP4_jpg
+TestReadMP4_m1v
+TestReadMP4_m2v1
+TestReadMP4_mp4v
+TestReadMP4_png
+TestReadMPEG1
+TestReadMXF
+TestReflection
 TestReformat
 TestReformat1
+TestReformat10
 TestReformat2
 TestReformat3
 TestReformat4
@@ -225,14 +229,28 @@ TestReformat6
 TestReformat7
 TestReformat8
 TestReformat9
-TestReformat10
-TestGlow
-TestPIK
-TestShadertoy
-TestIDistort
+TestRetimeTransform
+TestRoll
+TestRollingGuidance
 TestSTMap
+TestSaturation
+TestSeExpr
+TestShadertoy
+TestSharpenInvDiff
+TestSharpenShock
+TestShuffle
+TestSmooth
+TestSwirl
+TestSwitch
+TestText
+TestTexture
+TestTile
+TestTimeBlur
+TestTimeDissolve
+TestVectorToColor
+TestWave
+TestZMask
 "
-# TestBilateralGuided
 
 if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
     echo "Usage: $0 <absolute path to NatronRenderer binary>"
@@ -277,7 +295,9 @@ mkdir -p "$FAILED_DIR"
 TMP_SCRIPT="tmpScript.py"
 WRITER_PLUGINID="fr.inria.openfx.WriteOIIO"
 WRITER_NODE_NAME="__script_write_node__"
-DEFAULT_QUALITY="10"
+DEFAULT_QUALITY="85"
+
+uname=$(uname)
 
 for t in $TEST_DIRS; do
     cd $t
@@ -287,7 +307,7 @@ for t in $TEST_DIRS; do
     rm comp$i.$IMAGES_FILE_EXT > /dev/null
 
 
-    echo "===================$t========================"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
     CONFFILE=$(find conf)
     if [[ -z $CONFFILE ]]; then
         echo "$t does not contain a configuration file, please see the README."
@@ -338,52 +358,57 @@ for t in $TEST_DIRS; do
 
     #Start rendering, silent stdout
     #Note that we append the current directory to the NATRON_PLUGIN_PATH so it finds any PyPlug or script in there
-    set -x
-   if [ `uname` = "Msys" ]; then
+    if [ "$uname" = "Msys" ]; then
         plugin_path="${CWD};${NATRON_PLUGIN_PATH:-}"
     else
         plugin_path="${CWD}:${NATRON_PLUGIN_PATH:-}"
     fi
-    env NATRON_PLUGIN_PATH="${plugin_path}" "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
-    set +x
-    if [ "$FAIL" = "1" ]; then
-        rm ofxTestLog.txt &> /dev/null
-        rm $TMP_SCRIPT
-        exit 1
+    if [ "$t" = "TestTile" ] && [ "$uname" = "Linux" ]; then
+        echo "TestTile crashes on Linux64, and this script quits before printing *** END TestTile, I do not understand why"
+        FAIL=1
+    else
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
+        set -x
+        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+        set +x
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
     fi
-
     rm ofxTestLog.txt &> /dev/null
+    if [ "$FAIL" != "1" ]; then
 
-    #compare with ImageMagick
+        #compare with ImageMagick
 
-    SEQ="seq $FIRST_FRAME $LAST_FRAME"
-    if [ `uname` = "Darwin" ]; then
-        SEQ="jot - $FIRST_FRAME $LAST_FRAME"
+        SEQ="seq $FIRST_FRAME $LAST_FRAME"
+        if [ "$uname" = "Darwin" ]; then
+            SEQ="jot - $FIRST_FRAME $LAST_FRAME"
+        fi
+
+
+        for i in $($SEQ); do
+            $COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
+            PIXELS_COUNT="$(cat res)"
+            #        rm res
+
+            if [ "$PIXELS_COUNT" != "0" ]; then
+                echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
+                FAIL="1"
+            fi
+            #        rm output$i.$IMAGES_FILE_EXT > /dev/null
+            #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+            if [ "$FAIL" = "1" ]; then
+                cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
+                cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
+                cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
+            fi
+        done
     fi
-
-
-    for i in $($SEQ); do
-        $COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
-        PIXELS_COUNT="$(cat res)"
-        #        rm res
-
-        if [ "$PIXELS_COUNT" != "0" ]; then
-            echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
-            FAIL="1"
-        fi
-        #        rm output$i.$IMAGES_FILE_EXT > /dev/null
-        #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
-        if [ "$FAIL" = "1" ]; then
-            cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
-            cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
-            cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
-        fi
-    done
     if [ "$FAIL" != "1" ]; then
         echo "Test $t passed."
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $t"
         echo "$t : PASS" >> $RESULTS
     else
         echo "Test $t failed."
+        echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $t"
         echo "$t : FAIL" >> $RESULTS
     fi
     FAIL="0"
@@ -396,7 +421,11 @@ done
 
 for x in $CUSTOM_DIRS; do
     cd $x
-    sh script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
+    set -x
+    $TIMEOUT 3600 bash script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
+    set +x
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done
 

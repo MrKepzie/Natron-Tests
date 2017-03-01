@@ -54,3 +54,10 @@ ImageMagick is used internally to count different pixels with the following comm
 
     compare -metric AE reference.jpg output.jpg diff.jpg
 
+Generating test videos
+----------------------
+
+    ffmpeg -f lavfi  -i testsrc=size=512x512 -vframes 2 -vcodec mpeg2video input.avi
+    ffmpeg -f lavfi  -i testsrc=size=512x512 -vframes 2 -vcodec prores_ks -profile:v 4444 input.avi
+    ffmpeg -f lavfi  -i testsrc=size=512x512 -vframes 2 -vcodec dnxhd -profile:v dnxhr_lb out.mov
+    
