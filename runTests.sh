@@ -303,8 +303,8 @@ for t in $TEST_DIRS; do
     cd $t
 
     rm res > /dev/null
-    rm output$i.$IMAGES_FILE_EXT > /dev/null
-    rm comp$i.$IMAGES_FILE_EXT > /dev/null
+    rm output[0-9]*.$IMAGES_FILE_EXT > /dev/null
+    rm comp[0-9]*.$IMAGES_FILE_EXT > /dev/null
 
 
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
