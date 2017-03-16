@@ -309,9 +309,10 @@ uname=$(uname)
 for t in $TEST_DIRS; do
     cd $t
 
-    rm res > /dev/null
-    rm output[0-9]*.$IMAGES_FILE_EXT > /dev/null
-    rm comp[0-9]*.$IMAGES_FILE_EXT > /dev/null
+    FAIL=0
+    rm res > /dev/null || FAIL=0
+    rm output[0-9]*.$IMAGES_FILE_EXT > /dev/null || FAIL=0
+    rm comp[0-9]*.$IMAGES_FILE_EXT > /dev/null || FAIL=0
 
 
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
@@ -375,9 +376,7 @@ for t in $TEST_DIRS; do
         FAIL=1
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
-        set -x
         env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
-        set +x
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
     fi
     rm ofxTestLog.txt &> /dev/null
@@ -392,13 +391,13 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT -scale 10 &> res
+            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT -scale 10 &> res || FAIL=1
             FAILED="$(cat res | grep FAILURE)"
             #        rm res
 
             if [ ! -z "$FAILED" ]; then
                 echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
-                FAIL="1"
+                FAIL=1
             fi
             #        rm output$i.$IMAGES_FILE_EXT > /dev/null
             #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
@@ -429,9 +428,7 @@ done
 for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-    set -x
     $TIMEOUT 3600 bash script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
-    set +x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done
