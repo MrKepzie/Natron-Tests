@@ -376,7 +376,7 @@ for t in $TEST_DIRS; do
     rm ofxTestLog.txt &> /dev/null
     if [ "$FAIL" != "1" ]; then
 
-        #compare with ImageMagick
+        #compare with idiff
 
         SEQ="seq $FIRST_FRAME $LAST_FRAME"
         if [ "$uname" = "Darwin" ]; then
