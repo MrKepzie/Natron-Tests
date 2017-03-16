@@ -385,7 +385,7 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT &> res
+            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT -scale 10 &> res
             FAILED="$(cat res | grep FAILURE)"
             #        rm res
 
