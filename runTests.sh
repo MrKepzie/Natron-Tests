@@ -29,7 +29,7 @@ fi
 if [ $COMPARE"" != "" ]; then
     COMPARE_BIN="$COMPARE"
 else
-    COMPARE_BIN=compare
+    COMPARE_BIN=idiff
 fi
 
 if [ "$FFMPEG" != "" ]; then
@@ -385,12 +385,12 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            $COMPARE_BIN -metric AE -fuzz 20% reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
-            PIXELS_COUNT="$(cat res)"
+            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT &> res
+            FAILED="$(cat res | grep FAILURE)"
             #        rm res
 
-            if [ "$PIXELS_COUNT" != "0" ]; then
-                echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $t"
+            if [ ! -z "$FAILED" ]; then
+                echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
                 FAIL="1"
             fi
             #        rm output$i.$IMAGES_FILE_EXT > /dev/null
