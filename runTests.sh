@@ -380,7 +380,7 @@ for t in $TEST_DIRS; do
         env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
     fi
-    if [ -f "ofxTestLog.txt" ], then
+    if [ -f "ofxTestLog.txt" ]; then
         rm ofxTestLog.txt &> /dev/null
     fi
     if [ "$FAIL" != "1" ]; then
@@ -395,10 +395,11 @@ for t in $TEST_DIRS; do
 
         for i in $($SEQ); do
             $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT -scale 10 &> res || FAIL=1
-            FAILED="$(cat res | grep FAILURE)"
+            ok=0
+            resstatus=$(cat res | grep FAILURE) || ok=1
             #        rm res
 
-            if [ ! -z "$FAILED" ]; then
+            if [ ! -z "$resstatus" ]; then
                 echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
                 FAIL=1
             fi
