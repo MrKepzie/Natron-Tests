@@ -49,7 +49,7 @@ print(blur.size.getValueAtTime(3), file=f1)
 print(blur.size.getValueAtTime(4), file=f1)
 print(blur.size.getValueAtTime(5), file=f1)
 
-availLay = str(blur.getAvailableLayers())
+availLay = str(blur.getAvailableLayers(-1))
 if availLay:
         print ("getAvailableLayers", file=f1)
 
