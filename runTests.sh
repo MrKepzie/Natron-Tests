@@ -380,7 +380,9 @@ for t in $TEST_DIRS; do
         env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
     fi
-    rm ofxTestLog.txt &> /dev/null
+    if [ -f "ofxTestLog.txt" ], then
+        rm ofxTestLog.txt &> /dev/null
+    fi
     if [ "$FAIL" != "1" ]; then
 
         #compare with idiff
