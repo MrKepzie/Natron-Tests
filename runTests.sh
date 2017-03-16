@@ -406,9 +406,9 @@ for t in $TEST_DIRS; do
             #        rm output$i.$IMAGES_FILE_EXT > /dev/null
             #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
             if [ "$FAIL" = "1" ]; then
-                cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT
-                cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT
-                cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT
+                cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT || FAIL=1
+                cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT || FAIL=1
+                cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT || FAIL=1
             fi
         done
     fi
