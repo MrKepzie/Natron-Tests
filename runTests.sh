@@ -303,6 +303,7 @@ TMP_SCRIPT="tmpScript.py"
 WRITER_PLUGINID="fr.inria.openfx.WriteOIIO"
 WRITER_NODE_NAME="__script_write_node__"
 DEFAULT_QUALITY="85"
+IMAGES_FILE_EXT="jpg"
 
 uname=$(uname)
 
