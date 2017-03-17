@@ -280,11 +280,12 @@ RENDERER="$1"
 if [ "$1" = "clean" ]; then
     for t in $TEST_DIRS; do
         cd $t
-        rm *output*.* &> /dev/null
-        rm *comp*.*  &> /dev/null
-        rm *.autosave  &> /dev/null
-        rm *.lock  &> /dev/null
-        rm tmpScript.py  &> /dev/null
+        rm *output*.*  *comp*.*   *.autosave *.lock   tmpScript.py  &> /dev/null || true
+        cd ..
+    done
+    for t in $CUSTOM_DIRS; do
+        cd $t
+        rm *output*.*  *comp*.*   *.autosave *.lock &> /dev/null || true
         cd ..
     done
     exit 0
@@ -394,7 +395,7 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.01 -abs -scale 10 &> res || FAIL=1
+            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.001 -abs -scale 10 &> res || FAIL=1
             resstatus=$(cat res | grep FAILURE)
             ok=$? # output status of previous command
             #        rm res
