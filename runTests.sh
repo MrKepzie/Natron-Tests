@@ -17,7 +17,9 @@
 # along with Natron.  If not, see <http://www.gnu.org/licenses/gpl-2.0.html>
 # ***** END LICENSE BLOCK *****
 
-set -e -u -x
+set -e # Exit immediately if a command exits with a non-zero status.
+set -u # Treat unset variables as an error when substituting.
+set -x # Print commands and their arguments as they are executed.
 
 echo "*** Natron tests"
 echo "Environment:"
@@ -59,8 +61,6 @@ TestWritePNG
 "
 
 TEST_DIRS="
-BayMax
-Spaceship
 TestAdd
 TestAngleBlur
 TestArc
@@ -257,6 +257,8 @@ TestTimeDissolve
 TestVectorToColor
 TestWave
 TestZMask
+BayMax
+Spaceship
 "
 
 if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
@@ -276,7 +278,7 @@ if [ ! -d "$ROOTDIR/BayMax/Robot" ]; then
     tar xvf "$ROOTDIR/Robot.tar.gz" -C "$ROOTDIR/BayMax/"
 fi
 
-RENDERER="$1"
+RENDERER_BIN="$1"
 if [ "$1" = "clean" ]; then
     for t in $TEST_DIRS; do
         cd $t
@@ -378,7 +380,7 @@ for t in $TEST_DIRS; do
         FAIL=1
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
-        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
+        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
     fi
     if [ -f "ofxTestLog.txt" ]; then
@@ -396,9 +398,7 @@ for t in $TEST_DIRS; do
 
         for i in $($SEQ); do
             "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.001 -abs -scale 10 &> res || FAIL=1
-            resstatus=$(cat res | grep FAILURE)
-            ok=$? # output status of previous command
-            #        rm res
+            resstatus=$(grep FAILURE res || true)
 
             if [ ! -z "$resstatus" ]; then
                 echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
@@ -433,7 +433,7 @@ done
 for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-    $TIMEOUT 3600 bash script.sh "$RENDERER" "$FFMPEG_BIN" "$IDIFF_BIN"
+    $TIMEOUT 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done

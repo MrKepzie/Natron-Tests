@@ -1,16 +1,32 @@
-#!/bin/sh
-NATRON_BIN="$1"
+#!/bin/bash
+
+set -e # Exit immediately if a command exits with a non-zero status.
+set -u # Treat unset variables as an error when substituting.
+set -x # Print commands and their arguments as they are executed.
+
+if [ $# != 3 ] || [ ! -x "$1" ] || [ ! -x "$2" ] || [ ! -x "$3" ]; then
+    echo "Usage: $0 <absolute path to NatronRenderer binary> <ffmpeg binary> <idiff binary>"
+    exit 1
+fi
+
+RENDERER_BIN="$1"
 CWD=`pwd`
 NAME=TestPY
 
-if [ "$NATRON_BIN" = "" ]; then
+if [ "$RENDERER_BIN" = "" ] || [ ! -x "$RENDERER_BIN" ]; then
   echo "Can't find NatronRenderer"
   exit 1
 fi
 
-OPTS="--no-settings"
+OPTS=("--no-settings")
 if [ -n "${OFX_PLUGIN_PATH:-}" ]; then
-    OPTS="$OPTS --setting useStdOFXPluginsLocation=False"
+    echo "OFX_PLUGIN_PATH=${OFX_PLUGIN_PATH:-}, setting useStdOFXPluginsLocation=False"
+    OPTS=(${OPTS[@]+"${OPTS[@]}"} "--setting" "useStdOFXPluginsLocation=False")
+fi
+if [ "$uname" = "Msys" ]; then
+    plugin_path="${CWD};${NATRON_PLUGIN_PATH:-}"
+else
+    plugin_path="${CWD}:${NATRON_PLUGIN_PATH:-}"
 fi
 
 rm -f "$CWD"/*output*
@@ -19,7 +35,7 @@ echo "===================$NAME========================"
 for i in "$CWD"/test___*.py; do
   SCRIPT=`echo $i | sed 's/___/ /g;s/.py//g' | awk '{print $2}'`
   if [ "$SCRIPT" != "" ]; then
-    "$NATRON_BIN" $OPTS "$CWD"/test___$SCRIPT.py #> /dev/null 2>&1
+      env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} "$CWD"/test___$SCRIPT.py #> /dev/null 2>&1
     # option -w: ignore whitespace (and windows line endings)
     DIFF1=`diff -w $CWD/test___$SCRIPT-reference.txt $CWD/test___$SCRIPT-output.txt`
     if [ ! -f "$CWD/test___$SCRIPT-output.txt" ]; then
