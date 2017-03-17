@@ -34,9 +34,9 @@ else
 fi
 
 if [ $COMPARE"" != "" ]; then
-    COMPARE_BIN="$COMPARE"
+    IDIFF_BIN="$COMPARE"
 else
-    COMPARE_BIN=idiff
+    IDIFF_BIN=idiff
 fi
 
 if [ "$FFMPEG" != "" ]; then
@@ -394,13 +394,13 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            "$COMPARE_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.01 -scale 10 &> res || FAIL=1
-            ok=0
-            resstatus=$(cat res | grep FAILURE) || ok=1
+            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.01 -abs -scale 10 &> res || FAIL=1
+            resstatus=$(cat res | grep FAILURE)
+            ok=$? # output status of previous command
             #        rm res
-            echo $(cat res)
+
             if [ ! -z "$resstatus" ]; then
-                echo "WARNING: unit test failed for frame $i in $t"
+                echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
                 FAIL=1
             fi
             #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
@@ -432,7 +432,7 @@ done
 for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-    $TIMEOUT 3600 bash script.sh "$RENDERER" "$FFMPEG_BIN" "$COMPARE_BIN"
+    $TIMEOUT 3600 bash script.sh "$RENDERER" "$FFMPEG_BIN" "$IDIFF_BIN"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done
