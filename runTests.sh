@@ -33,13 +33,13 @@ else
     TIMEOUT="timeout"
 fi
 
-if [ $COMPARE"" != "" ]; then
+if [ "${COMPARE:-}" != "" ]; then
     IDIFF_BIN="$COMPARE"
 else
     IDIFF_BIN=idiff
 fi
 
-if [ "$FFMPEG" != "" ]; then
+if [ "${FFMPEG:-}" != "" ]; then
     FFMPEG_BIN="$FFMPEG"
 else
     FFMPEG_BIN=ffmpeg
