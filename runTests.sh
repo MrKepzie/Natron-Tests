@@ -394,13 +394,13 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT -scale 10 &> res || FAIL=1
+            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT -fail 0.01 -scale 10 &> res || FAIL=1
             ok=0
             resstatus=$(cat res | grep FAILURE) || ok=1
             #        rm res
-
+            echo $(cat res)
             if [ ! -z "$resstatus" ]; then
-                echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
+                echo "WARNING: unit test failed for frame $i in $t"
                 FAIL=1
             fi
             #        rm output$i.$IMAGES_FILE_EXT > /dev/null
