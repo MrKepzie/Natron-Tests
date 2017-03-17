@@ -47,15 +47,22 @@ for x in $FORMATS/*; do
   fi
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
   for i in $($SEQ); do
-    "$COMPARE_BIN" -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res
-    PIXELS_COUNT="$(cat res)"
-    if [ "$PIXELS_COUNT" != "0" ]; then
-      echo "WARNING: $PIXELS_COUNT pixel(s) different for frame $i in $x"
-      TEST_FAIL=$((TEST_FAIL+1))
-    else
-      echo "Frame $i passed for $x"
-      TEST_PASS=$((TEST_PASS+1))
-    fi
+      FAIL=0
+      "$COMPARE_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -scale 10 &> res
+      if [ $? != 0 ]; then
+	  FAIL=1
+      fi
+      resstatus=$(cat res | grep FAILURE)
+      
+      #        rm res
+      
+      if [ "$FAIL" != 0 ] || [ ! -z "$resstatus" ]; then
+          echo "WARNING: unit test failed for frame $i in $x: $(cat res)"
+	  TEST_FAIL=$((TEST_FAIL+1))
+      else
+          echo "PASSED: unit test passed for frame $i in $x: $(cat res)"
+	  TEST_PASS=$((TEST_PASS+1))
+      fi
   done
   if [ "$TEST_FAIL" = 0 ] && [ "$TEST_PASS" = "$LAST_FRAME" ]; then
       echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"

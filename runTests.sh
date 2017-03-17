@@ -394,7 +394,7 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            $COMPARE_BIN reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT -o comp$i.$IMAGES_FILE_EXT -fail 0.01 -scale 10 &> res || FAIL=1
+            "$COMPARE_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.01 -scale 10 &> res || FAIL=1
             ok=0
             resstatus=$(cat res | grep FAILURE) || ok=1
             #        rm res
@@ -403,12 +403,12 @@ for t in $TEST_DIRS; do
                 echo "WARNING: unit test failed for frame $i in $t"
                 FAIL=1
             fi
-            #        rm output$i.$IMAGES_FILE_EXT > /dev/null
-            #        rm comp$i.$IMAGES_FILE_EXT > /dev/null
+            #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
+            #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
             if [ "$FAIL" = "1" ]; then
-                cp reference$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-reference$i.$IMAGES_FILE_EXT || FAIL=1
-                cp output$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-output$i.$IMAGES_FILE_EXT || FAIL=1
-                cp comp$i.$IMAGES_FILE_EXT "$FAILED_DIR"/$t-comp$i.$IMAGES_FILE_EXT || FAIL=1
+                cp "reference${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-reference${i}.$IMAGES_FILE_EXT" || FAIL=1
+                cp "output${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-output${i}.$IMAGES_FILE_EXT" || FAIL=1
+                cp "comp${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-comp${i}.$IMAGES_FILE_EXT" || FAIL=1
             fi
         done
     fi
