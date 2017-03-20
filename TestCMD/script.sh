@@ -1,45 +1,89 @@
-#!/bin/sh
-NATRON_BIN="$1"
-CWD=`pwd`
+#!/bin/bash
+
+set -e # Exit immediately if a command exits with a non-zero status.
+set -u # Treat unset variables as an error when substituting.
+#set -x # Print commands and their arguments as they are executed.
+
+if [ $# != 3 ]; then
+    echo "Usage: $0 <absolute path to NatronRenderer binary> <ffmpeg binary> <idiff binary>"
+    exit 1
+fi
+
+if ! type "$1" > /dev/null; then
+    echo "Error: $1 is not executable or is not in PATH"
+    exit 1
+fi
+if ! type "$2" > /dev/null; then
+    echo "Error: $2 is not executable or is not in PATH"
+    exit 1
+fi
+if ! type "$3" > /dev/null; then
+    echo "Error: $3 is not executable or is not in PATH"
+    exit 1
+fi
+
+RENDERER_BIN="$1"
+FFMPEG_BIN="$2"
+IDIFF_BIN="$3"
+CWD="$PWD"
 NAME=TestCMD
+uname="$(uname)"
 IMAGES_FILE_EXT=jpg
 
-if [ "$NATRON_BIN" = "" ]; then
-  echo "Can't find NatronRenderer"
-  exit 1
+if [ "$uname" = "Darwin" ]; then
+    # timeout is available in GNU coreutils:
+    # sudo port install coreutils
+    # or
+    # brew install coreutils
+    TIMEOUT="gtimeout"
+else
+    TIMEOUT="timeout"
 fi
-if [ "$COMPARE_BIN" = "" ]; then
-  COMPARE_BIN=compare
-fi
-OPTS="--no-settings"
+
+OPTS=("--no-settings")
 if [ -n "${OFX_PLUGIN_PATH:-}" ]; then
-    OPTS="$OPTS --setting useStdOFXPluginsLocation=False"
+    echo "OFX_PLUGIN_PATH=${OFX_PLUGIN_PATH:-}, setting useStdOFXPluginsLocation=False"
+    OPTS=(${OPTS[@]+"${OPTS[@]}"} "--setting" "useStdOFXPluginsLocation=False")
+fi
+if [ "$uname" = "Msys" ]; then
+    plugin_path="${CWD};${NATRON_PLUGIN_PATH:-}"
+else
+    plugin_path="${CWD}:${NATRON_PLUGIN_PATH:-}"
 fi
 
 rm -f "$CWD"/{output*,comp*,res*}
 
 echo "===================$NAME========================"
-"$NATRON_BIN" $OPTS -i ReadOIIO1 "$CWD"/input1.png -w WriteOIIO1 "$CWD"/output1.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp #> /dev/null 2>&1
-"$NATRON_BIN" $OPTS -i ReadOIIO2 "$CWD"/input2.png -w WriteOIIO2 "$CWD"/output2.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp #> /dev/null 2>&1 
+env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -i ReadOIIO1 "$CWD"/input1.png -w WriteOIIO1 "$CWD"/output1.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp #> /dev/null 2>&1
+env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -i ReadOIIO2 "$CWD"/input2.png -w WriteOIIO2 "$CWD"/output2.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp #> /dev/null 2>&1 
 
 for i in 1 2; do
-  "$COMPARE_BIN" -metric AE reference$i.$IMAGES_FILE_EXT output$i.$IMAGES_FILE_EXT comp$i.$IMAGES_FILE_EXT &> res$i
-  PIXELS_COUNT="$(cat res$i)"
-  if [ "$PIXELS_COUNT" != "0" ]; then
-    echo "WARNING: $PIXELS_COUNT pixel(s) different for test $i in TestCMD"
-  else
-    echo "Test $i passed for TestCMD"
-  fi
+    FAIL=0
+    "$IDIFF_BIN" "reference$i.$IMAGES_FILE_EXT" "output$i.$IMAGES_FILE_EXT" -o "comp$i.$IMAGES_FILE_EXT" -fail 0.001 -abs -scale 10 &> res || FAIL=1
+    resstatus=$(grep FAILURE res || true)
+    x="$NAME/$i"
+    if [ "$FAIL" != 0 ] || [ ! -z "$resstatus" ]; then
+	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x: $(cat res)"
+	echo "$x : FAIL" >> $RESULTS
+    else
+	echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
+	echo "$x : PASS" >> $RESULTS
+    fi
 done
 #rm -f "$CWD"/{output*,comp*,res*}
 exit
 
-"$NATRON_BIN" $OPTS -c "qualityValue=10" -c "app.saveProject(\"$CWD/output.ntp\")" -w DefaultWrite1 -w DefaultWrite2 -o1 "$CWD"/output5.jpg 1-1 -o2 "$CWD"/output6.jpg 1-1 "$CWD"/script02.py #> /dev/null 2>&1
+i=3
+x="$NAME/$i"
+
+env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -c "qualityValue=10" -c "app.saveProject(\"$CWD/output.ntp\")" -w DefaultWrite1 -w DefaultWrite2 -o1 "$CWD"/output5.jpg 1-1 -o2 "$CWD"/output6.jpg 1-1 "$CWD"/script02.py #> /dev/null 2>&1
 
 if [ ! -f "$CWD/output3.jpg" ] && [ ! -f "$CWD/output4.jpg" ] && [ ! -f "$CWD/output5.jpg" ] && [ ! -f "$CWD/output6.jpg" ] && [ ! -f "$CWD/output.ntp" ]; then
-  echo "WARNING: TestCMD failed test 2"
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
+      echo "$x : PASS" >> $RESULTS
 else
-  echo "TestCMD passed test 2"
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x"
+      echo "$x : FAIL" >> $RESULTS
 fi
 #rm -f "$CWD"/output*
 

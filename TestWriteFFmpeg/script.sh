@@ -2,24 +2,38 @@
 
 set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error when substituting.
-set -x # Print commands and their arguments as they are executed.
+#set -x # Print commands and their arguments as they are executed.
 
-if [ $# != 3 ] || [ ! -x "$1" ] || [ ! -x "$2" ] || [ ! -x "$3" ]; then
+if [ $# != 3 ]; then
     echo "Usage: $0 <absolute path to NatronRenderer binary> <ffmpeg binary> <idiff binary>"
+    exit 1
+fi
+
+if ! type "$1" > /dev/null; then
+    echo "Error: $1 is not executable or is not in PATH"
+    exit 1
+fi
+if ! type "$2" > /dev/null; then
+    echo "Error: $2 is not executable or is not in PATH"
+    exit 1
+fi
+if ! type "$3" > /dev/null; then
+    echo "Error: $3 is not executable or is not in PATH"
     exit 1
 fi
 
 RENDERER_BIN="$1"
 FFMPEG_BIN="$2"
 IDIFF_BIN="$3"
-CWD=`pwd`
+CWD="$PWD"
 NAME=TestWriteFFMpeg
+uname="$(uname)"
 IMAGES_FILE_EXT=jpg
 FIRST_FRAME=1
 LAST_FRAME=9
 FORMATS="$CWD/formats"
 
-if [ "$(uname -s)" = "Darwin" ]; then
+if [ "$uname" = "Darwin" ]; then
     # timeout is available in GNU coreutils:
     # sudo port install coreutils
     # or
@@ -27,11 +41,6 @@ if [ "$(uname -s)" = "Darwin" ]; then
     TIMEOUT="gtimeout"
 else
     TIMEOUT="timeout"
-fi
-
-if [ "$RENDERER_BIN" = "" ] && [ "$FFMPEG_BIN" = "" ] && [ "$IDIFF_BIN" = "" ]; then
-  echo "Can't find required apps"
-  exit 1
 fi
 
 OPTS=("--no-settings")
@@ -69,10 +78,7 @@ for x in $FORMATS/*; do
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
   for i in $($SEQ); do
       FAIL=0
-      "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.001 -abs -scale 10 &> res
-      if [ $? != 0 ]; then
-	  FAIL=1
-      fi
+      "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.001 -abs -scale 10 &> res || FAIL=1
       resstatus=$(grep FAILURE res || true)
       if [ "$FAIL" != 0 ] || [ ! -z "$resstatus" ]; then
           echo "WARNING: unit test failed for frame $i in $x: $(cat res)"
@@ -84,11 +90,11 @@ for x in $FORMATS/*; do
   done
   if [ "$TEST_FAIL" = 0 ] && [ "$TEST_PASS" = "$LAST_FRAME" ]; then
       echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
-    echo "$x : PASS" >> $RESULTS
+      echo "$x : PASS" >> $RESULTS
   else
-    echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x"
-    echo "$x : FAIL" >> $RESULTS
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x"
+      echo "$x : FAIL" >> $RESULTS
   fi
-#  rm -f output* res comp*
+  #  rm -f output* res comp*
   cd ..
 done

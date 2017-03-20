@@ -308,7 +308,7 @@ WRITER_NODE_NAME="__script_write_node__"
 DEFAULT_QUALITY="85"
 IMAGES_FILE_EXT="jpg"
 
-uname=$(uname)
+uname="$(uname)"
 
 for t in $TEST_DIRS; do
     cd $t
@@ -326,7 +326,7 @@ for t in $TEST_DIRS; do
         exit 1  
     fi
     
-    CWD=${PWD}
+    CWD="$PWD"
     CONF="$(cat conf)"
     NATRONPROJ=$(echo $CONF | awk '{print $1;}')
     NATRONPROJ=$CWD/$NATRONPROJ
