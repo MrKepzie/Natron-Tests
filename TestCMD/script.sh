@@ -61,10 +61,13 @@ env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+
 
 for i in 1 2; do
     FAIL=0
-            # idiff's "WARNING" gives a non-zero return status
+    # idiff's "WARNING" gives a non-zero return status
     "$IDIFF_BIN" "reference$i.$IMAGES_FILE_EXT" "output$i.$IMAGES_FILE_EXT" -o "comp$i.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
     x="$NAME/$i"
-    if [ "$FAIL" != 0 ] || [ ! -z "$(grep FAILURE res || true)" ]; then
+    if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
+	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x"
+	echo "$x : FAIL" >> $RESULTS
+    elif [ ! -z "$(grep FAILURE res || true)" ]; then
 	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x:"
 	cat res
 	echo "$x : FAIL" >> $RESULTS

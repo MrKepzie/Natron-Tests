@@ -64,7 +64,10 @@ for i in a8 a16 g8 g16 ga8 ga16 rgb8 rgb16 rgba8 rgba16; do
     # idiff's "WARNING" gives a non-zero return status
     "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
     x="$NAME/$i"
-    if [ "$FAIL" != 0 ] || [ ! -z "$(grep FAILURE res || true)" ]; then
+    if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
+	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x"
+	echo "$x : FAIL" >> $RESULTS
+    elif [ ! -z "$(grep FAILURE res || true)" ]; then
 	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x:"
 	cat res
 	echo "$x : FAIL" >> $RESULTS
