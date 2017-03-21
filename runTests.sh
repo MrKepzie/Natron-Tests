@@ -382,7 +382,11 @@ for t in $TEST_DIRS; do
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
         env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
-        echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
+        if [ "$FAIL" != "1" ]; then
+            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
+        else
+            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t (render failed)"
+        fi
     fi
     if [ -f "ofxTestLog.txt" ]; then
         rm ofxTestLog.txt &> /dev/null
@@ -399,11 +403,15 @@ for t in $TEST_DIRS; do
 
         for i in $($SEQ); do
             "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || FAIL=1
-            resstatus=$(grep FAILURE res || true)
+            if [ "$FAIL" = "1" ]; then
+                echo "WARNING: idiff failed for frame $i in $t: $(cat res)"
+            else
+                resstatus=$(grep FAILURE res || true)
 
-            if [ ! -z "$resstatus" ]; then
-                echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
-                FAIL=1
+                if [ ! -z "$resstatus" ]; then
+                    echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
+                    FAIL=1
+                fi
             fi
             #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
             #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
@@ -415,11 +423,9 @@ for t in $TEST_DIRS; do
         done
     fi
     if [ "$FAIL" != "1" ]; then
-        echo "Test $t passed."
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $t"
         echo "$t : PASS" >> $RESULTS
     else
-        echo "Test $t failed."
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $t"
         echo "$t : FAIL" >> $RESULTS
     fi
@@ -433,6 +439,7 @@ done
 
 for x in $CUSTOM_DIRS; do
     cd $x
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$x========================"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
     $TIMEOUT 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
