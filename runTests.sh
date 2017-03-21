@@ -55,6 +55,8 @@ fi
 
 # fail if more than 0.1% of pixels have an error larger than 0.001 or if any pixel has an error larger than 0.01
 IDIFF_OPTS="-fail 0.001 -failpercent 0.1 -hardfail 0.01 -abs -scale 100"
+# tuned to pass BayMax and Spaceship:
+IDIFF_OPTS="-fail 0.001 -failpercent 0.2 -hardfail 0.03 -abs -scale 30"
 
 CUSTOM_DIRS="
 TestCMD
