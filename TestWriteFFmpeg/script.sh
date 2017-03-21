@@ -80,13 +80,19 @@ for x in $FORMATS/*; do
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
   for i in $($SEQ); do
       FAIL=0
-      "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || FAIL=1
-      resstatus=$(grep FAILURE res || true)
-      if [ "$FAIL" != 0 ] || [ ! -z "$resstatus" ]; then
-          echo "WARNING: unit test failed for frame $i in $x: $(cat res)"
+      # idiff's "WARNING" gives a non-zero return status
+      "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
+      if [ "$FAIL" != 0 ] || [ ! -z "$(grep FAILURE res || true)" ]; then
+          echo "WARNING: unit test failed for frame $i in $x:"
+	  cat res
 	  TEST_FAIL=$((TEST_FAIL+1))
+      elif [ ! -z "$(grep WARNING res || true)" ]; then
+          echo "WARNING: unit test warning for frame $i in $t:"
+          cat res
+	  TEST_PASS=$((TEST_PASS+1))
       else
-          echo "PASSED: unit test passed for frame $i in $x: $(cat res)"
+          echo "PASSED: unit test passed for frame $i in $x:"
+	  cat res
 	  TEST_PASS=$((TEST_PASS+1))
       fi
   done

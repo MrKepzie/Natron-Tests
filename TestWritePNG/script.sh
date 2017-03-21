@@ -61,12 +61,17 @@ echo "===================$NAME========================"
 env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp #> /dev/null 2>&1
 for i in a8 a16 g8 g16 ga8 ga16 rgb8 rgb16 rgba8 rgba16; do
     FAIL=0
-    "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || FAIL=1
-    resstatus=$(grep FAILURE res || true)
+    # idiff's "WARNING" gives a non-zero return status
+    "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
     x="$NAME/$i"
-    if [ "$FAIL" != 0 ] || [ ! -z "$resstatus" ]; then
-	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x: $(cat res)"
+    if [ "$FAIL" != 0 ] || [ ! -z "$(grep FAILURE res || true)" ]; then
+	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x:"
+	cat res
 	echo "$x : FAIL" >> $RESULTS
+    elif [ ! -z "$(grep WARNING res || true)" ]; then
+	echo "$(date '+%Y-%m-%d %H:%M:%S') *** WARN $x:"
+	cat res
+	echo "$x : PASS" >> $RESULTS
     else
 	echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
 	echo "$x : PASS" >> $RESULTS
