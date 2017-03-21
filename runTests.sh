@@ -404,16 +404,16 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || FAIL=1
-            if [ "$FAIL" = "1" ]; then
-                echo "WARNING: idiff failed for frame $i in $t: $(cat res)"
-            else
-                resstatus=$(grep FAILURE res || true)
+            # idiff's "WARNING" gives a non-zero return status
+            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
 
-                if [ ! -z "$resstatus" ]; then
-                    echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
-                    FAIL=1
-                fi
+            if [ ! -z "$(grep FAILURE res || true)" ]; then
+                echo "WARNING: unit test failed for frame $i in $t:"
+                cat res
+                FAIL=1
+            elif [ ! -z "$(grep WARNING res || true)" ]; then
+                echo "WARNING: unit test warning for frame $i in $t:"
+                cat res
             fi
             #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
             #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
