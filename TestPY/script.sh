@@ -48,29 +48,35 @@ else
     plugin_path="${CWD}:${NATRON_PLUGIN_PATH:-}"
 fi
 
-rm -f "$CWD"/*output*
+rm -f *output* res &> /dev/null || true
 
 echo "===================$NAME========================"
 for i in "$CWD"/test___*.py; do
-  SCRIPT=`echo $i | sed 's/___/ /g;s/.py//g' | awk '{print $2}'`
-  if [ "$SCRIPT" != "" ]; then
-      env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} "$CWD"/test___$SCRIPT.py #> /dev/null 2>&1
-      x="$NAME/$SCRIPT"
-    # option -w: ignore whitespace (and windows line endings)
-    DIFF1="$(diff -w $CWD/test___$SCRIPT-reference.txt $CWD/test___$SCRIPT-output.txt || true)"
-    if [ ! -f "$CWD/test___$SCRIPT-output.txt" ]; then
-      DIFF1="Failed (no output)"
+    SCRIPT=`echo $i | sed 's/___/ /g;s/.py//g' | awk '{print $2}'`
+    if [ "$SCRIPT" != "" ]; then
+	FAIL=0
+	DIFF1=
+	env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} "$CWD"/test___$SCRIPT.py &> res || FAIL=1
+	x="$NAME/$SCRIPT"
+	# option -w: ignore whitespace (and windows line endings)
+	if [ ! -f "$CWD/test___$SCRIPT-output.txt" ]; then
+	    DIFF1="Failed (no output)"
+	else
+	    DIFF1="$(diff -w $CWD/test___$SCRIPT-reference.txt $CWD/test___$SCRIPT-output.txt)"
+	fi
+	if [ "$FAIL" != 0 ]; then
+	    DIFF1="$DIFF1 $(cat res)"
+	fi
+	if [ "$DIFF1" != "" ]; then
+	    echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x: $DIFF1"
+	    echo "$x : FAIL" >> $RESULTS
+	    echo "$DIFF1"
+	else
+	    echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
+	    echo "$x : PASS" >> $RESULTS
+	fi
     fi
-    if [ "$DIFF1" != "" ]; then
-	echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $x: $DIFF1"
-	echo "$x : FAIL" >> $RESULTS
-	echo "$DIFF1"
-    else
-	echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
-	echo "$x : PASS" >> $RESULTS
-    fi
-fi
 done
 
-rm -f "$CWD"/*output*
+rm -f *output* res &> /dev/null || true
 

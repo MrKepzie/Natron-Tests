@@ -51,7 +51,7 @@ print(blur.size.getValueAtTime(5), file=f1)
 
 if (NatronEngine.natron.getNatronVersionMajor() == 2 and NatronEngine.natron.getNatronVersionMinor() >= 3) or NatronEngine.natron.getNatronVersionMajor() >= 3:
     availLay = str(blur.getAvailableLayers(-1))
-else
+else:
     availLay = str(blur.getAvailableLayers()
 
 if availLay:
