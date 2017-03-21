@@ -25,6 +25,8 @@ fi
 RENDERER_BIN="$1"
 FFMPEG_BIN="$2"
 IDIFF_BIN="$3"
+# fail if more than 0.1% of pixels have an error larger than 0.001 or if any pixel has an error larger than 0.01
+IDIFF_OPTS="-fail 0.001 -failpercent 0.1 -hardfail 0.01 -abs -scale 100"
 CWD="$PWD"
 NAME=TestWritePNG
 uname="$(uname)"
@@ -59,7 +61,7 @@ echo "===================$NAME========================"
 env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp #> /dev/null 2>&1
 for i in a8 a16 g8 g16 ga8 ga16 rgb8 rgb16 rgba8 rgba16; do
     FAIL=0
-    "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.001 -abs -scale 10 &> res || FAIL=1
+    "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || FAIL=1
     resstatus=$(grep FAILURE res || true)
     x="$NAME/$i"
     if [ "$FAIL" != 0 ] || [ ! -z "$resstatus" ]; then

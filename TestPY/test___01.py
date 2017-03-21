@@ -54,6 +54,7 @@ if (NatronEngine.natron.getNatronVersionMajor() == 2 and NatronEngine.natron.get
 else
     availLay = blur.getAvailableLayers()
 
+
 if len(availLay) > 0:
         print ("getAvailableLayers", file=f1)
 

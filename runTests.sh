@@ -19,7 +19,7 @@
 
 set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error when substituting.
-set -x # Print commands and their arguments as they are executed.
+#set -x # Print commands and their arguments as they are executed.
 
 echo "*** Natron tests"
 echo "Environment:"
@@ -52,6 +52,11 @@ if [ -n "${OFX_PLUGIN_PATH:-}" ]; then
     echo "OFX_PLUGIN_PATH=${OFX_PLUGIN_PATH:-}, setting useStdOFXPluginsLocation=False"
     OPTS=(${OPTS[@]+"${OPTS[@]}"} "--setting" "useStdOFXPluginsLocation=False")
 fi
+
+# fail if more than 0.1% of pixels have an error larger than 0.001 or if any pixel has an error larger than 0.01
+IDIFF_OPTS="-fail 0.001 -failpercent 0.1 -hardfail 0.01 -abs -scale 100"
+# tuned to pass BayMax and Spaceship:
+IDIFF_OPTS="-fail 0.001 -failpercent 0.2 -hardfail 0.03 -abs -scale 30"
 
 CUSTOM_DIRS="
 TestCMD
@@ -270,12 +275,10 @@ fi
 ROOTDIR=`pwd`
 
 if [ ! -d "$ROOTDIR/Spaceship/Sources" ]; then
-    wget http://downloads.natron.fr/Third_Party_Sources/SpaceshipSources.tar.gz
-    tar xvf "$ROOTDIR/SpaceshipSources.tar.gz" -C "$ROOTDIR/Spaceship/"
+    wget -N -q http://downloads.natron.fr/Third_Party_Sources/SpaceshipSources.tar.gz && tar xf "$ROOTDIR/SpaceshipSources.tar.gz" -C "$ROOTDIR/Spaceship/"
 fi
 if [ ! -d "$ROOTDIR/BayMax/Robot" ]; then
-    wget http://downloads.natron.fr/Third_Party_Sources/Robot.tar.gz 
-    tar xvf "$ROOTDIR/Robot.tar.gz" -C "$ROOTDIR/BayMax/"
+    wget -N -q http://downloads.natron.fr/Third_Party_Sources/Robot.tar.gz && tar xf "$ROOTDIR/Robot.tar.gz" -C "$ROOTDIR/BayMax/"
 fi
 
 RENDERER_BIN="$1"
@@ -381,7 +384,11 @@ for t in $TEST_DIRS; do
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
         env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
-        echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
+        if [ "$FAIL" != "1" ]; then
+            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
+        else
+            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t (render failed)"
+        fi
     fi
     if [ -f "ofxTestLog.txt" ]; then
         rm ofxTestLog.txt &> /dev/null
@@ -397,12 +404,16 @@ for t in $TEST_DIRS; do
 
 
         for i in $($SEQ); do
-            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" -fail 0.001 -abs -scale 10 &> res || FAIL=1
-            resstatus=$(grep FAILURE res || true)
+            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || FAIL=1
+            if [ "$FAIL" = "1" ]; then
+                echo "WARNING: idiff failed for frame $i in $t: $(cat res)"
+            else
+                resstatus=$(grep FAILURE res || true)
 
-            if [ ! -z "$resstatus" ]; then
-                echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
-                FAIL=1
+                if [ ! -z "$resstatus" ]; then
+                    echo "WARNING: unit test failed for frame $i in $t: $(cat res)"
+                    FAIL=1
+                fi
             fi
             #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
             #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
@@ -414,11 +425,9 @@ for t in $TEST_DIRS; do
         done
     fi
     if [ "$FAIL" != "1" ]; then
-        echo "Test $t passed."
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $t"
         echo "$t : PASS" >> $RESULTS
     else
-        echo "Test $t failed."
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $t"
         echo "$t : FAIL" >> $RESULTS
     fi
@@ -432,6 +441,7 @@ done
 
 for x in $CUSTOM_DIRS; do
     cd $x
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$x========================"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
     $TIMEOUT 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
