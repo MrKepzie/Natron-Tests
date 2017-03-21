@@ -50,11 +50,11 @@ print(blur.size.getValueAtTime(4), file=f1)
 print(blur.size.getValueAtTime(5), file=f1)
 
 if (NatronEngine.natron.getNatronVersionMajor() == 2 and NatronEngine.natron.getNatronVersionMinor() >= 3) or NatronEngine.natron.getNatronVersionMajor() >= 3:
-    availLay = str(blur.getAvailableLayers(-1))
+    availLay = blur.getAvailableLayers(-1)
 else
-    availLay = str(blur.getAvailableLayers()
+    availLay = blur.getAvailableLayers()
 
-if availLay:
+if len(availLay) > 0:
         print ("getAvailableLayers", file=f1)
 
 if blur.addUserPlane("MyLayer",["R", "G", "B", "A"]):
