@@ -26,7 +26,7 @@
 				<item_version>0</item_version>
 				<item class_id="4" tracking_level="0" version="0">
 					<first>1</first>
-					<second>ReadPNG1</second>
+					<second>Read1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>1</KnobsAge>
@@ -148,6 +148,23 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
+				<Name>clipToRoD</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>1</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
 				<Name>ocioInputSpace</Name>
 				<Type>String</Type>
 				<Dimension>1</Dimension>
@@ -224,40 +241,6 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
-				<Name>ParamExistingInstance</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<Default>0</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>clipToRoD</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<Default>1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
 				<Name>NatronOfxParamStringSublabelName</Name>
 				<Type>String</Type>
 				<Dimension>1</Dimension>
@@ -276,6 +259,23 @@
 					<count>0</count>
 					<item_version>0</item_version>
 				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>ParamExistingInstance</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
@@ -392,7 +392,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>Source</first>
-					<second>ReadPNG1</second>
+					<second>Read1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>33</KnobsAge>
@@ -413,8 +413,8 @@
 			<CacheID>WriteOIIO1</CacheID>
 		</item>
 		<item>
-			<Plugin_label>ReadPNG1</Plugin_label>
-			<Plugin_script_name>ReadPNG1</Plugin_script_name>
+			<Plugin_label>ReadOIIO1</Plugin_label>
+			<Plugin_script_name>Read1</Plugin_script_name>
 			<Plugin_id>fr.inria.built-in.Read</Plugin_id>
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
@@ -430,13 +430,13 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
+					<Value>2</Value>
 					<Default>0</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
 				</item>
-				<ChoiceLabel>fr.inria.openfx.ReadPNG</ChoiceLabel>
+				<ChoiceLabel>fr.inria.openfx.ReadOIIO</ChoiceLabel>
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
@@ -448,7 +448,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>fr.inria.openfx.ReadPNG</Value>
+					<Value>fr.inria.openfx.ReadOIIO</Value>
 					<Default></Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -500,57 +500,6 @@
 					<count>0</count>
 					<item_version>0</item_version>
 				</StringsAnimation>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>firstFrame</Name>
-				<Type>Int</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<Default>1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>lastFrame</Name>
-				<Type>Int</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<Default>1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>startingTime</Name>
-				<Type>Int</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<Default>1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
@@ -649,27 +598,6 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
-				<Name>NatronOfxParamStringSublabelName</Name>
-				<Type>String</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>input.png</Value>
-					<Default></Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<StringsAnimation>
-					<count>0</count>
-					<item_version>0</item_version>
-				</StringsAnimation>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
 				<Name>ParamExistingInstance</Name>
 				<Type>Bool</Type>
 				<Dimension>1</Dimension>
@@ -696,7 +624,7 @@
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
 					<Value>sRGB</Value>
-					<Default>sRGB</Default>
+					<Default>scene_linear</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -728,11 +656,88 @@
 				</StringsAnimation>
 				<UserKnob>0</UserKnob>
 			</item>
+			<item>
+				<Name>NatronOfxParamStringSublabelName</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>input.png</Value>
+					<Default></Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputLayerChoice</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>Y</Value>
+					<Default></Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>edgePixels</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>Auto</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>offsetNegativeDispWindow</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>0</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>1</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
 			<Inputs_map>
 				<count>0</count>
 				<item_version>0</item_version>
 			</Inputs_map>
-			<KnobsAge>81</KnobsAge>
+			<KnobsAge>91</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -747,7 +752,7 @@
 				<count>0</count>
 				<item_version>0</item_version>
 			</UserComponents>
-			<CacheID>ReadOIIO1</CacheID>
+			<CacheID>Read1</CacheID>
 		</item>
 	</NodesCollection>
 	<ProjectKnobsCount>4</ProjectKnobsCount>
@@ -760,7 +765,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Applications/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestImagePNG&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Applications/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestImagePNGOIIO&lt;/Value&gt;</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -795,7 +800,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>1</Value>
+			<Value>0</Value>
 			<Default>1</Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -821,7 +826,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mer. mars 22 14:45:06 2017</Value>
+			<Value>mer. mars 22 17:08:41 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -860,8 +865,8 @@
 		</item>
 		<item>
 			<Name>WriteOIIO1</Name>
-			<X_position>8.44125000000000000e+02</X_position>
-			<Y_position>3.13750000000000000e+02</Y_position>
+			<X_position>8.48125000000000000e+02</X_position>
+			<Y_position>3.09750000000000000e+02</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>7.49996185e-01</r>
 			<g>7.49996185e-01</g>
@@ -873,9 +878,9 @@
 			<Children>0</Children>
 		</item>
 		<item>
-			<Name>ReadPNG1</Name>
-			<X_position>6.83125000000000000e+02</X_position>
-			<Y_position>1.65000000000000000e+02</Y_position>
+			<Name>Read1</Name>
+			<X_position>7.23000000000000000e+02</X_position>
+			<Y_position>1.02000000000000000e+02</Y_position>
 			<Preview_enabled>1</Preview_enabled>
 			<r>6.99992359e-01</r>
 			<g>6.99992359e-01</g>
@@ -892,11 +897,11 @@
 		<Window class_id="14" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="15" tracking_level="1" version="1" object_id="_0">
-				<Sizes>1396 752</Sizes>
+				<Sizes>1222 658</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>648 647</Sizes>
+					<Sizes>576 576</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="16" tracking_level="1" version="5" object_id="_2">
@@ -912,12 +917,11 @@
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child object_id="_3">
 						<Tabs>
-							<count>4</count>
+							<count>3</count>
 							<item_version>0</item_version>
 							<item>nodeGraph</item>
 							<item>curveEditor</item>
 							<item>dopeSheetEditor</item>
-							<item>progress</item>
 						</Tabs>
 						<Index>0</Index>
 						<Name>pane3</Name>
@@ -937,10 +941,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>282</x>
-			<y>279</y>
-			<w>2184</w>
-			<h>1298</h>
+			<x>92</x>
+			<y>23</y>
+			<w>1916</w>
+			<h>1155</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="18" tracking_level="0" version="0">
@@ -949,9 +953,9 @@
 		<item class_id="19" tracking_level="0" version="0">
 			<first>Viewer1</first>
 			<second class_id="20" tracking_level="0" version="14">
-				<zoomLeft>-5.86467844663818028e+00</zoomLeft>
-				<zoomBottom>1.13141520230998879e+02</zoomBottom>
-				<zoomFactor>3.43113318861448224e+00</zoomFactor>
+				<zoomLeft>-2.88112539229554045e+02</zoomLeft>
+				<zoomBottom>1.17817912205594553e+01</zoomBottom>
+				<zoomFactor>1.23267721183062973e+00</zoomFactor>
 				<UserRoIEnabled>0</UserRoIEnabled>
 				<UserRoI class_id="21" tracking_level="0" version="0">
 					<Left>8.53333333333333286e+01</Left>
@@ -971,7 +975,7 @@
 				<MipMapLevel>0</MipMapLevel>
 				<ZoomOrPanSinceFit>1</ZoomOrPanSinceFit>
 				<CompositingOP>0</CompositingOP>
-				<LeftBound>1</LeftBound>
+				<LeftBound>0</LeftBound>
 				<RightBound>1</RightBound>
 				<LeftToolbarVisible>1</LeftToolbarVisible>
 				<RightToolbarVisible>1</RightToolbarVisible>
@@ -985,7 +989,7 @@
 				<Fps>2.40000000000000000e+01</Fps>
 				<FpsLocked>1</FpsLocked>
 				<aInput>0</aInput>
-				<bInput>1</bInput>
+				<bInput>0</bInput>
 				<fullFrame>0</fullFrame>
 			</second>
 		</item>
@@ -997,8 +1001,8 @@
 	<OpenedPanels>
 		<count>3</count>
 		<item_version>0</item_version>
+		<item>Read1</item>
 		<item>WriteOIIO1</item>
-		<item>ReadPNG1</item>
 		<item>Natron_Project_Settings_Panel</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
