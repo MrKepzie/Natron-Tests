@@ -82,7 +82,10 @@ for x in $FORMATS/*; do
       FAIL=0
       # idiff's "WARNING" gives a non-zero return status
       "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
-      if [ "$FAIL" != 0 ] || [ ! -z "$(grep FAILURE res || true)" ]; then
+      if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
+          echo "WARNING: render failed for frame $i in $x:"
+	  TEST_FAIL=$((TEST_FAIL+1))
+      elif [ ! -z "$(grep FAILURE res || true)" ]; then
           echo "WARNING: unit test failed for frame $i in $x:"
 	  cat res
 	  TEST_FAIL=$((TEST_FAIL+1))
