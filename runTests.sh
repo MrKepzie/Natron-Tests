@@ -376,7 +376,7 @@ for t in $TEST_DIRS; do
     echo "print('encoder=',writer.internalEncoderNode.getPluginScriptName())" >> $TMP_SCRIPT
     echo "print('ocioInputSpace=',writer.ocioInputSpaceIndex.getOption(writer.ocioInputSpaceIndex.getValue()))" >> $TMP_SCRIPT
     echo "print('ocioOutputSpace=',writer.ocioOutputSpaceIndex.getOption(writer.ocioOutputSpaceIndex.getValue()))" >> $TMP_SCRIPT
-    echo "app.saveTempProject('tmpScript.ntp')" >> $TMP_SCRIPT
+    #echo "app.saveTempProject('tmpScript.ntp')" >> $TMP_SCRIPT
 
     cat $TMP_SCRIPT     
 
@@ -445,7 +445,7 @@ for t in $TEST_DIRS; do
     fi
     FAIL="0"
     
-    rm $TMP_SCRIPT tmpScript.ntp || exit 1
+    rm $TMP_SCRIPT || exit 1
     rm -rf __pycache__ &> /dev/null
 
     cd ..
