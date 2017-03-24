@@ -392,7 +392,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>Source</first>
-					<second>Read1</second>
+					<second>ReadOIIO1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>33</KnobsAge>
@@ -413,7 +413,7 @@
 			<CacheID>WriteOIIO1</CacheID>
 		</item>
 		<item>
-			<Plugin_label>ReadOIIO1</Plugin_label>
+			<Plugin_label>Read1</Plugin_label>
 			<Plugin_script_name>Read1</Plugin_script_name>
 			<Plugin_id>fr.inria.built-in.Read</Plugin_id>
 			<PythonModule></PythonModule>
