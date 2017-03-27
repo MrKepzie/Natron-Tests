@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <!DOCTYPE boost_serialization>
-<boost_serialization signature="serialization::archive" version="14">
+<boost_serialization signature="serialization::archive" version="13">
 <Background_project>0</Background_project>
 <Project class_id="0" tracking_level="0" version="6">
 	<VersionMajor>2</VersionMajor>
 	<VersionMinor>2</VersionMinor>
 	<VersionRev>6</VersionRev>
-	<GitBranch>master</GitBranch>
-	<GitCommit>d9dcaf1cf836b8f4cd15b2ed13e01b82c834dbe2</GitCommit>
+	<GitBranch>RB-2.2</GitBranch>
+	<GitCommit>5104037737473a7d628ff976b19c4d29ec81fe72</GitCommit>
 	<OS>MacOSX</OS>
 	<Bits>64</Bits>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
@@ -51,7 +51,7 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>18</KnobsCount>
+			<KnobsCount>15</KnobsCount>
 			<item class_id="6" tracking_level="0" version="13">
 				<Name>decodingPluginID</Name>
 				<Type>String</Type>
@@ -300,62 +300,6 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
-				<Name>outputLayerChoice</Name>
-				<Type>String</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>Color.YA</Value>
-					<Default></Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<StringsAnimation>
-					<count>0</count>
-					<item_version>0</item_version>
-				</StringsAnimation>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>edgePixels</Name>
-				<Type>Choice</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<Default>0</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<ChoiceLabel>Auto</ChoiceLabel>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>offsetNegativeDispWindow</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<Default>1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
 				<Name>ocioInputSpace</Name>
 				<Type>String</Type>
 				<Dimension>1</Dimension>
@@ -456,7 +400,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>8.95000000000000000e+01</Value>
+					<Value>0.00000000000000000e+00</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -535,7 +479,7 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>28</KnobsCount>
+			<KnobsCount>27</KnobsCount>
 			<item>
 				<Name>encodingPluginChoice</Name>
 				<Type>Choice</Type>
@@ -908,7 +852,7 @@
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
 				</item>
-				<ChoiceLabel>mp4v	MPEG-4 part 2 [mpeg4]</ChoiceLabel>
+				<ChoiceLabel>m2v1	MPEG-2 Video [mpeg2video]</ChoiceLabel>
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
@@ -920,7 +864,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>mpeg4</Value>
+					<Value>mpeg2video</Value>
 					<Default></Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -1005,32 +949,6 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
-				<Name>quality</Name>
-				<Type>Int</Type>
-				<Dimension>2</Dimension>
-				<Secret>0</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>2</Value>
-					<Default>-1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>31</Value>
-					<Default>-1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
 				<Name>bitrateMbps</Name>
 				<Type>Double</Type>
 				<Dimension>1</Dimension>
@@ -1056,7 +974,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>2.14700000000000000e+03</Value>
+					<Value>4.62500000000000000e+01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -1072,7 +990,7 @@
 					<second>Transform1</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>22</KnobsAge>
+			<KnobsAge>20</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -1100,7 +1018,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-2.1/App/build/Debug/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestWriteFFmpeg/formats/mp44&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Applications/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestWriteFFmpeg/formats/mp43&lt;/Value&gt;</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -1161,7 +1079,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>lun. mars 27 11:06:10 2017</Value>
+			<Value>lun. mars 27 15:05:33 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -1177,7 +1095,7 @@
 		<count>0</count>
 		<item_version>3</item_version>
 	</AdditionalFormats>
-	<Timeline_current_time>5</Timeline_current_time>
+	<Timeline_current_time>1</Timeline_current_time>
 	<CreationDate>1456999526074</CreationDate>
 </Project>
 <ProjectGui class_id="13" tracking_level="0" version="11">
@@ -1290,8 +1208,8 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>36</x>
-			<y>54</y>
+			<x>121</x>
+			<y>102</y>
 			<w>1916</w>
 			<h>1155</h>
 		</Window>
@@ -1302,9 +1220,9 @@
 		<item class_id="22" tracking_level="0" version="0">
 			<first>Viewer1</first>
 			<second class_id="23" tracking_level="0" version="14">
-				<zoomLeft>-2.68420441640378556e+02</zoomLeft>
+				<zoomLeft>-2.63040000000000020e+02</zoomLeft>
 				<zoomBottom>-5.12000000000000011e+00</zoomBottom>
-				<zoomFactor>1.19065504807692313e+00</zoomFactor>
+				<zoomFactor>1.56250000000000000e+00</zoomFactor>
 				<UserRoIEnabled>0</UserRoIEnabled>
 				<UserRoI class_id="24" tracking_level="0" version="0">
 					<Left>8.53333333333333286e+01</Left>
@@ -1348,10 +1266,9 @@
 		<item_version>0</item_version>
 	</Histograms>
 	<OpenedPanels>
-		<count>4</count>
+		<count>3</count>
 		<item_version>0</item_version>
 		<item>WriteFFmpeg1</item>
-		<item>Transform1</item>
 		<item>ReadOIIO1</item>
 		<item>Natron_Project_Settings_Panel</item>
 	</OpenedPanels>
