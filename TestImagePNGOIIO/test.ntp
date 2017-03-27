@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <!DOCTYPE boost_serialization>
-<boost_serialization signature="serialization::archive" version="14">
+<boost_serialization signature="serialization::archive" version="13">
 <Background_project>0</Background_project>
 <Project class_id="0" tracking_level="0" version="6">
 	<VersionMajor>2</VersionMajor>
 	<VersionMinor>2</VersionMinor>
 	<VersionRev>6</VersionRev>
-	<GitBranch>RB-2.2</GitBranch>
-	<GitCommit>d9dcaf1cf836b8f4cd15b2ed13e01b82c834dbe2</GitCommit>
+	<GitBranch>tags/2.2.6</GitBranch>
+	<GitCommit>fbc44d993219ecccc22f10856346315fa2b81270</GitCommit>
 	<OS>MacOSX</OS>
 	<Bits>64</Bits>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
@@ -700,7 +700,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>scene_linear</Value>
+					<Value>sRGB</Value>
 					<Default>scene_linear</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -754,7 +754,7 @@
 				<count>0</count>
 				<item_version>0</item_version>
 			</Inputs_map>
-			<KnobsAge>187</KnobsAge>
+			<KnobsAge>188</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -782,7 +782,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-2.1/App/build/Debug/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestImagePNGOIIO&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Applications/Natron.app/Contents/Resources/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/TestImagePNGOIIO&lt;/Value&gt;</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -843,7 +843,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>dim. mars 26 21:01:46 2017</Value>
+			<Value>lun. mars 27 09:07:14 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -914,11 +914,11 @@
 		<Window class_id="14" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="15" tracking_level="1" version="1" object_id="_0">
-				<Sizes>821 441</Sizes>
+				<Sizes>1222 658</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>474 473</Sizes>
+					<Sizes>576 576</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="16" tracking_level="1" version="5" object_id="_2">
@@ -959,10 +959,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>29</x>
-			<y>41</y>
-			<w>1298</w>
-			<h>950</h>
+			<x>0</x>
+			<y>23</y>
+			<w>1916</w>
+			<h>1155</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="18" tracking_level="0" version="0">
@@ -1019,9 +1019,9 @@
 	<OpenedPanels>
 		<count>3</count>
 		<item_version>0</item_version>
-		<item>Natron_Project_Settings_Panel</item>
 		<item>WriteOIIO1</item>
 		<item>Read1</item>
+		<item>Natron_Project_Settings_Panel</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
 	<NumPyPanels>0</NumPyPanels>
