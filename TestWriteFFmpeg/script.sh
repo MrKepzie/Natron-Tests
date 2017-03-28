@@ -58,9 +58,12 @@ fi
 
 echo "===================$NAME========================"
 for x in $FORMATS/*; do
-  cd $x
+  if [ ! -f "$x/format" ]; then
+      continue
+  fi
+  cd "$x"
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-  FORMAT=`cat format`
+  FORMAT="$(cat format)"
   rm -f output* res comp*
   env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp #> /dev/null 2>&1
   if [ -f "output.$FORMAT" ]; then
@@ -69,12 +72,12 @@ for x in $FORMATS/*; do
     set +x
   fi
   if [ -f "last" ]; then
-    LAST_FRAME=`cat last`
+    LAST_FRAME="$(cat last)"
   fi
   TEST_FAIL=0
   TEST_PASS=0
   SEQ="seq $FIRST_FRAME $LAST_FRAME"
-  if [ `uname` = "Darwin" ]; then
+  if [ "$uname" = "Darwin" ]; then
     SEQ="jot - $FIRST_FRAME $LAST_FRAME"
   fi
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
