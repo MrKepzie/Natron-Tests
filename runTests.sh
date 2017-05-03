@@ -373,7 +373,7 @@ for t in $TEST_DIRS; do
     if [ "$IMAGES_FILE_EXT" = "jpg" ]; then
         echo "writer.quality.set($QUALITY)" >> $TMP_SCRIPT
     fi
-    echo "print('encoder=',writer.internalEncoderNode.getPluginScriptName())" >> $TMP_SCRIPT
+    echo "print('encoder=',writer.internalEncoderNode.getPluginID())" >> $TMP_SCRIPT
     echo "print('ocioInputSpace=',writer.ocioInputSpaceIndex.getOption(writer.ocioInputSpaceIndex.getValue()))" >> $TMP_SCRIPT
     echo "print('ocioOutputSpace=',writer.ocioOutputSpaceIndex.getOption(writer.ocioOutputSpaceIndex.getValue()))" >> $TMP_SCRIPT
     #echo "app.saveTempProject('tmpScript.ntp')" >> $TMP_SCRIPT
