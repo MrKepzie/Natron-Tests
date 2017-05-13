@@ -419,6 +419,9 @@ for t in $TEST_DIRS; do
             if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
                 echo "WARNING: render failed for frame $i in $t"
                 FAIL=1
+            elif [ ! -f "comp${i}.$IMAGES_FILE_EXT" ]; then
+                echo "WARNING: $IDIFF_BIN failed for frame $i in $t"
+                FAIL=1
             elif [ ! -z "$(grep FAILURE res || true)" ]; then
                 echo "WARNING: unit test failed for frame $i in $t:"
                 cat res
