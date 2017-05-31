@@ -318,9 +318,9 @@ for t in $TEST_DIRS; do
     cd $t
 
     FAIL=0
-    rm res > /dev/null || FAIL=0
-    rm output[0-9]*.$IMAGES_FILE_EXT > /dev/null || FAIL=0
-    rm comp[0-9]*.$IMAGES_FILE_EXT > /dev/null || FAIL=0
+    rm res &> /dev/null || FAIL=0
+    rm output[0-9]*.$IMAGES_FILE_EXT &> /dev/null || FAIL=0
+    rm comp[0-9]*.$IMAGES_FILE_EXT &> /dev/null || FAIL=0
 
 
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
@@ -396,7 +396,8 @@ for t in $TEST_DIRS; do
         if [ "$FAIL" != "1" ]; then
             echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
         else
-            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t (render failed)"
+            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t (WARNING: render failed)"
+	    FAIL=0
         fi
     fi
     if [ -f "ofxTestLog.txt" ]; then
@@ -406,36 +407,42 @@ for t in $TEST_DIRS; do
 
         #compare with idiff
 
-        SEQ="seq $FIRST_FRAME $LAST_FRAME"
         if [ "$uname" = "Darwin" ]; then
-            SEQ="jot - $FIRST_FRAME $LAST_FRAME"
+            SEQ="gseq $FIRST_FRAME $LAST_FRAME"
+	else
+            SEQ="seq $FIRST_FRAME $LAST_FRAME"
         fi
 
 
         for i in $($SEQ); do
-            # idiff's "WARNING" gives a non-zero return status
-            "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
-
             if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
-                echo "WARNING: render failed for frame $i in $t"
+                echo "WARNING: output file output${i}.$IMAGES_FILE_EXT is missing"
                 FAIL=1
-            elif [ ! -f "comp${i}.$IMAGES_FILE_EXT" ]; then
-                echo "WARNING: $IDIFF_BIN failed for frame $i in $t"
-                FAIL=1
-            elif [ ! -z "$(grep FAILURE res || true)" ]; then
-                echo "WARNING: unit test failed for frame $i in $t:"
-                cat res
-                FAIL=1
-            elif [ ! -z "$(grep WARNING res || true)" ]; then
-                echo "WARNING: unit test warning for frame $i in $t:"
-                cat res
-            fi
-            #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
-            #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
-            if [ "$FAIL" = "1" ]; then
-                cp "reference${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-reference${i}.$IMAGES_FILE_EXT" || FAIL=1
-                cp "output${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-output${i}.$IMAGES_FILE_EXT" || FAIL=1
-                cp "comp${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-comp${i}.$IMAGES_FILE_EXT" || FAIL=1
+            else
+                # idiff's "WARNING" gives a non-zero return status
+                "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
+
+                if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
+                    echo "WARNING: render failed for frame $i in $t"
+                    FAIL=1
+                elif [ ! -f "comp${i}.$IMAGES_FILE_EXT" ]; then
+                    echo "WARNING: $IDIFF_BIN failed for frame $i in $t"
+                    FAIL=1
+                elif [ ! -z "$(grep FAILURE res || true)" ]; then
+                    echo "WARNING: unit test failed for frame $i in $t:"
+                    cat res
+                    FAIL=1
+                elif [ ! -z "$(grep WARNING res || true)" ]; then
+                    echo "WARNING: unit test warning for frame $i in $t:"
+                    cat res
+                fi
+                #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
+                #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
+                if [ "$FAIL" = "1" ]; then
+                    cp "reference${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-reference${i}.$IMAGES_FILE_EXT" || FAIL=1
+                    cp "output${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-output${i}.$IMAGES_FILE_EXT" || FAIL=1
+                    cp "comp${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-comp${i}.$IMAGES_FILE_EXT" || FAIL=1
+                fi
             fi
         done
     fi
