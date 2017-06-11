@@ -752,7 +752,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>1</first>
-					<second>ColorCorrect1</second>
+					<second>Switch1</second>
 				</item>
 			</Inputs_map>
 			<KnobsAge>1</KnobsAge>
@@ -2847,7 +2847,7 @@
 								</item>
 							</KeyFrameSet>
 						</Curve>
-						<Value>5.14268359376402486e+02</Value>
+						<Value>5.05508204143175135e+02</Value>
 						<Default>5.00000000000000000e-01</Default>
 						<HasMaster>0</HasMaster>
 						<Expression></Expression>
@@ -3562,7 +3562,7 @@
 								</item>
 							</KeyFrameSet>
 						</Curve>
-						<Value>4.47987719591635141e+02</Value>
+						<Value>4.47599458997140573e+02</Value>
 						<Default>5.00000000000000000e-01</Default>
 						<HasMaster>0</HasMaster>
 						<Expression></Expression>
@@ -9956,7 +9956,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.09805999999999995e+03</Value>
+					<Value>-1.10843999999999983e+03</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -10026,7 +10026,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.80908081521815416e-02</Value>
+					<Value>-4.23511786925233613e-02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14067,7 +14067,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-7.28090161898548915e-01</Value>
+					<Value>-8.58699431824623272e-01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14103,7 +14103,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>1.16275385010187531e+01</Value>
+					<Value>8.83607621980440783e+00</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14264,7 +14264,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.18599999999999994e+02</Value>
+					<Value>-1.17400000000000006e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14293,7 +14293,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>3.97100000000000009e+01</Value>
+					<Value>3.70399999999999991e+01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14608,7 +14608,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>3.14950651577503436e+02</Value>
+					<Value>3.13656515775034279e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14644,7 +14644,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-3.49352315500685862e+01</Value>
+					<Value>-3.84924488340192070e+01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -15641,7 +15641,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-6.96000000000000085e+00</Value>
+					<Value>9.59999999999999853e-01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -15810,7 +15810,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-6.63978666666666850e+00</Value>
+					<Value>-3.15914666666666699e+00</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -16166,7 +16166,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>9.23232323232323293e-01</Value>
+					<Value>9.29292929292929282e-01</Value>
 					<Default>1.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -16966,7 +16966,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-2.81797979797979792e+02</Value>
+					<Value>-2.94919191919191917e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -16995,7 +16995,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-2.22404040404040416e+02</Value>
+					<Value>-2.20161616161616166e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -18710,7 +18710,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>5.14268359376402486e+02</Value>
+					<Value>5.05508204143175135e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>1</HasMaster>
 					<Master class_id="21" tracking_level="0" version="2">
@@ -19431,7 +19431,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>4.47987719591635141e+02</Value>
+					<Value>4.47599458997140573e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>1</HasMaster>
 					<Master>
@@ -26829,7 +26829,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>29</Value>
+					<Value>26</Value>
 					<Default>0</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -27611,7 +27611,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>29</Value>
+			<Value>39</Value>
 			<Default>250</Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -27650,7 +27650,7 @@
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
 			<Value>ven. 14. nov. 16:24:01 2014</Value>
-			<Default>dim. juin 11 16:58:42 2017</Default>
+			<Default>dim. juin 11 19:28:31 2017</Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -27670,7 +27670,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>dim. juin 11 19:25:27 2017</Value>
+			<Value>dim. juin 11 20:05:30 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -27726,7 +27726,7 @@
 			<Name></Name>
 		</item>
 	</AdditionalFormats>
-	<Timeline_current_time>39</Timeline_current_time>
+	<Timeline_current_time>36</Timeline_current_time>
 	<CreationDate>1415978643146</CreationDate>
 </Project>
 <ProjectGui class_id="25" tracking_level="0" version="11">
@@ -29429,8 +29429,8 @@
 		</item>
 		<item>
 			<Name>Switch1</Name>
-			<X_position>4.61756027153338255e+03</X_position>
-			<Y_position>5.91044214751616164e+03</Y_position>
+			<X_position>4.24905768547300431e+03</X_position>
+			<Y_position>6.40018052580959829e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
 			<g>3.70000750e-01</g>
@@ -29467,13 +29467,14 @@
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child object_id="_3">
 						<Tabs>
-							<count>3</count>
+							<count>4</count>
 							<item_version>0</item_version>
 							<item>nodeGraph</item>
 							<item>curveEditor</item>
 							<item>dopeSheetEditor</item>
+							<item>progress</item>
 						</Tabs>
-						<Index>0</Index>
+						<Index>3</Index>
 						<Name>pane3</Name>
 						<IsAnchor>0</IsAnchor>
 					</Child>
@@ -29504,7 +29505,7 @@
 			<first>Viewer2</first>
 			<second class_id="34" tracking_level="0" version="14">
 				<zoomLeft>-2.04390692211942223e+02</zoomLeft>
-				<zoomBottom>1.96657177158050104e+02</zoomBottom>
+				<zoomBottom>2.15916880109352974e+02</zoomBottom>
 				<zoomFactor>7.26906330559627500e-01</zoomFactor>
 				<UserRoIEnabled>0</UserRoIEnabled>
 				<UserRoI class_id="35" tracking_level="0" version="0">
@@ -29526,7 +29527,7 @@
 				<ZoomOrPanSinceFit>1</ZoomOrPanSinceFit>
 				<CompositingOP>1</CompositingOP>
 				<LeftBound>1</LeftBound>
-				<RightBound>29</RightBound>
+				<RightBound>39</RightBound>
 				<LeftToolbarVisible>1</LeftToolbarVisible>
 				<RightToolbarVisible>1</RightToolbarVisible>
 				<TopToolbarVisible>1</TopToolbarVisible>
@@ -29549,18 +29550,17 @@
 		<item_version>0</item_version>
 	</Histograms>
 	<OpenedPanels>
-		<count>10</count>
+		<count>9</count>
 		<item_version>0</item_version>
-		<item>Merge5</item>
-		<item>Switch1</item>
 		<item>Write1</item>
+		<item>Switch1</item>
 		<item>Natron_Project_Settings_Panel</item>
+		<item>Merge5</item>
 		<item>LensDust</item>
 		<item>Crop8</item>
 		<item>Crop7</item>
 		<item>Crop4</item>
 		<item>Ramp3</item>
-		<item>Crop11</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
 	<NumPyPanels>0</NumPyPanels>
