@@ -324,10 +324,13 @@ for t in $TEST_DIRS; do
 
 
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
-    CONFFILE=$(find conf)
-    if [[ -z $CONFFILE ]]; then
-        echo "$t does not contain a configuration file, please see the README."
-        exit 1  
+    for CONFFILE in conf conf2 conf3; do
+    if [[ ! -f "$CONFFILE" ]]; then
+        if [[ "$CONFFILE" = "conf" ]]; then
+            echo "$t does not contain a configuration file, please see the README."
+            exit 1
+        fi
+        continue
     fi
     
     CWD="$PWD"
@@ -413,36 +416,41 @@ for t in $TEST_DIRS; do
             SEQ="seq $FIRST_FRAME $LAST_FRAME"
         fi
 
-
         for i in $($SEQ); do
+            # only copy images if this frame fails
+            thisfail=0
             if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
                 echo "WARNING: output file output${i}.$IMAGES_FILE_EXT is missing"
-                FAIL=1
+                thisfail=1
             else
                 # idiff's "WARNING" gives a non-zero return status
                 "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
 
                 if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
                     echo "WARNING: render failed for frame $i in $t"
-                    FAIL=1
+                    thisfail=1
                 elif [ ! -f "comp${i}.$IMAGES_FILE_EXT" ]; then
                     echo "WARNING: $IDIFF_BIN failed for frame $i in $t"
-                    FAIL=1
+                    thisfail=1
                 elif [ ! -z "$(grep FAILURE res || true)" ]; then
                     echo "WARNING: unit test failed for frame $i in $t:"
                     cat res
-                    FAIL=1
+                    thisfail=1
                 elif [ ! -z "$(grep WARNING res || true)" ]; then
                     echo "WARNING: unit test warning for frame $i in $t:"
                     cat res
                 fi
                 #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
                 #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
-                if [ "$FAIL" = "1" ]; then
+                if [ "$thisfail" = "1" ]; then
                     cp "reference${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-reference${i}.$IMAGES_FILE_EXT" || FAIL=1
                     cp "output${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-output${i}.$IMAGES_FILE_EXT" || FAIL=1
                     cp "comp${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-comp${i}.$IMAGES_FILE_EXT" || FAIL=1
                 fi
+            fi
+            if [ "$thisfail" = "1" ]; then
+                # this frame failed, so the sequence failed
+                FAIL=1
             fi
         done
     fi
@@ -458,6 +466,7 @@ for t in $TEST_DIRS; do
     rm $TMP_SCRIPT || exit 1
     rm -rf __pycache__ &> /dev/null
 
+    done # for CONFFILE in conf conf2 conf3
     cd ..
 done
 
