@@ -318,12 +318,13 @@ for t in $TEST_DIRS; do
     cd $t
 
     FAIL=0
-    rm res &> /dev/null || FAIL=0
-    rm output[0-9]*.$IMAGES_FILE_EXT &> /dev/null || FAIL=0
-    rm comp[0-9]*.$IMAGES_FILE_EXT &> /dev/null || FAIL=0
+    rm res &> /dev/null || true
+    rm output[0-9]*.$IMAGES_FILE_EXT &> /dev/null || true
+    rm comp[0-9]*.$IMAGES_FILE_EXT &> /dev/null || true
 
 
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
+    ############################################
     for CONFFILE in conf conf2 conf3 conf4 conf5; do
     if [[ ! -f "$CONFFILE" ]]; then
         if [[ "$CONFFILE" = "conf" ]]; then
@@ -334,7 +335,7 @@ for t in $TEST_DIRS; do
     fi
     
     CWD="$PWD"
-    CONF="$(cat conf)"
+    CONF="$(cat $CONFFILE)"
     NATRONPROJ=$(echo $CONF | awk '{print $1;}')
     NATRONPROJ=$CWD/$NATRONPROJ
     FIRST_FRAME=$(echo $CONF | awk '{print $2;}')
@@ -395,12 +396,13 @@ for t in $TEST_DIRS; do
         FAIL=1
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
-        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || FAIL=1
-        if [ "$FAIL" != "1" ]; then
+        renderfail=0
+        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || renderfail=1
+        if [ "$renderfail" != "1" ]; then
             echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
         else
             echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t (WARNING: render failed)"
-	    FAIL=0
+	    # ignore failure, but check the output images
         fi
     fi
     if [ -f "ofxTestLog.txt" ]; then
@@ -454,6 +456,13 @@ for t in $TEST_DIRS; do
             fi
         done
     fi
+    
+    rm $TMP_SCRIPT || exit 1
+    rm -rf __pycache__ &> /dev/null
+
+    done # for CONFFILE in conf conf2 conf3
+    #############################################
+    
     if [ "$FAIL" != "1" ]; then
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $t"
         echo "$t : PASS" >> $RESULTS
@@ -462,11 +471,6 @@ for t in $TEST_DIRS; do
         echo "$t : FAIL" >> $RESULTS
     fi
     FAIL="0"
-    
-    rm $TMP_SCRIPT || exit 1
-    rm -rf __pycache__ &> /dev/null
-
-    done # for CONFFILE in conf conf2 conf3
     cd ..
 done
 
