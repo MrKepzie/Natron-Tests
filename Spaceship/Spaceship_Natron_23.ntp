@@ -11787,13 +11787,13 @@
 								<item>
 									<Enabled>1</Enabled>
 									<HasAnimation>0</HasAnimation>
-									<Value>2</Value>
-									<Default>2</Default>
+									<Value>3</Value>
+									<Default>3</Default>
 									<HasMaster>0</HasMaster>
 									<Expression></Expression>
 									<ExprHasRet>0</ExprHasRet>
 								</item>
-								<ChoiceLabel>Cubic</ChoiceLabel>
+								<ChoiceLabel>cubic</ChoiceLabel>
 								<UserKnob>0</UserKnob>
 							</Item>
 							<Item>
@@ -18114,7 +18114,24 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>3</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>7</KnobsCount>
+			<KnobsCount>8</KnobsCount>
+			<item>
+				<Name>NatronOfxParamProcessA</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
 			<item>
 				<Name>size</Name>
 				<Type>Double</Type>
@@ -21857,13 +21874,13 @@
 								<item>
 									<Enabled>1</Enabled>
 									<HasAnimation>0</HasAnimation>
-									<Value>2</Value>
-									<Default>2</Default>
+									<Value>3</Value>
+									<Default>3</Default>
 									<HasMaster>0</HasMaster>
 									<Expression></Expression>
 									<ExprHasRet>0</ExprHasRet>
 								</item>
-								<ChoiceLabel>Cubic</ChoiceLabel>
+								<ChoiceLabel>cubic</ChoiceLabel>
 								<UserKnob>0</UserKnob>
 							</Item>
 							<Item>
@@ -24987,42 +25004,7 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>1</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>8</KnobsCount>
-			<item>
-				<Name>rectangleInteractEnable</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<Default>1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>extent</Name>
-				<Type>Choice</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>2</Value>
-					<Default>1</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<ChoiceLabel>project</ChoiceLabel>
-				<UserKnob>0</UserKnob>
-			</item>
+			<KnobsCount>2</KnobsCount>
 			<item>
 				<Name>NatronParamFormatChoice</Name>
 				<Type>Choice</Type>
@@ -25039,92 +25021,6 @@
 					<ExprHasRet>0</ExprHasRet>
 				</item>
 				<ChoiceLabel>PC_Video</ChoiceLabel>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>bottomLeft</Name>
-				<Type>Double</Type>
-				<Dimension>2</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0.00000000000000000e+00</Value>
-					<Default>0.00000000000000000e+00</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0.00000000000000000e+00</Value>
-					<Default>0.00000000000000000e+00</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>size</Name>
-				<Type>Double</Type>
-				<Dimension>2</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>9.60000000000000000e+02</Value>
-					<Default>1.00000000000000000e+00</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>5.40000000000000000e+02</Value>
-					<Default>1.00000000000000000e+00</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>interactive</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>1</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>0</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
-					<Default>0</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
-				<UserKnob>0</UserKnob>
-			</item>
-			<item>
-				<Name>reformat</Name>
-				<Type>Bool</Type>
-				<Dimension>1</Dimension>
-				<Secret>0</Secret>
-				<MasterIsAlias>0</MasterIsAlias>
-				<item>
-					<Enabled>1</Enabled>
-					<HasAnimation>0</HasAnimation>
-					<Value>1</Value>
-					<Default>0</Default>
-					<HasMaster>0</HasMaster>
-					<Expression></Expression>
-					<ExprHasRet>0</ExprHasRet>
-				</item>
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
@@ -25156,7 +25052,7 @@
 					<second>CornerPin4</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>5</KnobsAge>
+			<KnobsAge>2</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -25980,7 +25876,7 @@
 		<item>
 			<Enabled>1</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-2.2/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/Spaceship&lt;/Value&gt;</Value>
+			<Value>&lt;Name&gt;OCIO&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-2.3/OpenColorIO-Configs/blender&lt;/Value&gt;&lt;Name&gt;Project&lt;/Name&gt;&lt;Value&gt;/Users/devernay/Development/Natron-Tests/Spaceship&lt;/Value&gt;</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -26080,7 +25976,7 @@
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
 			<Value>ven. 14. nov. 16:24:01 2014</Value>
-			<Default>mer. juin 21 17:43:04 2017</Default>
+			<Default>mar. juin 27 11:22:33 2017</Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -26100,7 +25996,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mer. juin 21 17:44:13 2017</Value>
+			<Value>mar. juin 27 11:22:52 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -27863,11 +27759,11 @@
 		<Window class_id="29" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="30" tracking_level="1" version="1" object_id="_0">
-				<Sizes>1066 574</Sizes>
+				<Sizes>767 413</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>501 501</Sizes>
+					<Sizes>657 656</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="31" tracking_level="1" version="5" object_id="_2">
@@ -27907,10 +27803,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>0</x>
+			<x>58</x>
 			<y>23</y>
-			<w>1676</w>
-			<h>1005</h>
+			<w>1216</w>
+			<h>1316</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="32" tracking_level="0" version="0">
@@ -27919,9 +27815,9 @@
 		<item class_id="33" tracking_level="0" version="0">
 			<first>Viewer2</first>
 			<second class_id="34" tracking_level="0" version="14">
-				<zoomLeft>-6.38169932011282981e+02</zoomLeft>
-				<zoomBottom>-6.91223243299696151e+01</zoomBottom>
-				<zoomFactor>4.65102080973736676e-01</zoomFactor>
+				<zoomLeft>-1.08307449186906638e+02</zoomLeft>
+				<zoomBottom>-1.17321148726584283e+01</zoomBottom>
+				<zoomFactor>1.00000000000000000e+00</zoomFactor>
 				<UserRoIEnabled>0</UserRoIEnabled>
 				<UserRoI class_id="35" tracking_level="0" version="0">
 					<Left>4.43643840845357772e+02</Left>
@@ -27965,10 +27861,9 @@
 		<item_version>0</item_version>
 	</Histograms>
 	<OpenedPanels>
-		<count>3</count>
+		<count>2</count>
 		<item_version>0</item_version>
 		<item>WriteOIIO3</item>
-		<item>Crop9</item>
 		<item>Natron_Project_Settings_Panel</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
