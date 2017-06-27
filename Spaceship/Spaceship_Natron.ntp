@@ -27521,7 +27521,7 @@
 			<item>
 				<Enabled>1</Enabled>
 				<HasAnimation>0</HasAnimation>
-				<Value>0</Value>
+				<Value>1</Value>
 				<HasMaster>0</HasMaster>
 			</item>
 		</item>
