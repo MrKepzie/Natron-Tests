@@ -150,7 +150,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_GlossyCol_00020.png</Value>
+					<Value>Spaceship_GlossyCol_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -1848,7 +1848,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>RefTracker__020.jpg</Value>
+					<Value>RefTracker__031.jpg</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -2831,7 +2831,7 @@
 								</item>
 							</KeyFrameSet>
 						</Curve>
-						<Value>4.91148514391187064e+02</Value>
+						<Value>4.33251033519875932e+02</Value>
 						<HasMaster>0</HasMaster>
 						<Expression></Expression>
 						<ExprHasRet>0</ExprHasRet>
@@ -3545,7 +3545,7 @@
 								</item>
 							</KeyFrameSet>
 						</Curve>
-						<Value>4.47107741623655329e+02</Value>
+						<Value>4.46359936921487133e+02</Value>
 						<HasMaster>0</HasMaster>
 						<Expression></Expression>
 						<ExprHasRet>0</ExprHasRet>
@@ -4516,7 +4516,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Smoke_Reactors__0020.png</Value>
+					<Value>Smoke_Reactors__0031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -5659,7 +5659,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Ground__020.png</Value>
+					<Value>Ground__031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -7796,7 +7796,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_AO_00020.png</Value>
+					<Value>Spaceship_AO_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -8167,7 +8167,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_GlossyDir_00020.png</Value>
+					<Value>Spaceship_GlossyDir_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -8538,7 +8538,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_GlossyInd_00020.png</Value>
+					<Value>Spaceship_GlossyInd_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -8909,7 +8909,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_DiffInd_00020.png</Value>
+					<Value>Spaceship_DiffInd_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -9280,7 +9280,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_DiffDir_00020.png</Value>
+					<Value>Spaceship_DiffDir_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -9651,7 +9651,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_DiffCol_00020.png</Value>
+					<Value>Spaceship_DiffCol_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -10022,7 +10022,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Spaceship_Emit_00020.png</Value>
+					<Value>Spaceship_Emit_00031.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -10298,7 +10298,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.12574000000000001e+03</Value>
+					<Value>-1.19494000000000005e+03</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -10365,7 +10365,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-8.31859048562034048e-02</Value>
+					<Value>-2.52257548454897673e-01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -14341,7 +14341,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.10369535576147171e+00</Value>
+					<Value>-2.46346713744938439e+00</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -14376,7 +14376,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>4.15839886467985487e+00</Value>
+					<Value>-1.49133497818713643e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -14530,7 +14530,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.15400000000000006e+02</Value>
+					<Value>-1.07400000000000006e+02</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -14558,7 +14558,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>3.25900000000000034e+01</Value>
+					<Value>1.47900000000000009e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -14859,7 +14859,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>3.11765740740740739e+02</Value>
+					<Value>3.08009224965706437e+02</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -14894,7 +14894,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-4.44066148148148159e+01</Value>
+					<Value>-6.78394104252400609e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -15948,7 +15948,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-6.92499999999999893e-01</Value>
+					<Value>1.00000000000000000e+01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -16116,7 +16116,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>1.67999999999999994e+00</Value>
+					<Value>6.00000000000000000e+00</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -16470,7 +16470,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>9.39393939393939448e-01</Value>
+					<Value>9.79797979797979779e-01</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -17565,7 +17565,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-3.16787878787878753e+02</Value>
+					<Value>-4.04262626262626270e+02</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -17593,7 +17593,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-2.16424242424242436e+02</Value>
+					<Value>-2.01474747474747488e+02</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -19171,7 +19171,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>4.91148514391187064e+02</Value>
+					<Value>4.33251033519875932e+02</Value>
 					<HasMaster>1</HasMaster>
 					<Master class_id="21" tracking_level="0" version="0">
 						<MasterDimension>0</MasterDimension>
@@ -19890,7 +19890,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>4.47107741623655329e+02</Value>
+					<Value>4.46359936921487133e+02</Value>
 					<HasMaster>1</HasMaster>
 					<Master>
 						<MasterDimension>1</MasterDimension>
@@ -26416,7 +26416,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>9</Value>
+					<Value>1</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -26760,7 +26760,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>scene_linear</Value>
+					<Value>sRGB</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -26971,7 +26971,7 @@
 					<second>Switch1</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>7</KnobsAge>
+			<KnobsAge>14</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<MultiInstanceParent></MultiInstanceParent>
@@ -27082,7 +27082,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>9</Value>
+					<Value>0</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -27377,7 +27377,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>1</Value>
+					<Value>0</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -27518,7 +27518,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>2</Value>
+					<Value>0</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -27752,7 +27752,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mar. juin 27 17:05:14 2017</Value>
+			<Value>mar. juin 27 17:18:32 2017</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -27807,7 +27807,7 @@
 			<Name></Name>
 		</item>
 	</AdditionalFormats>
-	<Timeline_current_time>31</Timeline_current_time>
+	<Timeline_current_time>11</Timeline_current_time>
 	<CreationDate>1415978643146</CreationDate>
 </Project>
 <ProjectGui class_id="25" tracking_level="0" version="11">
@@ -29538,8 +29538,8 @@
 		</item>
 		<item>
 			<Name>WriteOIIO1</Name>
-			<X_position>4.02500259814826586e+03</X_position>
-			<Y_position>7.36848166847809080e+03</Y_position>
+			<X_position>3.78519120620522017e+03</X_position>
+			<Y_position>7.25199887543061232e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>7.49996185e-01</r>
 			<g>7.49996185e-01</g>
@@ -29625,7 +29625,7 @@
 							<item>dopeSheetEditor</item>
 							<item>progress</item>
 						</Tabs>
-						<Index>3</Index>
+						<Index>0</Index>
 						<Name>pane3</Name>
 						<IsAnchor>0</IsAnchor>
 					</Child>
@@ -29643,8 +29643,8 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>77</x>
-			<y>23</y>
+			<x>157</x>
+			<y>184</y>
 			<w>2556</w>
 			<h>1555</h>
 		</Window>

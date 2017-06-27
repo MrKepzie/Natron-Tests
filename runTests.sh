@@ -317,7 +317,7 @@ uname="$(uname)"
 for t in $TEST_DIRS; do
     cd $t
 
-    FAIL=0
+    failseq=0
     rm res &> /dev/null || true
     rm output[0-9]*.$IMAGES_FILE_EXT &> /dev/null || true
     rm comp[0-9]*.$IMAGES_FILE_EXT &> /dev/null || true
@@ -326,6 +326,7 @@ for t in $TEST_DIRS; do
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
     ############################################
     for CONFFILE in conf conf2 conf3 conf4 conf5; do
+        failconf=0
     if [[ ! -f "$CONFFILE" ]]; then
         if [[ "$CONFFILE" = "conf" ]]; then
             echo "$t does not contain a configuration file, please see the README."
@@ -393,22 +394,22 @@ for t in $TEST_DIRS; do
     fi
     if [ "$t" = "TestTile" ] && [ "$uname" = "Linux" ]; then
         echo "TestTile crashes on Linux64, and this script quits before printing *** END TestTile, I do not understand why"
-        FAIL=1
+        failconf=1
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
         renderfail=0
         env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || renderfail=1
         if [ "$renderfail" != "1" ]; then
-            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t"
+            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $t/$CONFFILE"
         else
-            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $t (WARNING: render failed)"
+            echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $t/$CONFFILE (WARNING: render failed)"
 	    # ignore failure, but check the output images
         fi
     fi
     if [ -f "ofxTestLog.txt" ]; then
         rm ofxTestLog.txt &> /dev/null
     fi
-    if [ "$FAIL" != "1" ]; then
+    if [ "$failconf" != "1" ]; then
 
         #compare with idiff
 
@@ -420,57 +421,61 @@ for t in $TEST_DIRS; do
 
         for i in $($SEQ); do
             # only copy images if this frame fails
-            thisfail=0
+            failframe=0
             if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
                 echo "WARNING: output file output${i}.$IMAGES_FILE_EXT is missing"
-                thisfail=1
+                failframe=1
             else
                 # idiff's "WARNING" gives a non-zero return status
                 "$IDIFF_BIN" "reference${i}.$IMAGES_FILE_EXT" "output${i}.$IMAGES_FILE_EXT" -o "comp${i}.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
 
                 if [ ! -f "output${i}.$IMAGES_FILE_EXT" ]; then
                     echo "WARNING: render failed for frame $i in $t"
-                    thisfail=1
+                    failframe=1
                 elif [ ! -f "comp${i}.$IMAGES_FILE_EXT" ]; then
                     echo "WARNING: $IDIFF_BIN failed for frame $i in $t"
-                    thisfail=1
+                    failframe=1
                 elif [ ! -z "$(grep FAILURE res || true)" ]; then
                     echo "WARNING: unit test failed for frame $i in $t:"
                     cat res
-                    thisfail=1
+                    failframe=1
                 elif [ ! -z "$(grep WARNING res || true)" ]; then
                     echo "WARNING: unit test warning for frame $i in $t:"
                     cat res
                 fi
                 #        rm output${i}.$IMAGES_FILE_EXT > /dev/null
                 #        rm comp${i}.$IMAGES_FILE_EXT > /dev/null
-                if [ "$thisfail" = "1" ]; then
-                    cp "reference${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-reference${i}.$IMAGES_FILE_EXT" || FAIL=1
-                    cp "output${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-output${i}.$IMAGES_FILE_EXT" || FAIL=1
-                    cp "comp${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-comp${i}.$IMAGES_FILE_EXT" || FAIL=1
+                if [ "$failframe" = "1" ]; then
+                    cp "reference${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-reference${i}.$IMAGES_FILE_EXT" || failconf=1
+                    cp "output${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-output${i}.$IMAGES_FILE_EXT" || failconf=1
+                    cp "comp${i}.$IMAGES_FILE_EXT" "$FAILED_DIR/$t-comp${i}.$IMAGES_FILE_EXT" || failconf=1
                 fi
             fi
-            if [ "$thisfail" = "1" ]; then
+            if [ "$failframe" = "1" ]; then
                 # this frame failed, so the sequence failed
-                FAIL=1
+                failconf=1
             fi
         done
     fi
-    
+    if [ "$failconf" = "1" ]; then
+        # this conf failed, so the sequence failed
+        failseq=1
+    fi
+ 
     rm $TMP_SCRIPT || exit 1
     rm -rf __pycache__ &> /dev/null
 
     done # for CONFFILE in conf conf2 conf3
     #############################################
     
-    if [ "$FAIL" != "1" ]; then
+    if [ "$failseq" != "1" ]; then
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $t"
         echo "$t : PASS" >> $RESULTS
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** FAIL $t"
         echo "$t : FAIL" >> $RESULTS
     fi
-    FAIL="0"
+    failseq="0"
     cd ..
 done
 
