@@ -6441,7 +6441,7 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>3</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>7</KnobsCount>
+			<KnobsCount>8</KnobsCount>
 			<item>
 				<Name>size</Name>
 				<Type>Double</Type>
@@ -6522,6 +6522,23 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
+				<Name>expandRoD</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<Default>1</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
 				<Name>userTextArea</Name>
 				<Type>String</Type>
 				<Dimension>1</Dimension>
@@ -6589,7 +6606,7 @@
 					<second>Merge23</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>234</KnobsAge>
+			<KnobsAge>235</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -28045,7 +28062,7 @@
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
 			<Value>ven. 14. nov. 16:24:01 2014</Value>
-			<Default>mar. juin 27 15:07:33 2017</Default>
+			<Default>mar. juin 27 16:37:39 2017</Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -28065,7 +28082,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mar. juin 27 15:08:32 2017</Value>
+			<Value>mar. juin 27 16:38:09 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -29842,11 +29859,11 @@
 		<Window class_id="29" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="30" tracking_level="1" version="1" object_id="_0">
-				<Sizes>788 425</Sizes>
+				<Sizes>785 423</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>501 501</Sizes>
+					<Sizes>623 622</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="31" tracking_level="1" version="5" object_id="_2">
@@ -29886,10 +29903,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>902</x>
-			<y>30</y>
-			<w>1249</w>
-			<h>1005</h>
+			<x>1056</x>
+			<y>59</y>
+			<w>1244</w>
+			<h>1248</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="32" tracking_level="0" version="0">
@@ -29946,6 +29963,7 @@
 	<OpenedPanels>
 		<count>10</count>
 		<item_version>0</item_version>
+		<item>Blur_Defocus</item>
 		<item>Crop9</item>
 		<item>Crop3</item>
 		<item>Natron_Project_Settings_Panel</item>
@@ -29955,7 +29973,6 @@
 		<item>ColorLookup3</item>
 		<item>BlurCImg21</item>
 		<item>ColorLookup2</item>
-		<item>Merge45</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
 	<NumPyPanels>0</NumPyPanels>
