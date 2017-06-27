@@ -1450,13 +1450,13 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
-				<Name>premult</Name>
+				<Name>premultChanged</Name>
 				<Type>Bool</Type>
 				<Dimension>1</Dimension>
-				<Secret>0</Secret>
+				<Secret>1</Secret>
 				<MasterIsAlias>0</MasterIsAlias>
 				<item>
-					<Enabled>1</Enabled>
+					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
 					<Value>1</Value>
 					<Default>0</Default>
@@ -1513,7 +1513,7 @@
 					<second>Emit</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>91</KnobsAge>
+			<KnobsAge>92</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -2904,7 +2904,7 @@
 								</item>
 							</KeyFrameSet>
 						</Curve>
-						<Value>5.49087482185542058e+02</Value>
+						<Value>4.59285506302509702e+02</Value>
 						<Default>5.00000000000000000e-01</Default>
 						<HasMaster>0</HasMaster>
 						<Expression></Expression>
@@ -3619,7 +3619,7 @@
 								</item>
 							</KeyFrameSet>
 						</Curve>
-						<Value>4.49790828593999208e+02</Value>
+						<Value>4.46567295729288617e+02</Value>
 						<Default>5.00000000000000000e-01</Default>
 						<HasMaster>0</HasMaster>
 						<Expression></Expression>
@@ -3834,7 +3834,24 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>3</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>6</KnobsCount>
+			<KnobsCount>7</KnobsCount>
+			<item>
+				<Name>NatronOfxParamProcessA</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
 			<item>
 				<Name>size</Name>
 				<Type>Double</Type>
@@ -3961,7 +3978,7 @@
 					<second>Merge10</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>84</KnobsAge>
+			<KnobsAge>85</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -10161,7 +10178,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.05654000000000019e+03</Value>
+					<Value>-1.16379999999999995e+03</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -10231,7 +10248,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>7.73331119936429001e-02</Value>
+					<Value>-1.74958418790458925e-01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -13259,7 +13276,24 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>3</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>6</KnobsCount>
+			<KnobsCount>7</KnobsCount>
+			<item>
+				<Name>NatronOfxParamProcessA</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
 			<item>
 				<Name>size</Name>
 				<Type>Double</Type>
@@ -13386,7 +13420,7 @@
 					<second>Merge31</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>147</KnobsAge>
+			<KnobsAge>148</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -14307,7 +14341,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-3.18699802844278013e-01</Value>
+					<Value>-1.77203101312069800e+00</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14343,7 +14377,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>2.26915160172276771e+01</Value>
+					<Value>-6.25442499683087760e+00</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14504,7 +14538,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-1.23400000000000006e+02</Value>
+					<Value>-1.11000000000000000e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14533,7 +14567,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>5.03900000000000006e+01</Value>
+					<Value>2.28000000000000007e+01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14848,7 +14882,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>3.21201268861454082e+02</Value>
+					<Value>3.08891632373113850e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -14884,7 +14918,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-2.06518438957476000e+01</Value>
+					<Value>-5.73437585733882145e+01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -15015,7 +15049,24 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>3</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>6</KnobsCount>
+			<KnobsCount>7</KnobsCount>
+			<item>
+				<Name>NatronOfxParamProcessA</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
 			<item>
 				<Name>size</Name>
 				<Type>Double</Type>
@@ -15142,7 +15193,7 @@
 					<second>Transform15</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>64</KnobsAge>
+			<KnobsAge>65</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -15865,7 +15916,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>1.68287037037037095e+01</Value>
+					<Value>1.34110787172011658e+01</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -16034,7 +16085,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>2.08888888888888857e+00</Value>
+					<Value>-3.54070419376541823e+00</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -16156,7 +16207,24 @@
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>3</Plugin_major_version>
 			<Plugin_minor_version>0</Plugin_minor_version>
-			<KnobsCount>7</KnobsCount>
+			<KnobsCount>8</KnobsCount>
+			<item>
+				<Name>NatronOfxParamProcessA</Name>
+				<Type>Bool</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>1</Value>
+					<Default>0</Default>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<UserKnob>0</UserKnob>
+			</item>
 			<item>
 				<Name>size</Name>
 				<Type>Double</Type>
@@ -16300,7 +16368,7 @@
 					<second>OCIOLookTransform2</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>90</KnobsAge>
+			<KnobsAge>91</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -16390,7 +16458,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>8.98989898989899006e-01</Value>
+					<Value>9.61616161616161591e-01</Value>
 					<Default>1.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -17449,7 +17517,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-2.29313131313131294e+02</Value>
+					<Value>-3.64898989898989896e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -17478,7 +17546,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>-2.31373737373737384e+02</Value>
+					<Value>-2.08202020202020208e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
@@ -18212,13 +18280,13 @@
 				<UserKnob>0</UserKnob>
 			</item>
 			<item>
-				<Name>premult</Name>
+				<Name>premultChanged</Name>
 				<Type>Bool</Type>
 				<Dimension>1</Dimension>
-				<Secret>0</Secret>
+				<Secret>1</Secret>
 				<MasterIsAlias>0</MasterIsAlias>
 				<item>
-					<Enabled>1</Enabled>
+					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
 					<Value>1</Value>
 					<Default>0</Default>
@@ -18275,7 +18343,7 @@
 					<second>Transform20</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>25</KnobsAge>
+			<KnobsAge>26</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<HasTrackerContext>0</HasTrackerContext>
@@ -19071,7 +19139,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>5.49087482185542058e+02</Value>
+					<Value>4.59285506302509702e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>1</HasMaster>
 					<Master class_id="21" tracking_level="0" version="2">
@@ -19792,7 +19860,7 @@
 							</item>
 						</KeyFrameSet>
 					</Curve>
-					<Value>4.49790828593999208e+02</Value>
+					<Value>4.46567295729288617e+02</Value>
 					<Default>0.00000000000000000e+00</Default>
 					<HasMaster>1</HasMaster>
 					<Master>
@@ -26097,7 +26165,7 @@
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
 			<Value>ven. 14. nov. 16:24:01 2014</Value>
-			<Default>mar. juin 27 11:21:00 2017</Default>
+			<Default>mar. juin 27 14:14:51 2017</Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -26117,7 +26185,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mar. juin 27 11:21:43 2017</Value>
+			<Value>mar. juin 27 14:59:51 2017</Value>
 			<Default></Default>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
@@ -26173,7 +26241,7 @@
 			<Name></Name>
 		</item>
 	</AdditionalFormats>
-	<Timeline_current_time>51</Timeline_current_time>
+	<Timeline_current_time>20</Timeline_current_time>
 	<CreationDate>1415978643146</CreationDate>
 </Project>
 <ProjectGui class_id="25" tracking_level="0" version="11">
@@ -26323,7 +26391,7 @@
 		<item>
 			<Name>Merge10</Name>
 			<X_position>5.02193168913019417e+03</X_position>
-			<Y_position>5.84479699345864174e+03</Y_position>
+			<Y_position>5.83979699345864174e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
 			<g>3.70000750e-01</g>
@@ -26365,7 +26433,7 @@
 		<item>
 			<Name>Merge12</Name>
 			<X_position>5.02193168913019417e+03</X_position>
-			<Y_position>5.93943990062966895e+03</Y_position>
+			<Y_position>5.93443990062966895e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
 			<g>3.70000750e-01</g>
@@ -26561,7 +26629,7 @@
 		<item>
 			<Name>Blur_Defocus</Name>
 			<X_position>3.68039740476695806e+03</X_position>
-			<Y_position>5.43028166240612245e+03</Y_position>
+			<Y_position>5.43178326274421761e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>8.00000012e-01</r>
 			<g>5.00007629e-01</g>
@@ -26603,7 +26671,7 @@
 		<item>
 			<Name>Merge24</Name>
 			<X_position>3.82697550601784133e+03</X_position>
-			<Y_position>5.42205462022510164e+03</Y_position>
+			<Y_position>5.42128166240612245e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
 			<g>3.70000750e-01</g>
@@ -27219,7 +27287,7 @@
 		<item>
 			<Name>Merge45</Name>
 			<X_position>5.01205245707031827e+03</X_position>
-			<Y_position>7.43195651420676495e+03</Y_position>
+			<Y_position>7.42695651420676495e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
 			<g>3.70000750e-01</g>
@@ -27303,7 +27371,7 @@
 		<item>
 			<Name>Merge46</Name>
 			<X_position>5.01205245707031918e+03</X_position>
-			<Y_position>7.13976582906420208e+03</Y_position>
+			<Y_position>7.13687947242044902e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
 			<g>3.70000750e-01</g>
@@ -27470,7 +27538,7 @@
 		</item>
 		<item>
 			<Name>Premult15</Name>
-			<X_position>4.13415792488680836e+03</X_position>
+			<X_position>4.13427687932294339e+03</X_position>
 			<Y_position>5.32756454320024750e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
@@ -27653,7 +27721,7 @@
 		<item>
 			<Name>Radial11</Name>
 			<X_position>5.44390151812888325e+03</X_position>
-			<Y_position>7.83930859879337550e+03</Y_position>
+			<Y_position>7.84191503021567769e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>7.49996185e-01</r>
 			<g>7.49996185e-01</g>
@@ -27667,7 +27735,7 @@
 		<item>
 			<Name>Merge50</Name>
 			<X_position>5.01450480047910787e+03</X_position>
-			<Y_position>7.83791503021567769e+03</Y_position>
+			<Y_position>7.83291503021567769e+03</Y_position>
 			<Preview_enabled>0</Preview_enabled>
 			<r>3.00007641e-01</r>
 			<g>3.70000750e-01</g>
@@ -27880,11 +27948,11 @@
 		<Window class_id="29" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="30" tracking_level="1" version="1" object_id="_0">
-				<Sizes>767 413</Sizes>
+				<Sizes>788 425</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
-					<Sizes>657 656</Sizes>
+					<Sizes>501 501</Sizes>
 					<Orientation>2</Orientation>
 					<ChildIsSplitter>0</ChildIsSplitter>
 					<Child class_id="31" tracking_level="1" version="5" object_id="_2">
@@ -27924,10 +27992,10 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>131</x>
-			<y>106</y>
-			<w>1216</w>
-			<h>1316</h>
+			<x>497</x>
+			<y>300</y>
+			<w>1249</w>
+			<h>1005</h>
 		</Window>
 	</Gui_Layout>
 	<ViewersData class_id="32" tracking_level="0" version="0">
@@ -27936,9 +28004,9 @@
 		<item class_id="33" tracking_level="0" version="0">
 			<first>Viewer2</first>
 			<second class_id="34" tracking_level="0" version="14">
-				<zoomLeft>-1.03274256576793277e+03</zoomLeft>
-				<zoomBottom>-6.69917896502265762e+02</zoomBottom>
-				<zoomFactor>3.19125074844275380e-01</zoomFactor>
+				<zoomLeft>-1.68886803519061573e+02</zoomLeft>
+				<zoomBottom>-1.08000000000000007e+01</zoomBottom>
+				<zoomFactor>6.07193732193732294e-01</zoomFactor>
 				<UserRoIEnabled>0</UserRoIEnabled>
 				<UserRoI class_id="35" tracking_level="0" version="0">
 					<Left>4.43643840845357772e+02</Left>
@@ -27956,7 +28024,7 @@
 				<Channels>RGB</Channels>
 				<RenderScaleActivated>0</RenderScaleActivated>
 				<MipMapLevel>0</MipMapLevel>
-				<ZoomOrPanSinceFit>1</ZoomOrPanSinceFit>
+				<ZoomOrPanSinceFit>0</ZoomOrPanSinceFit>
 				<CompositingOP>0</CompositingOP>
 				<LeftBound>1</LeftBound>
 				<RightBound>99</RightBound>
@@ -27982,11 +28050,18 @@
 		<item_version>0</item_version>
 	</Histograms>
 	<OpenedPanels>
-		<count>3</count>
+		<count>10</count>
 		<item_version>0</item_version>
-		<item>BlurCImg24</item>
-		<item>Natron_Project_Settings_Panel</item>
-		<item>WriteOIIO3</item>
+		<item>NoiseCImg3</item>
+		<item>Merge50</item>
+		<item>Crop10</item>
+		<item>Radial11</item>
+		<item>BlurCImg11</item>
+		<item>BlurCImg21</item>
+		<item>Grade19</item>
+		<item>Grade10</item>
+		<item>Front_Fog</item>
+		<item>BlurCImg20</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
 	<NumPyPanels>0</NumPyPanels>
