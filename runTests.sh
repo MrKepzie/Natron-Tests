@@ -324,7 +324,7 @@ for t in $TEST_DIRS; do
 
 
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$t========================"
-    for CONFFILE in conf conf2 conf3; do
+    for CONFFILE in conf conf2 conf3 conf4 conf5; do
     if [[ ! -f "$CONFFILE" ]]; then
         if [[ "$CONFFILE" = "conf" ]]; then
             echo "$t does not contain a configuration file, please see the README."
