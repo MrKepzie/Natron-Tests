@@ -2063,7 +2063,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>RefTracker__051.jpg</Value>
+					<Value>RefTracker__001.jpg</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -4814,7 +4814,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>Smoke_Reactors__0020.png</Value>
+					<Value>Smoke_Reactors__0001.png</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -26221,7 +26221,7 @@
 				<item>
 					<Enabled>0</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>0</Value>
+					<Value>1</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -27343,7 +27343,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mar. juin 27 11:32:24 2017</Value>
+			<Value>mar. juin 27 12:12:17 2017</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -29119,7 +29119,7 @@
 		<Window class_id="29" tracking_level="0" version="1">
 			<ChildType>0</ChildType>
 			<Child class_id="30" tracking_level="1" version="1" object_id="_0">
-				<Sizes>781 420</Sizes>
+				<Sizes>931 501</Sizes>
 				<Orientation>1</Orientation>
 				<ChildIsSplitter>1</ChildIsSplitter>
 				<Child object_id="_1">
@@ -29163,9 +29163,9 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>1433</x>
-			<y>35</y>
-			<w>1237</w>
+			<x>214</x>
+			<y>105</y>
+			<w>1468</w>
 			<h>1316</h>
 		</Window>
 	</Gui_Layout>
@@ -29175,9 +29175,9 @@
 		<item class_id="33" tracking_level="0" version="0">
 			<first>Viewer2</first>
 			<second class_id="34" tracking_level="0" version="13">
-				<zoomLeft>1.33962895392699465e+02</zoomLeft>
-				<zoomBottom>1.01244003078227138e+02</zoomBottom>
-				<zoomFactor>1.00000000000000000e+00</zoomFactor>
+				<zoomLeft>-4.60056338028167602e+01</zoomLeft>
+				<zoomBottom>-1.08000000000000007e+01</zoomBottom>
+				<zoomFactor>8.84971509971510084e-01</zoomFactor>
 				<UserRoIEnabled>0</UserRoIEnabled>
 				<UserRoI class_id="35" tracking_level="0" version="0">
 					<Left>3.20000000000000000e+02</Left>
@@ -29195,7 +29195,7 @@
 				<Channels>RGB</Channels>
 				<RenderScaleActivated>0</RenderScaleActivated>
 				<MipMapLevel>0</MipMapLevel>
-				<ZoomOrPanSinceFit>1</ZoomOrPanSinceFit>
+				<ZoomOrPanSinceFit>0</ZoomOrPanSinceFit>
 				<CompositingOP>0</CompositingOP>
 				<LeftBound>1</LeftBound>
 				<RightBound>99</RightBound>
@@ -29220,18 +29220,8 @@
 		<item_version>0</item_version>
 	</Histograms>
 	<OpenedPanels>
-		<count>10</count>
+		<count>0</count>
 		<item_version>0</item_version>
-		<item>NoiseCImg3</item>
-		<item>Merge50</item>
-		<item>Crop10</item>
-		<item>Radial11</item>
-		<item>Merge15</item>
-		<item>LensDust</item>
-		<item>BlurCImg11</item>
-		<item>Crop7</item>
-		<item>BlurCImg21</item>
-		<item>ColorLookup3</item>
 	</OpenedPanels>
 	<ScriptEditorInput></ScriptEditorInput>
 	<NumPyPanels>0</NumPyPanels>
