@@ -20843,7 +20843,7 @@
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>2</Plugin_major_version>
-			<Plugin_minor_version>1</Plugin_minor_version>
+			<Plugin_minor_version>0</Plugin_minor_version>
 			<KnobsCount>6</KnobsCount>
 			<item>
 				<Name>NatronOfxParamProcessR</Name>
@@ -24934,7 +24934,7 @@
 			<PythonModule></PythonModule>
 			<PythonModuleVersion>0</PythonModuleVersion>
 			<Plugin_major_version>2</Plugin_major_version>
-			<Plugin_minor_version>1</Plugin_minor_version>
+			<Plugin_minor_version>0</Plugin_minor_version>
 			<KnobsCount>7</KnobsCount>
 			<item>
 				<Name>NatronParamFormatChoice</Name>
@@ -26691,7 +26691,7 @@
 				<item>
 					<Enabled>1</Enabled>
 					<HasAnimation>0</HasAnimation>
-					<Value>/Users/devernay/Development/Natron-Tests/Spaceship/reference#.jpg</Value>
+					<Value>[Project]/reference#.jpg</Value>
 					<HasMaster>0</HasMaster>
 					<Expression></Expression>
 					<ExprHasRet>0</ExprHasRet>
@@ -26971,7 +26971,7 @@
 					<second>Switch1</second>
 				</item>
 			</Inputs_map>
-			<KnobsAge>14</KnobsAge>
+			<KnobsAge>15</KnobsAge>
 			<MasterNode></MasterNode>
 			<HasRotoContext>0</HasRotoContext>
 			<MultiInstanceParent></MultiInstanceParent>
@@ -27752,7 +27752,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mar. juin 27 17:54:13 2017</Value>
+			<Value>mer. juin 28 12:26:27 2017</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -29642,8 +29642,8 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>15</x>
-			<y>193</y>
+			<x>212</x>
+			<y>118</y>
 			<w>2344</w>
 			<h>1208</h>
 		</Window>
