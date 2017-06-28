@@ -5,7 +5,7 @@
 <Project class_id="0" tracking_level="0" version="5">
 	<NatronVersion>Natron v2.0.5 from git branch tags/2.0.5 commit bcf2466fbb04615ad8ebdea8baafc0c78f573b8b  for   MacOSX 64bit</NatronVersion>
 	<NodesCollection class_id="1" tracking_level="0" version="1">
-		<NodesCount>74</NodesCount>
+		<NodesCount>75</NodesCount>
 		<item class_id="2" tracking_level="0" version="14">
 			<Plugin_label>Viewer1</Plugin_label>
 			<Plugin_script_name>Viewer1</Plugin_script_name>
@@ -7106,7 +7106,7 @@
 				<item_version>0</item_version>
 				<item>
 					<first>A</first>
-					<second>Solid1</second>
+					<second>Shuffle1</second>
 				</item>
 				<item>
 					<first>B</first>
@@ -22299,6 +22299,193 @@
 			</UserComponents>
 			<CacheID>Multiply1</CacheID>
 		</item>
+		<item>
+			<Plugin_label>Shuffle1</Plugin_label>
+			<Plugin_script_name>Shuffle1</Plugin_script_name>
+			<Plugin_id>net.sf.openfx.ShufflePlugin</Plugin_id>
+			<PythonModule></PythonModule>
+			<PythonModuleVersion>0</PythonModuleVersion>
+			<Plugin_major_version>2</Plugin_major_version>
+			<Plugin_minor_version>0</Plugin_minor_version>
+			<KnobsCount>8</KnobsCount>
+			<item>
+				<Name>outputChannelsChoice</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>Color.RGBA</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputComponents</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>RGBA</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputRChoice</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>A.r</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputGChoice</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>A.g</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputBChoice</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>A.b</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputA</Name>
+				<Type>Choice</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>4</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<ChoiceLabel>0</ChoiceLabel>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>outputAChoice</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>1</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>0</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<item>
+				<Name>userTextArea</Name>
+				<Type>String</Type>
+				<Dimension>1</Dimension>
+				<Secret>0</Secret>
+				<MasterIsAlias>0</MasterIsAlias>
+				<item>
+					<Enabled>1</Enabled>
+					<HasAnimation>0</HasAnimation>
+					<Value>&lt;font size=&quot;6&quot; color=&quot;#000000&quot; face=&quot;Droid Sans&quot;&gt;&lt;/font&gt;</Value>
+					<HasMaster>0</HasMaster>
+					<Expression></Expression>
+					<ExprHasRet>0</ExprHasRet>
+				</item>
+				<StringsAnimation>
+					<count>0</count>
+					<item_version>0</item_version>
+				</StringsAnimation>
+				<UserKnob>0</UserKnob>
+			</item>
+			<Inputs_map>
+				<count>1</count>
+				<item_version>0</item_version>
+				<item>
+					<first>A</first>
+					<second>Solid1</second>
+				</item>
+			</Inputs_map>
+			<KnobsAge>1</KnobsAge>
+			<MasterNode></MasterNode>
+			<HasRotoContext>0</HasRotoContext>
+			<MultiInstanceParent></MultiInstanceParent>
+			<UserPagesCount>0</UserPagesCount>
+			<PagesCount>3</PagesCount>
+			<name>Controls</name>
+			<name>Node</name>
+			<name>Info</name>
+			<Children>0</Children>
+			<UserComponents>
+				<count>0</count>
+				<item_version>0</item_version>
+			</UserComponents>
+			<CacheID>Shuffle11</CacheID>
+		</item>
 	</NodesCollection>
 	<ProjectKnobsCount>4</ProjectKnobsCount>
 	<item>
@@ -22367,7 +22554,7 @@
 		<item>
 			<Enabled>0</Enabled>
 			<HasAnimation>0</HasAnimation>
-			<Value>mer. juin 28 11:59:31 2017</Value>
+			<Value>mer. juin 28 12:37:56 2017</Value>
 			<HasMaster>0</HasMaster>
 			<Expression></Expression>
 			<ExprHasRet>0</ExprHasRet>
@@ -22417,7 +22604,7 @@
 </Project>
 <ProjectGui class_id="25" tracking_level="0" version="11">
 	<NodesGui class_id="26" tracking_level="0" version="0">
-		<count>74</count>
+		<count>75</count>
 		<item_version>6</item_version>
 		<item class_id="27" tracking_level="0" version="6">
 			<Name>Viewer1</Name>
@@ -23875,6 +24062,20 @@
 			<HasOverlayColor>0</HasOverlayColor>
 			<Children>0</Children>
 		</item>
+		<item>
+			<Name>Shuffle1</Name>
+			<X_position>2.34228756270370286e+03</X_position>
+			<Y_position>1.41200260959226898e+03</Y_position>
+			<Preview_enabled>0</Preview_enabled>
+			<r>6.00000024e-01</r>
+			<g>2.39993900e-01</g>
+			<b>3.90005350e-01</b>
+			<Selected>0</Selected>
+			<Width>1.04000000000000000e+02</Width>
+			<Height>3.40000000000000000e+01</Height>
+			<HasOverlayColor>0</HasOverlayColor>
+			<Children>0</Children>
+		</item>
 	</NodesGui>
 	<Gui_Layout class_id="28" tracking_level="0" version="2">
 		<NbWindows>1</NbWindows>
@@ -23925,8 +24126,8 @@
 				</Child>
 			</Child>
 			<MainWindow>1</MainWindow>
-			<x>105</x>
-			<y>153</y>
+			<x>212</x>
+			<y>118</y>
 			<w>2344</w>
 			<h>1208</h>
 		</Window>
@@ -23982,8 +24183,9 @@
 		<item_version>0</item_version>
 	</Histograms>
 	<OpenedPanels>
-		<count>7</count>
+		<count>8</count>
 		<item_version>0</item_version>
+		<item>Shuffle1</item>
 		<item>Read3</item>
 		<item>Read1</item>
 		<item>Multiply_Dust_Intensity</item>
