@@ -398,7 +398,7 @@ for t in $TEST_DIRS; do
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
         renderfail=0
-        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || renderfail=1
+        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || renderfail=1
         if [ "$renderfail" != "1" ]; then
             echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $t/$CONFFILE"
         else
@@ -483,7 +483,7 @@ for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$x========================"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-    $TIMEOUT 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
+    $TIMEOUT -s KILL 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done

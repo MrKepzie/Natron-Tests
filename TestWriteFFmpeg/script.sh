@@ -65,10 +65,10 @@ for x in $FORMATS/*; do
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
   FORMAT="$(cat format)"
   rm -f output* res comp*
-  env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp #> /dev/null 2>&1
+  env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp #> /dev/null 2>&1
   if [ -f "output.$FORMAT" ]; then
     set -x
-    $TIMEOUT 1800 "$FFMPEG_BIN" -y -i "output.$FORMAT" "output%1d.$IMAGES_FILE_EXT" </dev/null >/dev/null 2>&1
+    $TIMEOUT -s KILL 1800 "$FFMPEG_BIN" -y -i "output.$FORMAT" "output%1d.$IMAGES_FILE_EXT" </dev/null >/dev/null 2>&1
     set +x
   fi
   if [ -f "last" ]; then
