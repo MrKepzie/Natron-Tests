@@ -1,31 +1,28 @@
-#! /Applications/Nuke9.0v1/Nuke9.0v1.app/Contents/MacOS//libnuke-9.0.1.dylib -nx
-version 9.0 v1
+#! /Applications/Nuke10.5v1/Nuke10.5v1.app/Contents/MacOS/libnuke-10.5.1.dylib -nx
+version 10.5 v1
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="121" y="23" w="1920" h="1173" screen="0">
+    <window x="0" y="23" w="994" h="984" screen="0">
         <splitter orientation="1">
-            <split size="1214"/>
-            <splitter orientation="1">
-                <split size="46"/>
-                <dock id="" hideTitles="1" activePageId="Toolbar.1">
-                    <page id="Toolbar.1"/>
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="621" stretch="1"/>
+            <splitter orientation="2">
+                <split size="563"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
                 </dock>
-                <split size="1164"/>
-                <splitter orientation="2">
-                    <split size="673"/>
-                    <dock id="" activePageId="Viewer.1">
-                        <page id="Viewer.1"/>
-                    </dock>
-                    <split size="474"/>
-                    <dock id="" activePageId="DAG.1">
-                        <page id="DAG.1"/>
-                        <page id="Curve Editor.1"/>
-                        <page id="DopeSheet.1"/>
-                    </dock>
-                </splitter>
+                <split size="395"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
             </splitter>
-            <split size="702"/>
-            <dock id="" activePageId="Properties.1" focus="true">
+            <split size="325"/>
+            <dock id="" activePageId="Properties.1">
                 <page id="Properties.1"/>
             </dock>
         </splitter>
@@ -34,20 +31,28 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name /Users/devernay/Documents/NukeDocs/timeblur.nk
- format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ name /Users/devernay/Development/Natron-Tests/TestTimeBlur/timeblur.nk
+ last_frame 3
+ format "100 100 0 0 100 100 1 Toto 100x100"
  proxy_type scale
  proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
 }
 Rectangle {
  inputs 0
- area {512 389 1536 1167}
+ area {6.6 19 34.8 54.90000153}
  name Rectangle1
  xpos 59
  ypos -184
 }
 Transform {
- translate {{curve x1 0 200 300} 0}
+ translate {{curve i x1 0 20 40} 0}
  center {1024 778}
  name Transform1
  xpos 33
@@ -58,12 +63,12 @@ TimeBlur {
  shutteroffset start
  shuttercustomoffset 0
  name TimeBlur1
- selected true
  xpos 9
  ypos -72
 }
 Viewer {
- frame_range 1-100
+ frame 1
+ frame_range 1-3
  name Viewer1
  xpos -40
  ypos -9
