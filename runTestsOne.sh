@@ -25,6 +25,9 @@ echo "*** Natron tests"
 echo "Environment:"
 env
 
+# update the font cache if necessary (avoid blocking trhe first test)
+fc-cache -v || true
+
 if [ "$(uname -s)" = "Darwin" ]; then
     # timeout is available in GNU coreutils:
     # sudo port install coreutils
@@ -56,13 +59,13 @@ fi
 # fail if more than 0.1% of pixels have an error larger than 0.001 or if any pixel has an error larger than 0.01
 IDIFF_OPTS="-warn 0.001 -fail 0.001 -failpercent 0.1 -hardfail 0.01 -abs -scale 100"
 # tuned to pass BayMax and Spaceship:
-IDIFF_OPTS="-warn 0.001 -fail 0.004 -failpercent 0.2 -hardfail 0.08 -abs -scale 30"
+IDIFF_OPTS="-warn 0.001 -fail 0.008 -failpercent 0.2 -hardfail 0.08 -abs -scale 30"
 
 CUSTOM_DIRS="
+TestWriteFFmpeg
 "
 
 TEST_DIRS="
-Spaceship
 "
 
 if [ $# != 1 -o \( "$1" != "clean" -a ! -x "$1" \) ]; then
@@ -196,7 +199,7 @@ for t in $TEST_DIRS; do
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $t"
         renderfail=0
-        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || renderfail=1
+        env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 3600 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -w $WRITER_NODE_NAME -l $CWD/$TMP_SCRIPT $NATRONPROJ || renderfail=1
         if [ "$renderfail" != "1" ]; then
             echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $t/$CONFFILE"
         else
@@ -216,7 +219,7 @@ for t in $TEST_DIRS; do
 	else
             SEQ="seq $FIRST_FRAME $LAST_FRAME"
         fi
-        echo "SEQ=$SEQ"
+
         for i in $($SEQ); do
             # only copy images if this frame fails
             failframe=0
@@ -281,7 +284,7 @@ for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$x========================"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-    $TIMEOUT 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
+    $TIMEOUT -s KILL 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done

@@ -25,6 +25,9 @@ echo "*** Natron tests"
 echo "Environment:"
 env
 
+# update the font cache if necessary (avoid blocking trhe first test)
+fc-cache -v || true
+
 if [ "$(uname -s)" = "Darwin" ]; then
     # timeout is available in GNU coreutils:
     # sudo port install coreutils
