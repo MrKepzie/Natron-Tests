@@ -486,7 +486,7 @@ for x in $CUSTOM_DIRS; do
     cd $x
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** ===================$x========================"
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
-    $TIMEOUT -s KILL 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN"
+    $TIMEOUT -s KILL 3600 bash script.sh "$RENDERER_BIN" "$FFMPEG_BIN" "$IDIFF_BIN" || true
     echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
     cd ..
 done
