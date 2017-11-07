@@ -56,11 +56,23 @@ fi
 rm -f "$CWD"/{output*,comp*,res*}
 
 echo "===================$NAME========================"
-env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -i ReadOIIO1 "$CWD"/input1.png -w WriteOIIO1 "$CWD"/output1.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp #> /dev/null 2>&1
-env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -i ReadOIIO2 "$CWD"/input2.png -w WriteOIIO2 "$CWD"/output2.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp #> /dev/null 2>&1 
+FAIL=0
+env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -i ReadOIIO1 "$CWD"/input1.png -w WriteOIIO1 "$CWD"/output1.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp > /dev/null 2>&1 || FAIL=1
+if [ $FAIL = 1 ]; then
+    echo "$x/WriteOIIO1 : FAIL" >> $RESULTS
+else
+    echo "$x/WriteOIIO1 : PASS" >> $RESULTS
+fi
+FAIL=0
+env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -i ReadOIIO2 "$CWD"/input2.png -w WriteOIIO2 "$CWD"/output2.jpg 1-1 -s -l "$CWD"/script01.py "$CWD"/test.ntp > /dev/null 2>&1 || FAIL=1
+if [ $FAIL = 1 ]; then
+    echo "$x/WriteOIIO2 : FAIL" >> $RESULTS
+else
+    echo "$x/WriteOIIO2 : PASS" >> $RESULTS
+fi
+
 
 for i in 1 2; do
-    FAIL=0
     # idiff's "WARNING" gives a non-zero return status
     "$IDIFF_BIN" "reference$i.$IMAGES_FILE_EXT" "output$i.$IMAGES_FILE_EXT" -o "comp$i.$IMAGES_FILE_EXT" $IDIFF_OPTS &> res || true
     x="$NAME/$i"
@@ -86,9 +98,10 @@ exit
 i=3
 x="$NAME/$i"
 
-env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -c "qualityValue=10" -c "app.saveProject(\"$CWD/output.ntp\")" -w DefaultWrite1 -w DefaultWrite2 -o1 "$CWD"/output5.jpg 1-1 -o2 "$CWD"/output6.jpg 1-1 "$CWD"/script02.py #> /dev/null 2>&1
+FAIL=0
+env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} -c "qualityValue=10" -c "app.saveProject(\"$CWD/output.ntp\")" -w DefaultWrite1 -w DefaultWrite2 -o1 "$CWD"/output5.jpg 1-1 -o2 "$CWD"/output6.jpg 1-1 "$CWD"/script02.py > /dev/null 2>&1 || FAIL=1
 
-if [ ! -f "$CWD/output3.jpg" ] && [ ! -f "$CWD/output4.jpg" ] && [ ! -f "$CWD/output5.jpg" ] && [ ! -f "$CWD/output6.jpg" ] && [ ! -f "$CWD/output.ntp" ]; then
+if [ $FAIL = 0 ] && [ ! -f "$CWD/output3.jpg" ] && [ ! -f "$CWD/output4.jpg" ] && [ ! -f "$CWD/output5.jpg" ] && [ ! -f "$CWD/output6.jpg" ] && [ ! -f "$CWD/output.ntp" ]; then
       echo "$(date '+%Y-%m-%d %H:%M:%S') *** PASS $x"
       echo "$x : PASS" >> $RESULTS
 else
