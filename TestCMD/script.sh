@@ -2,7 +2,7 @@
 
 set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error when substituting.
-#set -x # Print commands and their arguments as they are executed.
+set -x # Print commands and their arguments as they are executed.
 
 if [ $# != 3 ]; then
     echo "Usage: $0 <absolute path to NatronRenderer binary> <ffmpeg binary> <idiff binary>"
