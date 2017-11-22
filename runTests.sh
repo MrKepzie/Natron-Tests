@@ -31,7 +31,7 @@ Linux)
     ;;
 Msys|MINGW64_NT-*|MINGW32_NT-*)
     PKGOS=Windows
-    set -x
+    #set -x # uncomment to get verbose tests on Windows
     ;;
 Darwin)
     PKGOS=OSX
