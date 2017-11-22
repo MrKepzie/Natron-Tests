@@ -25,6 +25,23 @@ echo "*** Natron tests"
 echo "Environment:"
 env
 
+case "$CHECK_OS" in
+Linux)
+    PKGOS=Linux
+    ;;
+Msys|MINGW64_NT-*|MINGW32_NT-*)
+    PKGOS=Windows
+    set -x
+    ;;
+Darwin)
+    PKGOS=OSX
+    ;;
+*)
+    echo "$CHECK_OS not supported!"
+    exit 1
+    ;;
+esac
+
 # update the font cache if necessary (avoid blocking trhe first test)
 fc-cache -v || true
 
