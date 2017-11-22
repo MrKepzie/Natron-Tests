@@ -58,7 +58,15 @@ else
 fi
 
 echo "===================$NAME========================"
-env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp #> /dev/null 2>&1
+echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $NAME"
+renderfail=0
+env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp || renderfail=1
+if [ "$renderfail" != "1" ]; then
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $NAME"
+else
+    echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $NAME (WARNING: render failed)"
+    # ignore failure, but check the output images
+fi
 for i in a8 a16 g8 g16 ga8 ga16 rgb8 rgb16 rgba8 rgba16; do
     FAIL=0
     # idiff's "WARNING" gives a non-zero return status

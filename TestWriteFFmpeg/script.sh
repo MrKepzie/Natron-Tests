@@ -65,12 +65,28 @@ for x in $FORMATS/*; do
   echo "$(date '+%Y-%m-%d %H:%M:%S') *** START $x"
   FORMAT="$(cat format)"
   rm -f output* res comp*
-  env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp #> /dev/null 2>&1
-  if [ -f "output.$FORMAT" ]; then
-    set -x
-    $TIMEOUT -s KILL 1800 "$FFMPEG_BIN" -y -i "output.$FORMAT" "output%1d.$IMAGES_FILE_EXT" </dev/null >/dev/null 2>&1
-    set +x
+  renderfail=0
+  env NATRON_PLUGIN_PATH="${plugin_path}" $TIMEOUT -s KILL 1800 "$RENDERER_BIN" ${OPTS[@]+"${OPTS[@]}"} test.ntp  || renderfail=1
+  if [ "$renderfail" != "1" ]; then
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $x"
+  else
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** END render $x (WARNING: render failed)"
+      # ignore failure, but check the output images
   fi
+  ffmpegfail=1
+  if [ -f "output.$FORMAT" ]; then
+      set -x
+      ffmpegfail=0
+      $TIMEOUT -s KILL 1800 "$FFMPEG_BIN" -y -i "output.$FORMAT" "output%1d.$IMAGES_FILE_EXT" </dev/null >/dev/null 2>&1 || ffmpegfail=1
+      set +x
+  fi
+  if [ "$ffmpegfail" != "1" ]; then
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** END ffmpeg $x"
+  else
+      echo "$(date '+%Y-%m-%d %H:%M:%S') *** END ffmpeg $x (WARNING: ffmpeg failed)"
+      # ignore failure, but check the output images
+  fi
+
   if [ -f "last" ]; then
     LAST_FRAME="$(cat last)"
   fi
@@ -80,7 +96,6 @@ for x in $FORMATS/*; do
   if [ "$uname" = "Darwin" ]; then
     SEQ="jot - $FIRST_FRAME $LAST_FRAME"
   fi
-  echo "$(date '+%Y-%m-%d %H:%M:%S') *** END $x"
   for i in $($SEQ); do
       FAIL=0
       # idiff's "WARNING" gives a non-zero return status
