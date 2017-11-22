@@ -25,7 +25,7 @@ echo "*** Natron tests"
 echo "Environment:"
 env
 
-case "$CHECK_OS" in
+case "$(uname -s)" in
 Linux)
     PKGOS=Linux
     ;;
