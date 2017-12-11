@@ -154,6 +154,7 @@ TestImageXCF
 TestImageXPM
 TestImplode
 TestInvert
+TestIssue1703
 TestLaplacian
 TestLensDistortion
 TestMedian
